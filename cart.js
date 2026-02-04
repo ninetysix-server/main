@@ -836,7 +836,7 @@ handleServiceButtonClick(button) {
     // Add to cart
     this.cartManager.addItem(serviceId, tierName, serviceTitle, `R${totalPrice}`, 1, details);
     
-    this.cartPopupManager.showToast(`${serviceTitle} (${tierName}) added to cart!`);
+    //this.cartPopupManager.showToast(`${serviceTitle} (${tierName}) added to cart!`);
     this.cartPopupManager.openCartPopup();
 }
 

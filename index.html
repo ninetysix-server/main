@@ -10,6 +10,164 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Top Design",
+  "description": "Top design solutions offered by 96 Studios",
+  "url": "https://96studios.co.za/",
+  "numberOfItems": 4,
+  "itemListOrder": "https://schema.org/ItemListOrderDescending",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Service",
+        "name": "Logo Design – Premium",
+        "description": "Professional logo design for startups and growing brands.",
+        "provider": {
+          "@type": "Organization",
+          "name": "96 Studios"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "300",
+          "priceCurrency": "ZAR"
+        },
+        "image": "https://96studios.co.za/assets/images/vr_logo-design.png",
+        "url": "https://96studios.co.za/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Service",
+        "name": "Poster Design – Premium",
+        "description": "High-impact poster designs for events and promotions.",
+        "provider": {
+          "@type": "Organization",
+          "name": "96 Studios"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "400",
+          "priceCurrency": "ZAR"
+        },
+        "image": "https://96studios.co.za/assets/images/vr_poster.png",
+        "url": "https://96studios.co.za/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Service",
+        "name": "Business Card Design – Starter",
+        "description": "Clean, professional business card designs for marketing.",
+        "provider": {
+          "@type": "Organization",
+          "name": "96 Studios"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "180",
+          "priceCurrency": "ZAR"
+        },
+        "image": "https://96studios.co.za/assets/images/vr_business-card.png",
+        "url": "https://96studios.co.za/"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Service",
+        "name": "Board Design – Premium",
+        "description": "Strategic presentation and display board designs.",
+        "provider": {
+          "@type": "Organization",
+          "name": "96 Studios"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "600",
+          "priceCurrency": "ZAR"
+        },
+        "image": "https://96studios.co.za/assets/images/vr_board-design.png",
+        "url": "https://96studios.co.za/"
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "96 Studios",
+  "url": "https://96studios.co.za",
+  "logo": "https://96studios.co.za/assets/images/logo.svg",
+  "description": "Professional graphic design studio offering branding, logo design, website design, and marketing visuals.",
+  "telephone": "+27-81-792-5033",
+  "email": "Support@96studios.co.za",
+  "priceRange": "R100 – R3000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "462 Sebayeng Unit D",
+    "addressLocality": "Polokwane",
+    "addressRegion": "Limpopo",
+    "postalCode": "0752",
+    "addressCountry": "ZA"
+  },
+  "openingHours": "Mo-Fr 09:00-16:00",
+  "sameAs": [
+    "https://www.instagram.com/96studioss/",
+    "https://www.facebook.com/ninetysixgraphics",
+    "https://www.tiktok.com/@96.studios6"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Design Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Logo Design"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Poster Design"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Business Card Design"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Board Design"
+        }
+      }
+    ]
+  }
+}
+</script>
+
+
+    
     <!-- Firebase SDK -->
     <script type="module" src="firebase.js"></script>
     
@@ -7588,7 +7746,7 @@
                 <i class="fas fa-times"></i>
             </button>
             <h2>
-                <i class="fas fa-heart"></i>
+                <!-- <i class="fas fa-heart"></i> -->
                 My Wishlist
             </h2>
             <p>Save designs you love and submit them later</p>
@@ -11503,7 +11661,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Show toast
-        showToast(`Added to cart: ${title} (${tier})`, 'success');
+        //showToast(`Added to cart: ${title} (${tier})`, 'success');
     });
     
     // localStorage cart function for fallback
@@ -12933,6 +13091,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 </script>
+
 
 </body>
 </html>
