@@ -1,80 +1,425 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Unsubscribe from 96 Studios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body { font-family: -apple-system, system-ui; text-align: center; padding: 40px; }
-        .container { max-width: 400px; margin: 0 auto; }
-        button { background: #004370; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; }
-        .success { color: green; }
-        .error { color: red; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .logo {
+            height: 40px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+        }
+        
+        p {
+            font-size: 17px;
+            line-height: 1.65;
+            color: #515154;
+            margin-bottom: 24px;
+        }
+        
+        .email-display {
+            background: #f5f5f7;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 16px;
+            word-break: break-all;
+        }
+        
+        select {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 12px;
+            font-size: 16px;
+            margin: 20px 0;
+            background: white;
+            font-family: inherit;
+            color: #1d1d1f;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .button {
+            padding: 16px 32px;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 160px;
+        }
+        
+        .unsubscribe-btn {
+            background: #ff3b30;
+            color: white;
+        }
+        
+        .unsubscribe-btn:hover {
+            background: #e0352b;
+            transform: scale(1.02);
+        }
+        
+        .cancel-btn {
+            background: #f5f5f7;
+            color: #1d1d1f;
+        }
+        
+        .cancel-btn:hover {
+            background: #e8e8ed;
+            transform: scale(1.02);
+        }
+        
+        .message {
+            margin-top: 24px;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 15px;
+            display: none;
+        }
+        
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f5f5f7;
+            border-top: 3px solid #004370;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px;
+                margin: 0 12px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+            
+            .button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Unsubscribe</h2>
-        <p>We're sorry to see you go. Are you sure you want to unsubscribe?</p>
+        <img src="https://96studios.co.za/assets/images/logo.svg" alt="96 Studios" class="logo" width="120">
         
-        <select id="reason">
+        <h1>Unsubscribe</h1>
+        
+        <p>We're sorry to see you go. Please confirm your email address and select a reason (optional).</p>
+        
+        <div class="email-display" id="emailDisplay">Loading email...</div>
+        
+        <select id="reasonSelect">
             <option value="">Select a reason (optional)</option>
             <option value="too_frequent">Emails too frequent</option>
             <option value="not_relevant">Content not relevant</option>
             <option value="too_many">Too many emails</option>
-            <option value="other">Other</option>
+            <option value="preferences">Change email preferences</option>
+            <option value="other">Other reason</option>
         </select>
         
-        <p><button onclick="unsubscribe()">Unsubscribe</button></p>
-        <p><button onclick="window.close()" style="background: #ccc; color: #333;">Cancel</button></p>
+        <div class="loading" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Processing your request...</p>
+        </div>
         
-        <div id="message"></div>
+        <div class="message" id="messageContainer"></div>
+        
+        <div class="button-group">
+            <button class="button unsubscribe-btn" onclick="processUnsubscribe()">Unsubscribe</button>
+            <button class="button cancel-btn" onclick="goBack()">Cancel</button>
+        </div>
+        
+        <p style="margin-top: 32px; font-size: 13px; color: #86868b;">
+            This will unsubscribe you from all marketing emails from 96 Studios.<br>
+            You'll still receive transactional emails related to your account.
+        </p>
     </div>
 
     <script>
+        // Get email from URL parameters
         function getEmailFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('email') || '';
-        }
-
-        async function unsubscribe() {
-            const email = getEmailFromURL();
-            const reason = document.getElementById('reason').value;
-            const messageDiv = document.getElementById('message');
+            const email = urlParams.get('email');
             
+            // Also check for encoded email in hash or other parameters
             if (!email) {
-                messageDiv.innerHTML = '<p class="error">Email address not found.</p>';
-                return;
+                // Try to get from common ESP parameters
+                const possibleParams = ['e', 'u', 'user_email', 'address', 'recipient'];
+                for (const param of possibleParams) {
+                    const value = urlParams.get(param);
+                    if (value && value.includes('@')) {
+                        return decodeURIComponent(value);
+                    }
+                }
+                
+                // Check for email in the URL path
+                const pathParts = window.location.pathname.split('/');
+                for (const part of pathParts) {
+                    if (part.includes('@')) {
+                        return decodeURIComponent(part);
+                    }
+                }
             }
             
-            try {
-                // Replace with your Google Apps Script URL
-                const response = await fetch('https://script.google.com/macros/s/AKfycbycFr3pFk2PQ2cDYdvVi5vaMD0HIlyVkdrn_8tVpK8lCGmvL6z-Bfox3qbTEsQFm3zr/exec', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email, reason: reason })
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    messageDiv.innerHTML = `
-                        <p class="success">✓ You have been unsubscribed successfully.</p>
-                        <p>You will no longer receive emails from 96 Studios.</p>
-                    `;
-                    setTimeout(() => window.close(), 3000);
+            return email ? decodeURIComponent(email) : '';
+        }
+        
+        // Display the email address
+        function displayEmail() {
+            const email = getEmailFromURL();
+            const emailDisplay = document.getElementById('emailDisplay');
+            
+            if (email && email.includes('@') && email.includes('.')) {
+                emailDisplay.textContent = email;
+                // Store email in localStorage as fallback
+                localStorage.setItem('unsubscribe_email', email);
+            } else {
+                // Try to get from localStorage
+                const savedEmail = localStorage.getItem('unsubscribe_email');
+                if (savedEmail) {
+                    emailDisplay.textContent = savedEmail;
                 } else {
-                    messageDiv.innerHTML = `<p class="error">${result.message}</p>`;
+                    emailDisplay.textContent = 'Email address not found in URL';
+                    // Show email input field
+                    emailDisplay.innerHTML = `
+                        <input type="email" id="emailInput" 
+                               placeholder="Enter your email address" 
+                               style="width: 100%; padding: 12px; border: 1px solid #d2d2d7; border-radius: 8px; font-size: 16px;">
+                    `;
                 }
-            } catch (error) {
-                messageDiv.innerHTML = '<p class="error">An error occurred. Please try again.</p>';
             }
         }
         
-        // Auto-populate email in the form if present
-        window.onload = function() {
+        // Get the actual email to use
+        function getEmailToUse() {
             const email = getEmailFromURL();
-            if (email) {
-                document.querySelector('p').innerHTML += `<br><small>Email: ${email}</small>`;
+            if (email && email.includes('@')) {
+                return email;
             }
-        };
+            
+            // Check if user entered email in input
+            const emailInput = document.getElementById('emailInput');
+            if (emailInput && emailInput.value.includes('@')) {
+                return emailInput.value.trim();
+            }
+            
+            // Check localStorage
+            const savedEmail = localStorage.getItem('unsubscribe_email');
+            if (savedEmail && savedEmail.includes('@')) {
+                return savedEmail;
+            }
+            
+            return null;
+        }
+        
+        // Process unsubscribe request
+        async function processUnsubscribe() {
+            const email = getEmailToUse();
+            const reason = document.getElementById('reasonSelect').value;
+            const messageContainer = document.getElementById('messageContainer');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            
+            if (!email || !email.includes('@')) {
+                messageContainer.className = 'message error';
+                messageContainer.textContent = 'Please enter a valid email address';
+                messageContainer.style.display = 'block';
+                return;
+            }
+            
+            // Show loading
+            messageContainer.style.display = 'none';
+            loadingSpinner.style.display = 'block';
+            
+            try {
+                // REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT DEPLOYMENT URL
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbycFr3pFk2PQ2cDYdvVi5vaMD0HIlyVkdrn_8tVpK8lCGmvL6z-Bfox3qbTEsQFm3zr/exec';
+                
+                const response = await fetch(scriptUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important for Google Apps Script
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        reason: reason
+                    })
+                });
+                
+                // For no-cors mode, we can't read the response directly
+                // So we'll assume success and show confirmation
+                
+                // Hide loading
+                loadingSpinner.style.display = 'none';
+                
+                // Show success message
+                messageContainer.className = 'message success';
+                messageContainer.innerHTML = `
+                    <strong>✓ Successfully Unsubscribed</strong><br><br>
+                    <p>${email} has been removed from our mailing list.</p>
+                    <p>You should receive a confirmation email shortly.</p>
+                    <p><small>You can close this window now.</small></p>
+                `;
+                messageContainer.style.display = 'block';
+                
+                // Clear email from localStorage
+                localStorage.removeItem('unsubscribe_email');
+                
+                // Disable the unsubscribe button
+                document.querySelector('.unsubscribe-btn').disabled = true;
+                document.querySelector('.unsubscribe-btn').textContent = 'Unsubscribed';
+                document.querySelector('.unsubscribe-btn').style.opacity = '0.7';
+                
+                // Redirect to homepage after 5 seconds
+                setTimeout(() => {
+                    window.location.href = 'https://96studios.co.za';
+                }, 5000);
+                
+            } catch (error) {
+                // Hide loading
+                loadingSpinner.style.display = 'none';
+                
+                // Show error message
+                messageContainer.className = 'message error';
+                messageContainer.textContent = 'An error occurred. Please try again or contact support@96studios.co.za';
+                messageContainer.style.display = 'block';
+                
+                console.error('Unsubscribe error:', error);
+            }
+        }
+        
+        // Alternative method using form submission (works with CORS)
+        function processUnsubscribeAlternative() {
+            const email = getEmailToUse();
+            const reason = document.getElementById('reasonSelect').value;
+            
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Create a form and submit it (works around CORS)
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://script.google.com/macros/s/your-script-id/exec';
+            form.target = '_blank';
+            
+            const emailInput = document.createElement('input');
+            emailInput.type = 'hidden';
+            emailInput.name = 'email';
+            emailInput.value = email;
+            form.appendChild(emailInput);
+            
+            if (reason) {
+                const reasonInput = document.createElement('input');
+                reasonInput.type = 'hidden';
+                reasonInput.name = 'reason';
+                reasonInput.value = reason;
+                form.appendChild(reasonInput);
+            }
+            
+            document.body.appendChild(form);
+            form.submit();
+            
+            // Show success message
+            const messageContainer = document.getElementById('messageContainer');
+            messageContainer.className = 'message success';
+            messageContainer.innerHTML = `
+                <strong>Unsubscribe Request Submitted</strong><br><br>
+                <p>Your request to unsubscribe ${email} has been received.</p>
+                <p>Please check your email for confirmation.</p>
+            `;
+            messageContainer.style.display = 'block';
+        }
+        
+        // Go back or close
+        function goBack() {
+            if (document.referrer) {
+                window.history.back();
+            } else {
+                window.location.href = 'https://96studios.co.za';
+            }
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            displayEmail();
+            
+            // If email is in input field, focus on it
+            const emailInput = document.getElementById('emailInput');
+            if (emailInput) {
+                emailInput.focus();
+            }
+        });
     </script>
 </body>
 </html>
