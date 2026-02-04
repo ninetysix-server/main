@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Creative Design Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        body {
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .admin-header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-header h1 {
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .admin-actions {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .admin-button {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .admin-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .logout-button {
+            background: rgba(239, 68, 68, 0.2);
+        }
+        
+        .logout-button:hover {
+            background: rgba(239, 68, 68, 0.3);
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .stat-pending .stat-icon {
+            background: #fffbeb;
+            color: #d97706;
+        }
+        
+        .stat-paid .stat-icon {
+            background: #d1fae5;
+            color: #059669;
+        }
+        
+        .stat-designing .stat-icon {
+            background: #e0e7ff;
+            color: #4f46e5;
+        }
+        
+        .stat-completed .stat-icon {
+            background: #fce7f3;
+            color: #be185d;
+        }
+        
+        .stat-info h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-info p {
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        /* Orders Table */
+        .orders-table-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 30px;
+        }
+        
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        
+        .table-header h2 {
+            font-size: 20px;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+        }
+        
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .orders-table th {
+            text-align: left;
+            padding: 15px;
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 600;
+            font-size: 14px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .orders-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 14px;
+        }
+        
+        .orders-table tr:hover {
+            background: #f8fafc;
+        }
+        
+        /* Status Badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background: #fffbeb;
+            color: #92400e;
+            border: 1px solid #fbbf24;
+        }
+        
+        .status-paid {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .status-not-paid {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+        
+        .status-waiting {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+        }
+        
+        .status-designing {
+            background: #f3e8ff;
+            color: #7c3aed;
+            border: 1px solid #ddd6fe;
+        }
+        
+        .status-completed {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .action-button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .action-button.payment {
+            background: #10b981;
+            color: white;
+        }
+        
+        .action-button.payment:hover {
+            background: #059669;
+        }
+        
+        .action-button.progress {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .action-button.progress:hover {
+            background: #2563eb;
+        }
+        
+        .action-button.details {
+            background: #8b5cf6;
+            color: white;
+        }
+        
+        .action-button.details:hover {
+            background: #7c3aed;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+        }
+        
+        .modal-header h3 {
+            font-size: 20px;
+            color: #334155;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #334155;
+            font-size: 14px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #009B5B;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 25px;
+        }
+        
+        .save-button {
+            padding: 12px 24px;
+            background: #009B5B;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .save-button:hover {
+            background: #00824c;
+        }
+        
+        .cancel-button {
+            padding: 12px 24px;
+            background: #e2e8f0;
+            color: #475569;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cancel-button:hover {
+            background: #cbd5e1;
+        }
+        
+        /* Progress Bar in Modal */
+        .progress-container {
+            margin: 20px 0;
+        }
+        
+        .progress-label {
+            font-size: 14px;
+            color: #334155;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .progress-input-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .progress-slider {
+            flex: 1;
+            height: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #e2e8f0;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        .progress-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #009B5B;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .progress-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #009B5B;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        /* Loading Spinner */
+        .loading-spinner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #009B5B;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Error Message */
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .orders-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .admin-container {
+                padding: 15px;
+            }
+            
+            .admin-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .table-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+            
+            .modal {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body  oncontextmenu="return false;">
+    
+    <div class="admin-container">
+        <!-- Header -->
+        <div class="admin-header">
+            <h1><i class="fas fa-user-shield"></i> Admin Dashboard</h1>
+            <div class="admin-actions">
+                <button class="admin-button" id="refreshButton">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button class="admin-button" id="migrateButton" style="background: rgba(139, 92, 246, 0.2);">
+                    <i class="fas fa-database"></i> Fix Client IDs
+                </button>
+                <button class="admin-button logout-button" id="logoutButton">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+        
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card stat-pending">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="pendingCount">0</h3>
+                    <p>Pending Payments</p>
+                </div>
+            </div>
+            <div class="stat-card stat-paid">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="paidCount">0</h3>
+                    <p>Paid Orders</p>
+                </div>
+            </div>
+            <div class="stat-card stat-designing">
+                <div class="stat-icon">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="designingCount">0</h3>
+                    <p>In Progress</p>
+                </div>
+            </div>
+            <div class="stat-card stat-completed">
+                <div class="stat-icon">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="completedCount">0</h3>
+                    <p>Completed</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Messages -->
+        <div id="adminMessages"></div>
+        
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <div>Loading orders...</div>
+        </div>
+        
+        <!-- Orders Table -->
+        <div class="orders-table-container" id="ordersTableContainer" style="display: none;">
+            <div class="table-header">
+                <h2><i class="fas fa-list-alt"></i> All Orders</h2>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by Order ID, Client ID, or Email...">
+                </div>
+            </div>
+            
+            <table class="orders-table" id="ordersTable">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Client ID</th>
+                        <th>Email</th>
+                        <th>Items</th>
+                        <th>Total</th>
+                        <th>Payment Status</th>
+                        <th>Design Status</th>
+                        <th>Progress</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                    <!-- Orders dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- No Orders State -->
+        <div class="error-message" id="noOrders" style="display: none;">
+            <i class="fas fa-clipboard-list"></i>
+            <h3 style="margin: 10px 0;">No Orders Found</h3>
+            <p>There are no orders in the system yet.</p>
+        </div>
+    </div>
+    
+    <!-- Payment Link Modal -->
+<div class="modal-overlay" id="paymentModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h3><i class="fas fa-link"></i> Manage Payment</h3>
+            <button class="close-modal" id="closePaymentModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <form id="paymentForm">
+            <input type="hidden" id="paymentOrderId">
+            <div class="form-group">
+                <label>Order ID</label>
+                <input type="text" id="displayOrderId" class="form-input" readonly>
+            </div>
+            <div class="form-group">
+                <label>Client Email</label>
+                <input type="text" id="clientEmail" class="form-input" readonly>
+            </div>
+            <div class="form-group">
+                <label>Payment Status</label>
+                <select id="paymentStatus" class="form-input">
+                    <option value="Pending">Pending</option>
+                    <option value="Not Paid">Not Paid</option>
+                    <option value="Paid">Paid</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Ozow Payment Link *</label>
+                <input type="url" id="ozowLink" class="form-input" placeholder="https://ozow.com/payment/..." required>
+            </div>
+            <div class="form-group">
+                <label>Admin Notes (Optional)</label>
+                <textarea id="paymentNotes" class="form-input" rows="3" placeholder="Add any notes for the client..."></textarea>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="cancel-button" id="cancelPayment">Cancel</button>
+                <button type="submit" class="save-button">Save Payment Details</button>
+            </div>
+        </form>
+    </div>
+</div>
+    
+    <!-- Progress Update Modal -->
+    <div class="modal-overlay" id="progressModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-chart-line"></i> Update Design Progress</h3>
+                <button class="close-modal" id="closeProgressModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="progressForm">
+                <input type="hidden" id="progressOrderId">
+                <div class="form-group">
+                    <label>Order ID</label>
+                    <input type="text" id="progressDisplayOrderId" class="form-input" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label>Design Status</label>
+                    <select id="designStatus" class="form-input">
+                        <option value="Waiting">Waiting</option>
+                        <option value="Designing">Designing</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-label">Design Progress</div>
+                    <div class="progress-input-container">
+                        <input type="range" min="0" max="100" value="0" class="progress-slider" id="progressSlider">
+                        <div class="progress-value" id="progressValue">0%</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Estimated Completion Date</label>
+                    <input type="date" id="completionDate" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label>Admin Notes (Optional)</label>
+                    <textarea id="progressNotes" class="form-input" rows="3" placeholder="Add progress notes for the client..."></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="cancel-button" id="cancelProgress">Cancel</button>
+                    <button type="submit" class="save-button">Update Progress</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK -->
+    <script type="module" src="firebase.js"></script>
+    
+    <script type="module">
+    // Wait for Firebase to load
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    
+    let allOrders = [];
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Admin dashboard loaded');
+        
+        // Check if user is logged in and is admin
+        checkAuth();
+        
+        // Setup event listeners for static elements
+        setupEventListeners();
+    });
+    
+    // Make functions globally available
+    window.openPaymentModal = openPaymentModal;
+    window.openProgressModal = openProgressModal;
+    window.viewOrderDetails = viewOrderDetails;
+    
+    function checkAuth() {
+        console.log('checkAuth called');
+        if (!window.auth) {
+            console.error('Auth not loaded');
+            showError('Authentication not available. Please refresh the page.');
+            return;
+        }
+        
+        onAuthStateChanged(window.auth, async (user) => {
+            if (user) {
+                const isAdmin = await checkIfAdmin(user.uid);
+                if (isAdmin) {
+                    loadDashboard();
+                } else {
+                    showError('Access denied. Admin privileges required.');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 3000);
+                }
+            } else {
+                showError('You must be logged in to access the admin dashboard.');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 3000);
+            }
+        });
+        
+        if (window.auth.currentUser) {
+            checkIfAdmin(window.auth.currentUser.uid).then(isAdmin => {
+                if (isAdmin) {
+                    loadDashboard();
+                }
+            });
+        }
+    }
+    
+    async function checkIfAdmin(userId) {
+        try {
+            if (!window.firestoreFunctions) {
+                return false;
+            }
+            
+            const { db, doc, getDoc } = window.firestoreFunctions;
+            const userDoc = await getDoc(doc(db, 'users', userId));
+            
+            if (userDoc.exists()) {
+                return userDoc.data().role === 'admin';
+            }
+            
+            const user = window.auth.currentUser;
+            if (user && user.email) {
+                return user.email.toLowerCase().includes('admin');
+            }
+            
+            return false;
+            
+        } catch (error) {
+            console.error('Error checking admin status:', error);
+            return false;
+        }
+    }
+    
+    function loadDashboard() {
+        console.log('Loading dashboard');
+        showLoading(true);
+        loadAllOrders();
+    }
+    
+    function setupEventListeners() {
+        console.log('Setting up event listeners');
+        
+        // Refresh button
+        document.getElementById('refreshButton').addEventListener('click', loadAllOrders);
+        
+        // Migrate button
+        document.getElementById('migrateButton').addEventListener('click', async () => {
+            const confirmed = confirm('This will fix Client IDs for all orders. Continue?');
+            if (confirmed) {
+                try {
+                    showMessage('Migrating Client IDs...', 'success');
+                    
+                    // Try to import the migration function
+                    try {
+                        const { migrateClientIds } = await import('./cart-firebase.js');
+                        const result = await migrateClientIds();
+                        
+                        if (result) {
+                            showMessage('Client IDs migrated successfully!', 'success');
+                            loadAllOrders();
+                        } else {
+                            showMessage('Migration failed. Please check console.', 'error');
+                        }
+                    } catch (importError) {
+                        console.error('Import error:', importError);
+                        showMessage('Migration module not found.', 'error');
+                    }
+                } catch (error) {
+                    console.error('Migration error:', error);
+                    showMessage('Error during migration.', 'error');
+                }
+            }
+        });
+        
+        // Logout button
+        document.getElementById('logoutButton').addEventListener('click', async () => {
+            try {
+                await signOut(window.auth);
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Error signing out:', error);
+                window.location.href = 'index.html';
+            }
+        });
+        
+        // Search input
+        document.getElementById('searchInput').addEventListener('input', filterOrders);
+        
+        // Payment modal
+        document.getElementById('closePaymentModal').addEventListener('click', () => {
+            document.getElementById('paymentModal').style.display = 'none';
+        });
+        
+        document.getElementById('cancelPayment').addEventListener('click', () => {
+            document.getElementById('paymentModal').style.display = 'none';
+        });
+        
+        document.getElementById('paymentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await savePaymentLink();
+        });
+        
+        // Progress modal
+        document.getElementById('closeProgressModal').addEventListener('click', () => {
+            document.getElementById('progressModal').style.display = 'none';
+        });
+        
+        document.getElementById('cancelProgress').addEventListener('click', () => {
+            document.getElementById('progressModal').style.display = 'none';
+        });
+        
+        document.getElementById('progressSlider').addEventListener('input', (e) => {
+            document.getElementById('progressValue').textContent = `${e.target.value}%`;
+        });
+        
+        document.getElementById('progressForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            await updateDesignProgress();
+        });
+        
+        // Close modals on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+    }
+    
+    async function loadAllOrders() {
+        try {
+            console.log('Loading all orders...');
+            showLoading(true);
+            
+            if (!window.firestoreFunctions) {
+                showError('Firestore not available. Please refresh the page.');
+                showLoading(false);
+                return;
+            }
+            
+            const { db, collection, query, getDocs } = window.firestoreFunctions;
+            
+            const ordersRef = collection(db, 'orders');
+            const q = query(ordersRef);
+            
+            const querySnapshot = await getDocs(q);
+            allOrders = [];
+            
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const orderData = {
+                    id: doc.id,
+                    ...data,
+                    createdAt: data.createdAt?.toDate ? data.createdAt.toDate() : new Date(data.createdAt),
+                    updatedAt: data.updatedAt?.toDate ? data.updatedAt.toDate() : new Date(data.updatedAt)
+                };
+                
+                if (data.estimatedCompletion?.toDate) {
+                    orderData.estimatedCompletion = data.estimatedCompletion.toDate();
+                }
+                
+                allOrders.push(orderData);
+            });
+            
+            console.log('Loaded orders from Firestore:', allOrders.length);
+            
+            updateStats();
+            renderOrdersTable();
+            showLoading(false);
+            
+        } catch (error) {
+            console.error('Error loading orders:', error);
+            showError('Error loading orders. Please try again.');
+            showLoading(false);
+        }
+    }
+    
+    function updateStats() {
+        const pendingCount = allOrders.filter(order => 
+            order.paymentStatus === 'Pending' || order.paymentStatus === 'Not Paid'
+        ).length;
+        
+        const paidCount = allOrders.filter(order => 
+            order.paymentStatus === 'Paid'
+        ).length;
+        
+        const designingCount = allOrders.filter(order => 
+            order.designStatus === 'Designing'
+        ).length;
+        
+        const completedCount = allOrders.filter(order => 
+            order.designStatus === 'Completed'
+        ).length;
+        
+        document.getElementById('pendingCount').textContent = pendingCount;
+        document.getElementById('paidCount').textContent = paidCount;
+        document.getElementById('designingCount').textContent = designingCount;
+        document.getElementById('completedCount').textContent = completedCount;
+    }
+    
+    function renderOrdersTable(orders = allOrders) {
+        const tbody = document.getElementById('ordersTableBody');
+        tbody.innerHTML = '';
+        
+        if (orders.length === 0) {
+            document.getElementById('ordersTableContainer').style.display = 'none';
+            document.getElementById('noOrders').style.display = 'block';
+            return;
+        }
+        
+        document.getElementById('ordersTableContainer').style.display = 'block';
+        document.getElementById('noOrders').style.display = 'none';
+        
+        orders.forEach(order => {
+            const row = tbody.insertRow();
+            
+            // Order ID
+            const orderIdCell = row.insertCell();
+            orderIdCell.textContent = order.orderId || order.id;
+            orderIdCell.style.fontFamily = 'monospace';
+            orderIdCell.style.fontSize = '13px';
+            
+            // Client ID
+            const clientIdCell = row.insertCell();
+            clientIdCell.textContent = order.clientId || 'N/A';
+            clientIdCell.style.fontFamily = 'monospace';
+            
+            // Email
+            const emailCell = row.insertCell();
+            emailCell.textContent = order.userEmail || 'N/A';
+            emailCell.style.fontSize = '13px';
+            
+            // Items
+            const itemsCell = row.insertCell();
+            itemsCell.textContent = order.cart ? order.cart.length : 0;
+            itemsCell.style.textAlign = 'center';
+            
+            // Total
+            const totalCell = row.insertCell();
+            totalCell.textContent = `R${order.totals?.total?.toFixed(2) || '0.00'}`;
+            totalCell.style.fontWeight = '600';
+            totalCell.style.color = '#009B5B';
+            
+            // Payment Status
+            const paymentStatusCell = row.insertCell();
+            const paymentStatus = order.paymentStatus || 'Pending';
+            const paymentStatusBadge = document.createElement('span');
+            paymentStatusBadge.className = `status-badge status-${paymentStatus.toLowerCase().replace(' ', '-')}`;
+            paymentStatusBadge.innerHTML = `
+                <i class="fas ${paymentStatus === 'Paid' ? 'fa-check-circle' : 'fa-clock'}"></i>
+                ${paymentStatus}
+            `;
+            paymentStatusCell.appendChild(paymentStatusBadge);
+            
+            // Design Status
+            const designStatusCell = row.insertCell();
+            const designStatus = order.designStatus || 'Waiting';
+            const designStatusBadge = document.createElement('span');
+            designStatusBadge.className = `status-badge status-${designStatus.toLowerCase().replace(' ', '-')}`;
+            designStatusBadge.innerHTML = `
+                <i class="fas ${designStatus === 'Completed' ? 'fa-check-double' : 
+                               designStatus === 'Designing' ? 'fa-spinner fa-spin' : 'fa-clock'}"></i>
+                ${designStatus}
+            `;
+            designStatusCell.appendChild(designStatusBadge);
+            
+            // Progress
+            const progressCell = row.insertCell();
+            if (order.progress > 0) {
+                progressCell.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="flex: 1; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden;">
+                            <div style="width: ${order.progress}%; height: 100%; background: #009B5B;"></div>
+                        </div>
+                        <span style="font-size: 12px; font-weight: 600; color: #009B5B;">${order.progress}%</span>
+                    </div>
+                `;
+            } else {
+                progressCell.textContent = '0%';
+                progressCell.style.color = '#64748b';
+            }
+            
+            // Actions
+            const actionsCell = row.insertCell();
+            const actionsDiv = document.createElement('div');
+            actionsDiv.className = 'action-buttons';
+            
+            // Payment button - ALWAYS SHOW for payment management
+            const paymentButton = document.createElement('button');
+            paymentButton.className = 'action-button payment';
+            paymentButton.innerHTML = '<i class="fas fa-link"></i> Payment';
+            paymentButton.onclick = () => openPaymentModal(order);
+            actionsDiv.appendChild(paymentButton);
+            
+            // Progress button
+            const progressButton = document.createElement('button');
+            progressButton.className = 'action-button progress';
+            progressButton.innerHTML = '<i class="fas fa-chart-line"></i> Progress';
+            progressButton.onclick = () => openProgressModal(order);
+            actionsDiv.appendChild(progressButton);
+            
+            // Details button
+            const detailsButton = document.createElement('button');
+            detailsButton.className = 'action-button details';
+            detailsButton.innerHTML = '<i class="fas fa-eye"></i> Details';
+            detailsButton.onclick = () => viewOrderDetails(order);
+            actionsDiv.appendChild(detailsButton);
+            
+            actionsCell.appendChild(actionsDiv);
+        });
+    }
+    
+    function filterOrders() {
+        const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        
+        if (!searchTerm) {
+            renderOrdersTable();
+            return;
+        }
+        
+        const filteredOrders = allOrders.filter(order => 
+            (order.orderId && order.orderId.toLowerCase().includes(searchTerm)) ||
+            (order.clientId && order.clientId.toLowerCase().includes(searchTerm)) ||
+            (order.userEmail && order.userEmail.toLowerCase().includes(searchTerm)) ||
+            (order.id && order.id.toLowerCase().includes(searchTerm))
+        );
+        
+        renderOrdersTable(filteredOrders);
+    }
+    
+    function openPaymentModal(order) {
+        console.log('Opening payment modal for order:', order.id);
+        document.getElementById('paymentOrderId').value = order.id;
+        document.getElementById('displayOrderId').value = order.orderId || order.id;
+        document.getElementById('clientEmail').value = order.userEmail || 'N/A';
+        document.getElementById('paymentStatus').value = order.paymentStatus || 'Pending';
+        document.getElementById('ozowLink').value = order.ozowPaymentLink || '';
+        document.getElementById('paymentNotes').value = order.adminNotes || '';
+        
+        document.getElementById('paymentModal').style.display = 'flex';
+        document.getElementById('ozowLink').focus();
+    }
+    
+    function openProgressModal(order) {
+        console.log('Opening progress modal for order:', order.id);
+        document.getElementById('progressOrderId').value = order.id;
+        document.getElementById('progressDisplayOrderId').value = order.orderId || order.id;
+        
+        const designStatus = document.getElementById('designStatus');
+        designStatus.value = order.designStatus || 'Waiting';
+        
+        const progressSlider = document.getElementById('progressSlider');
+        const progressValue = document.getElementById('progressValue');
+        progressSlider.value = order.progress || 0;
+        progressValue.textContent = `${order.progress || 0}%`;
+        
+        const completionDate = document.getElementById('completionDate');
+        if (order.estimatedCompletion) {
+            const date = new Date(order.estimatedCompletion);
+            completionDate.value = date.toISOString().split('T')[0];
+        } else {
+            completionDate.value = '';
+        }
+        
+        document.getElementById('progressNotes').value = order.adminNotes || '';
+        
+        document.getElementById('progressModal').style.display = 'flex';
+    }
+    
+    async function savePaymentLink() {
+        const orderId = document.getElementById('paymentOrderId').value;
+        const paymentStatus = document.getElementById('paymentStatus').value;
+        const ozowLink = document.getElementById('ozowLink').value;
+        const notes = document.getElementById('paymentNotes').value;
+        
+        console.log('Saving payment link for order:', orderId);
+        
+        if (!ozowLink) {
+            showMessage('Please enter a valid Ozow payment link.', 'error');
+            return;
+        }
+        
+        try {
+            if (!window.firestoreFunctions) {
+                showMessage('Firestore not available. Please refresh the page.', 'error');
+                return;
+            }
+            
+            const { db, doc, updateDoc, Timestamp } = window.firestoreFunctions;
+            
+            const orderRef = doc(db, 'orders', orderId);
+            
+            await updateDoc(orderRef, {
+                paymentStatus: paymentStatus,
+                ozowPaymentLink: ozowLink,
+                adminNotes: notes,
+                updatedAt: Timestamp.now()
+            });
+            
+            document.getElementById('paymentModal').style.display = 'none';
+            showMessage('Payment details updated successfully!', 'success');
+            
+            // Reload orders
+            loadAllOrders();
+            
+        } catch (error) {
+            console.error('Error saving payment details:', error);
+            showMessage('Error saving payment details. Please try again.', 'error');
+        }
+    }
+    
+    async function updateDesignProgress() {
+        const orderId = document.getElementById('progressOrderId').value;
+        const designStatus = document.getElementById('designStatus').value;
+        const progress = parseInt(document.getElementById('progressSlider').value);
+        const completionDate = document.getElementById('completionDate').value;
+        const notes = document.getElementById('progressNotes').value;
+        
+        console.log('Updating design progress for order:', orderId);
+        
+        try {
+            if (!window.firestoreFunctions) {
+                showMessage('Firestore not available. Please refresh the page.', 'error');
+                return;
+            }
+            
+            const { db, doc, updateDoc, Timestamp } = window.firestoreFunctions;
+            
+            const orderRef = doc(db, 'orders', orderId);
+            
+            const updateData = {
+                designStatus: designStatus,
+                progress: progress,
+                adminNotes: notes,
+                updatedAt: Timestamp.now()
+            };
+            
+            if (completionDate) {
+                updateData.estimatedCompletion = Timestamp.fromDate(new Date(completionDate));
+            }
+            
+            await updateDoc(orderRef, updateData);
+            
+            document.getElementById('progressModal').style.display = 'none';
+            showMessage('Design progress updated successfully!', 'success');
+            
+            // Reload orders
+            loadAllOrders();
+            
+        } catch (error) {
+            console.error('Error updating design progress:', error);
+            showMessage('Error updating design progress. Please try again.', 'error');
+        }
+    }
+    
+    function viewOrderDetails(order) {
+    console.log('Viewing details for order:', order.id);
+    console.log('Cart items:', order.cart); // Debug: Check what's in the cart
+    
+    // Professional modal instead of an alert
+    const modalOverlay = document.createElement('div');
+    modalOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        padding: 20px;
+        backdrop-filter: blur(5px);
+    `;
+    
+    // Modal content
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        max-width: 700px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    `;
+    
+    // Header with close button
+    const header = document.createElement('div');
+    header.style.cssText = `
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #f1f5f9;
+    `;
+    
+    const title = document.createElement('h3');
+    title.textContent = '📋 Order Details';
+    title.style.cssText = `
+        font-size: 20px;
+        color: #004370;
+        margin: 0;
+    `;
+    
+    const closeButton = document.createElement('button');
+    closeButton.innerHTML = '&times;';
+    closeButton.style.cssText = `
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #64748b;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 4px;
+    `;
+    closeButton.onclick = () => document.body.removeChild(modalOverlay);
+    
+    header.appendChild(title);
+    header.appendChild(closeButton);
+    
+    // Content sections
+    const content = document.createElement('div');
+    content.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    `;
+    
+    // Order Information Section
+    const orderInfoSection = document.createElement('div');
+    orderInfoSection.innerHTML = `
+        <h4 style="color: #004370; margin-bottom: 15px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-receipt"></i> Order Information
+        </h4>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+            <div>
+                <label style="font-size: 12px; color: #64748b;">Order ID</label>
+                <div style="font-weight: 600; color: #334155; font-family: monospace;">${order.orderId || order.id}</div>
+            </div>
+            <div>
+                <label style="font-size: 12px; color: #64748b;">Client ID</label>
+                <div style="font-weight: 600; color: #334155; font-family: monospace;">${order.clientId || 'N/A'}</div>
+            </div>
+            <div>
+                <label style="font-size: 12px; color: #64748b;">Email</label>
+                <div style="font-weight: 600; color: #334155;">${order.userEmail || 'N/A'}</div>
+            </div>
+            <div>
+                <label style="font-size: 12px; color: #64748b;">Created</label>
+                <div style="font-weight: 600; color: #334155;">${new Date(order.createdAt).toLocaleString()}</div>
+            </div>
+        </div>
+    `;
+    
+    // Payment & Status Section
+    const statusSection = document.createElement('div');
+    statusSection.innerHTML = `
+        <h4 style="color: #004370; margin-bottom: 15px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-chart-line"></i> Status & Progress
+        </h4>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+            <div>
+                <label style="font-size: 12px; color: #64748b;">Payment Status</label>
+                <div style="font-weight: 600; color: #334155;">
+                    <span class="status-badge status-${(order.paymentStatus || 'Pending').toLowerCase().replace(' ', '-')}">
+                        ${order.paymentStatus || 'Pending'}
+                    </span>
+                </div>
+            </div>
+            <div>
+                <label style="font-size: 12px; color: #64748b;">Design Status</label>
+                <div style="font-weight: 600; color: #334155;">
+                    <span class="status-badge status-${(order.designStatus || 'Waiting').toLowerCase().replace(' ', '-')}">
+                        ${order.designStatus || 'Waiting'}
+                    </span>
+                </div>
+            </div>
+            <div>
+                <label style="font-size: 12px; color: #64748b;">Progress</label>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="flex: 1; height: 6px; background: #e2e8f0; border-radius: 3px; overflow: hidden;">
+                        <div style="width: ${order.progress || 0}%; height: 100%; background: #009B5B;"></div>
+                    </div>
+                    <span style="font-size: 12px; font-weight: 600; color: #009B5B;">${order.progress || 0}%</span>
+                </div>
+            </div>
+            <div>
+                <label style="font-size: 12px; color: #64748b;">Total Amount</label>
+                <div style="font-weight: 700; color: #009B5B; font-size: 16px;">R${order.totals?.total?.toFixed(2) || '0.00'}</div>
+            </div>
+        </div>
+    `;
+    
+    // Design Service Section
+    const designSection = document.createElement('div');
+    
+    let serviceDetails = '';
+    let designDescription = '';
+    let preferredColors = '';
+    let sketchImageUrl = '';
+    
+    // Check if cart exists and has items
+    if (order.cart && Array.isArray(order.cart) && order.cart.length > 0) {
+        console.log(`Found ${order.cart.length} items in cart`); // Debug
+        
+        // Create a container for all design items
+        serviceDetails = `<div style="margin-bottom: 20px;">`;
+        
+        // Loop through ALL cart items
+        order.cart.forEach((item, index) => {
+            console.log(`Processing cart item ${index}:`, item); // Debug
+            
+            // Extract service information from cart item
+            let serviceTitle = '';
+            let serviceName = '';
+            
+            if (item.serviceTitle) {
+                // Try to parse title and name from serviceTitle
+                const titleParts = item.serviceTitle.split(' - ');
+                if (titleParts.length > 1) {
+                    serviceTitle = titleParts[0] || '';
+                    serviceName = titleParts[1] || '';
+                } else {
+                    serviceTitle = item.serviceTitle;
+                    serviceName = item.tierName || '';
+                }
+            }
+            
+            // Service details HTML for each item
+            serviceDetails += `
+                <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <div>
+                            <strong style="color: #004370;">${serviceTitle}</strong>
+                            <span style="background: #e2e8f0; color: #475569; padding: 2px 8px; border-radius: 12px; font-size: 11px; margin-left: 8px;">
+                                ${serviceName}
+                            </span>
+                        </div>
+                        <strong style="color: #009B5B;">R${item.price?.toFixed(2) || '0.00'}</strong>
+                    </div>
+                    ${item.quantity ? `<div style="font-size: 13px; color: #64748b;">Quantity: ${item.quantity}</div>` : ''}
+                    ${item.specifications ? `
+                        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px dashed #e2e8f0;">
+                            <div style="font-size: 12px; color: #64748b;">Specifications:</div>
+                            <div style="font-size: 13px; margin-top: 4px;">${item.specifications}</div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        });
+        
+        serviceDetails += `</div>`;
+        
+        // Also check for userInput in the first item if not found in order
+        const firstItem = order.cart[0];
+        if (firstItem.userInput) {
+            designDescription = firstItem.userInput.designDescription || '';
+            preferredColors = firstItem.userInput.preferredColors || '';
+            sketchImageUrl = firstItem.userInput.sketchImageUrl || '';
+        }
+    }
+    
+    // Also check for userInput at order level
+    if (order.userInput) {
+        designDescription = order.userInput.designDescription || designDescription;
+        preferredColors = order.userInput.preferredColors || preferredColors;
+        sketchImageUrl = order.userInput.sketchImageUrl || sketchImageUrl;
+    }
+    
+    designSection.innerHTML = `
+        <h4 style="color: #004370; margin-bottom: 15px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-paint-brush"></i> Design Specifications
+            <span style="background: #e2e8f0; color: #475569; padding: 2px 8px; border-radius: 12px; font-size: 12px;">
+                ${order.cart?.length || 0} item(s)
+            </span>
+        </h4>
+        ${serviceDetails || '<div style="color: #64748b; font-style: italic;">No design items found</div>'}
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+            ${sketchImageUrl ? `
+                <div>
+                    <label style="font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-image"></i> Sketch Image URL
+                    </label>
+                    <div style="margin-top: 5px;">
+                        <a href="${sketchImageUrl}" target="_blank" style="color: #009B5B; font-size: 13px; word-break: break-all;">
+                            ${sketchImageUrl}
+                        </a>
+                    </div>
+                </div>
+            ` : ''}
+            
+            ${designDescription ? `
+                <div>
+                    <label style="font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-align-left"></i> Design Description
+                    </label>
+                    <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 5px; font-size: 13px; line-height: 1.5; white-space: pre-wrap;">
+                        ${designDescription}
+                    </div>
+                </div>
+            ` : ''}
+            
+            ${preferredColors ? `
+                <div>
+                    <label style="font-size: 12px; color: #64748b; display: flex; align-items: center; gap: 6px;">
+                        <i class="fas fa-palette"></i> Preferred Colors
+                    </label>
+                    <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; margin-top: 5px; font-size: 13px; white-space: pre-wrap;">
+                        ${preferredColors}
+                    </div>
+                </div>
+            ` : ''}
+        </div>
+    `;
+    
+    // Additional Information Section
+    const additionalSection = document.createElement('div');
+    
+    let additionalInfo = '';
+    
+    if (order.estimatedCompletion) {
+        additionalInfo += `
+            <div style="margin-bottom: 10px;">
+                <label style="font-size: 12px; color: #64748b;">Estimated Completion</label>
+                <div style="font-weight: 600; color: #334155;">${new Date(order.estimatedCompletion).toLocaleDateString()}</div>
+            </div>
+        `;
+    }
+    
+    if (order.ozowPaymentLink) {
+        additionalInfo += `
+            <div style="margin-bottom: 10px;">
+                <label style="font-size: 12px; color: #64748b;">Payment Link</label>
+                <div>
+                    <a href="${order.ozowPaymentLink}" target="_blank" style="color: #009B5B; font-size: 13px; word-break: break-all;">
+                        ${order.ozowPaymentLink}
+                    </a>
+                </div>
+            </div>
+        `;
+    }
+    
+    if (order.adminNotes) {
+        additionalInfo += `
+            <div>
+                <label style="font-size: 12px; color: #64748b;">Admin Notes</label>
+                <div style="background: #f0f9ff; padding: 12px; border-radius: 8px; border: 1px solid #bae6fd; margin-top: 5px; font-size: 13px; white-space: pre-wrap;">
+                    ${order.adminNotes}
+                </div>
+            </div>
+        `;
+    }
+    
+    if (additionalInfo) {
+        additionalSection.innerHTML = `
+            <h4 style="color: #004370; margin-bottom: 15px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-info-circle"></i> Additional Information
+            </h4>
+            ${additionalInfo}
+        `;
+    }
+    
+    // Content
+    content.appendChild(orderInfoSection);
+    content.appendChild(statusSection);
+    content.appendChild(designSection);
+    
+    if (additionalInfo) {
+        content.appendChild(additionalSection);
+    }
+    
+    // Modal
+    modalContent.appendChild(header);
+    modalContent.appendChild(content);
+    modalOverlay.appendChild(modalContent);
+    
+    // To body
+    document.body.appendChild(modalOverlay);
+    
+    // Close functionality on overlay click
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            document.body.removeChild(modalOverlay);
+        }
+    });
+    
+    // Escape key to close
+    const escapeHandler = (e) => {
+        if (e.key === 'Escape') {
+            document.body.removeChild(modalOverlay);
+            document.removeEventListener('keydown', escapeHandler);
+        }
+    };
+    document.addEventListener('keydown', escapeHandler);
+}
+
+// Make the function available globally
+window.viewOrderDetails = viewOrderDetails;
+    
+    function showLoading(show) {
+        const spinner = document.getElementById('loadingSpinner');
+        if (spinner) {
+            spinner.style.display = show ? 'flex' : 'none';
+        }
+        if (show) {
+            const ordersContainer = document.getElementById('ordersTableContainer');
+            const noOrders = document.getElementById('noOrders');
+            if (ordersContainer) ordersContainer.style.display = 'none';
+            if (noOrders) noOrders.style.display = 'none';
+        }
+    }
+    
+    function showMessage(text, type = 'success') {
+        const messagesDiv = document.getElementById('adminMessages');
+        
+        if (messagesDiv) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `status-badge ${type === 'success' ? 'status-paid' : 'status-not-paid'}`;
+            messageDiv.style.marginBottom = '15px';
+            messageDiv.style.display = 'inline-flex';
+            messageDiv.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                ${text}
+            `;
+            
+            messagesDiv.innerHTML = '';
+            messagesDiv.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 5000);
+        }
+    }
+    
+    function showError(text) {
+        const messagesDiv = document.getElementById('adminMessages');
+        if (messagesDiv) {
+            messagesDiv.innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> ${text}
+                </div>
+            `;
+        }
+        
+        showLoading(false);
+    }
+</script>
+</body>
+</html>

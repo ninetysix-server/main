@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/images/icon.svg">
+    <title>My Portfolio - 96 Studios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+
+        /* =============================================== */
+        /* BASE STYLES */
+        /* =============================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        body {
+            background: #f8f9fa;
+            padding: 20px;
+            color: #334155;
+            line-height: 1.6;
+        }
+        
+        :root {
+            --primary: #004370;
+            --accent: #009B5B;
+            --white: #ffffff;
+            --dark: #1e293b;
+            --light-gray: #f1f5f9;
+            --medium-gray: #cbd5e1;
+        }
+        
+        /* =============================================== */
+        /* BREADCRUMB NAVIGATION */
+        /* =============================================== */
+        .breadcrumb-nav {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto 20px;
+            padding: 10px 0;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            color: #64748b;
+        }
+        
+        .breadcrumb ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 8px;
+            margin-left: 20px;
+        }
+        
+        .breadcrumb li {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb li:not(:last-child)::after {
+            content: '/';
+            margin-left: 8px;
+            color: #94a3b8;
+        }
+        
+        .breadcrumb a {
+            color: #009B5B;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #007a48;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb li:last-child {
+            color: #475569;
+            font-weight: 600;
+        }
+        
+        /* =============================================== */
+        /* PORTFOLIO CONTAINER */
+        /* =============================================== */
+        .portfolio-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 40px;
+        }
+        
+        /* =============================================== */
+        /* PROFILE SECTION */
+        /* =============================================== */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 25px;
+            border: 5px solid white;
+        }
+        
+        .profile-name {
+            font-size: 36px;
+            font-weight: 700;
+            color: #004370;
+            margin-bottom: 10px;
+        }
+        
+        .profile-title {
+            color: #009B5B;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        
+        .profile-bio {
+            color: #64748b;
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+        
+        .portfolio-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #009B5B, #007a48);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .portfolio-btn:hover {
+            background: linear-gradient(135deg, #00824c, #00693d);
+            transform: translateY(-2px);
+        }
+        
+        /* =============================================== */
+        /* HEADER SECTION */
+        /* =============================================== */
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .portfolio-header h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #004370;
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-subtitle {
+            font-size: 18px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* =============================================== */
+        /* SHOWCASE/BEFORE-AFTER SECTION */
+        /* =============================================== */
+        .showcase-section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .showcase-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .showcase-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Comparison Slider */
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            aspect-ratio: 16/9;
+            background: #f8fafc;
+        }
+        
+        .comparison-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        .before-image {
+            z-index: 1;
+        }
+        
+        .after-image {
+            z-index: 2;
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
+        }
+        
+        /* Slider Handle */
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: white;
+            z-index: 3;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+        }
+        
+        .slider-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #009B5B;
+        }
+        
+        .slider-handle::after {
+            content: '↔';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            color: #009B5B;
+            font-weight: bold;
+        }
+        
+        /* Caption */
+        .caption {
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .caption h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #004370;
+            margin-bottom: 10px;
+        }
+        
+        .caption p {
+            color: #64748b;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* =============================================== */
+        /* SPACER */
+        /* =============================================== */
+        .spacer {
+            height: 40px;
+        }
+        
+        /* =============================================== */
+        /* RESPONSIVE STYLES */
+        /* =============================================== */
+        @media (max-width: 1200px) {
+            .portfolio-container {
+                width: 98%;
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .comparison-slider {
+                aspect-ratio: 4/3;
+            }
+            
+            .profile-name {
+                font-size: 32px;
+            }
+            
+            .portfolio-header h1 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 0;
+            }
+            
+            .breadcrumb-nav {
+                width: 98%;
+                margin: 0 auto 15px;
+            }
+            
+            .portfolio-container {
+                width: 98% !important;
+                padding: 25px;
+                margin: 0 auto;
+            }
+            
+            .profile-section {
+                margin-bottom: 40px;
+                padding-bottom: 30px;
+            }
+            
+            .profile-pic {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .profile-name {
+                font-size: 28px;
+            }
+            
+            .profile-title {
+                font-size: 16px;
+            }
+            
+            .profile-bio {
+                font-size: 15px;
+                padding: 0 10px;
+            }
+            
+            .portfolio-header {
+                margin-bottom: 40px;
+            }
+            
+            .portfolio-header h1 {
+                font-size: 30px;
+            }
+            
+            .portfolio-subtitle {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+            
+            .showcase-section {
+                margin-bottom: 60px;
+            }
+            
+            .comparison-slider {
+                border-radius: 12px;
+                aspect-ratio: 1/1;
+            }
+            
+            .caption h3 {
+                font-size: 20px;
+            }
+            
+            .caption p {
+                font-size: 15px;
+            }
+            
+            .slider-handle::before {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .portfolio-btn {
+                padding: 12px 28px;
+                font-size: 15px;
+            }
+            
+            .spacer {
+                height: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .portfolio-container {
+                padding: 20px;
+            }
+            
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .profile-name {
+                font-size: 24px;
+            }
+            
+            .profile-bio {
+                font-size: 14px;
+            }
+            
+            .portfolio-header h1 {
+                font-size: 26px;
+            }
+            
+            .portfolio-subtitle {
+                font-size: 15px;
+            }
+            
+            .comparison-slider {
+                border-radius: 10px;
+            }
+            
+            .caption h3 {
+                font-size: 18px;
+            }
+            
+            .caption p {
+                font-size: 14px;
+            }
+            
+            .slider-handle::before {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .portfolio-btn {
+                padding: 10px 24px;
+                font-size: 14px;
+            }
+        }
+        
+        /* =============================================== */
+        /* FOOTER STYLES */
+        /* =============================================== */
+        .portfolio-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        .portfolio-footer p {
+            margin-bottom: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- =============================================== -->
+    <!-- BREADCRUMB NAVIGATION -->
+    <!-- =============================================== -->
+    <nav class="breadcrumb-nav">
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li>Portfolio</li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- =============================================== -->
+    <!-- PORTFOLIO CONTAINER -->
+    <!-- =============================================== -->
+    <div class="portfolio-container">
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <img src="/assets/images/image.png" alt="Kagiso KG" class="profile-pic">
+            <h1 class="profile-name">Kagiso KG</h1>
+            <p class="profile-title">Graphic Designer | Web Developer</p>
+            <p class="profile-bio">
+                I specialize in creating beautiful, functional designs that drive results. With over 10 years of experience, 
+                I've helped numerous clients transform their digital presence through thoughtful design solutions.
+            </p>
+            <a href="https://kaygdesigner.96studios.co.za/" class="portfolio-btn" target="_blank">
+                <i class="fas fa-external-link-alt"></i> View Full Portfolio
+            </a>
+        </section>
+
+        <!-- Portfolio Header -->
+        <div class="portfolio-header">
+            <h1>Design Transformations</h1>
+            <p class="portfolio-subtitle">Interactive before & after comparisons showcasing my design process and results</p>
+        </div>
+        
+        <!-- First Before/After Slider -->
+        <section class="showcase-section">
+            <div class="showcase-container">
+                <div class="comparison-slider" id="slider1">
+                    <img src="/assets/images/before.png" alt="Before design" class="comparison-image before-image">
+                    <img src="/assets/images/after.png" alt="After design" class="comparison-image after-image">
+                    <div class="slider-handle"></div>
+                </div>
+                <div class="caption">
+                    <h3>Branding Design</h3>
+                    <p>Complete visual transformation for a logo & branding, increasing brand recognition by 75%</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="spacer"></div>
+        
+        <!-- Second Before/After Slider -->
+        <section class="showcase-section">
+            <div class="showcase-container">
+                <div class="comparison-slider" id="slider2">
+                    <img src="/assets/images/before-image.png" alt="Before design" class="comparison-image before-image">
+                    <img src="/assets/images/after-image.png" alt="After design" class="comparison-image after-image">
+                    <div class="slider-handle"></div>
+                </div>
+                <div class="caption">
+                    <h3>Product Design</h3>
+                    <p>Store shelf experience design resulting in a 120% increase in sales</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="portfolio-footer">
+            <p>© 2026 96 Studios. All designs are property of their respective owners.</p>
+        </footer>
+    </div>
+
+    <script>
+        // =============================================== //
+        // BEFORE/AFTER SLIDER FUNCTIONALITY
+        // =============================================== //
+        function initSlider(sliderId) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
+            
+            const beforeImage = slider.querySelector('.before-image');
+            const afterImage = slider.querySelector('.after-image');
+            const handle = slider.querySelector('.slider-handle');
+            
+            let isDragging = false;
+            
+            function updateSliderPosition(clientX) {
+                const rect = slider.getBoundingClientRect();
+                let position = (clientX - rect.left) / rect.width;
+                position = Math.max(0, Math.min(1, position));
+                
+                afterImage.style.clipPath = `polygon(0 0, ${position * 100}% 0, ${position * 100}% 100%, 0% 100%)`;
+                handle.style.left = `${position * 100}%`;
+            }
+            
+            // Mouse Events
+            handle.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                e.preventDefault();
+            });
+            
+            slider.addEventListener('mousedown', (e) => {
+                if (!isDragging) {
+                    isDragging = true;
+                    updateSliderPosition(e.clientX);
+                }
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    updateSliderPosition(e.clientX);
+                }
+            });
+            
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            // Touch Events for Mobile
+            handle.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                updateSliderPosition(e.touches[0].clientX);
+                e.preventDefault();
+            });
+            
+            slider.addEventListener('touchstart', (e) => {
+                if (!isDragging) {
+                    isDragging = true;
+                    updateSliderPosition(e.touches[0].clientX);
+                    e.preventDefault();
+                }
+            });
+            
+            document.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    updateSliderPosition(e.touches[0].clientX);
+                    e.preventDefault();
+                }
+            });
+            
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+            
+            // Initialize to 50%
+            updateSliderPosition(slider.getBoundingClientRect().left + (slider.offsetWidth / 2));
+        }
+        
+        // =============================================== //
+        // SCROLL ANIMATION
+        // =============================================== //
+        function initScrollAnimations() {
+            const showcaseSections = document.querySelectorAll('.showcase-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            showcaseSections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+        
+        // =============================================== //
+        // INITIALIZE EVERYTHING
+        // =============================================== //
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize sliders
+            initSlider('slider1');
+            initSlider('slider2');
+            
+            // Initialize scroll animations
+            initScrollAnimations();
+            
+            document.querySelectorAll('.portfolio-btn, .back-to-home').forEach(button => {
+                button.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        button.click();
+                    }
+                });
+            });
+            
+            // Force visible for any already visible sections
+            setTimeout(() => {
+                const visibleSections = document.querySelectorAll('.showcase-section');
+                visibleSections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        section.classList.add('visible');
+                    }
+                });
+            }, 100);
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            // Re-center sliders
+            ['slider1', 'slider2'].forEach(sliderId => {
+                const slider = document.getElementById(sliderId);
+                if (slider) {
+                    const handle = slider.querySelector('.slider-handle');
+                    if (handle.style.left) {
+
+                        const rect = slider.getBoundingClientRect();
+                        const afterImage = slider.querySelector('.after-image');
+                        const position = parseFloat(handle.style.left) / 100;
+                        afterImage.style.clipPath = `polygon(0 0, ${position * 100}% 0, ${position * 100}% 100%, 0% 100%)`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

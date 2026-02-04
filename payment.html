@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/images/icon.svg">
+    <title>Payment - 96 Studios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        body {
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        /* Desktop Container */
+        .desktop-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .desktop-header {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .desktop-header h1 {
+            font-size: 32px;
+            color: #004370;
+            margin-bottom: 10px;
+        }
+        
+        .desktop-header p {
+            color: #64748b;
+            font-size: 16px;
+        }
+        
+        .desktop-container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        
+        /* Left Column - Main Payment */
+        .payment-container {
+            flex: 1;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            min-width: 0;
+        }
+        
+        /* Right Column - Order Details & Help */
+        .sidebar {
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .order-details-sidebar {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        .help-section {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        .help-section h3 {
+            color: #004370;
+            margin-bottom: 20px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .help-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .help-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .help-icon {
+            background: #f0f9ff;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #004370;
+            flex-shrink: 0;
+        }
+        
+        .help-content h4 {
+            color: #334155;
+            margin-bottom: 5px;
+            font-size: 15px;
+        }
+        
+        .help-content p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .contact-support {
+            background: linear-gradient(135deg, #004370, #00609c);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .contact-support h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .contact-support p {
+            opacity: 0.9;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .support-button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .support-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .payment-header {
+            background: linear-gradient(135deg, #004370, #00609c);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .payment-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .payment-header p {
+            opacity: 0.9;
+            font-size: 15px;
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .payment-body {
+            padding: 30px;
+        }
+        
+        .order-summary {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .order-summary h3 {
+            font-size: 18px;
+            color: #004370;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .order-details {
+            display: grid;
+            gap: 12px;
+        }
+        
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .order-row:last-child {
+            border-bottom: none;
+        }
+        
+        .order-label {
+            font-size: 14px;
+            color: #64748b;
+        }
+        
+        .order-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #334155;
+        }
+        
+        .order-total {
+            padding-top: 15px;
+            border-top: 2px solid #e2e8f0;
+            margin-top: 10px;
+        }
+        
+        .order-total .order-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: #004370;
+        }
+        
+        .order-total .order-value {
+            font-size: 20px;
+            color: #009B5B;
+            font-weight: 700;
+        }
+        
+        .payment-options {
+            margin-bottom: 30px;
+        }
+        
+        .payment-options h3 {
+            font-size: 18px;
+            color: #004370;
+            margin-bottom: 20px;
+        }
+        
+        .ozow-payment-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .loading-animation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid #009B5B;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: #64748b;
+            font-size: 15px;
+            text-align: center;
+            max-width: 400px;
+        }
+        
+        .loading-text strong {
+            color: #004370;
+        }
+        
+        .ozow-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #22C55E, #16A34A);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .ozow-button:hover {
+            background: linear-gradient(135deg, #E55A00, #D63D00);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
+        }
+        
+        .client-portal-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #004370, #00609c);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .client-portal-button:hover {
+            background: linear-gradient(135deg, #003258, #004d80);
+            transform: translateY(-2px);
+        }
+        
+        .payment-instructions {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #0369a1;
+        }
+        
+        .payment-instructions i {
+            color: #0ea5e9;
+            margin-right: 8px;
+        }
+        
+        .payment-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .payment-status.pending {
+            background: #fffbeb;
+            color: #92400e;
+            border: 1px solid #fbbf24;
+        }
+        
+        .payment-status.paid {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+        
+        .error-message {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .payment-completed {
+            text-align: center;
+            padding: 30px;
+            background: #f0f9ff;
+            border-radius: 12px;
+            border: 2px solid #bae6fd;
+            margin-bottom: 20px;
+        }
+        
+        .payment-completed i {
+            font-size: 48px;
+            color: #059669;
+            margin-bottom: 15px;
+        }
+        
+        .payment-completed h3 {
+            color: #0369a1;
+            margin-bottom: 10px;
+        }
+        
+        .payment-completed p {
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+        
+        .payment-completed .update-time {
+            color: #0369a1;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .desktop-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+            
+            .payment-container {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-header h1 {
+                font-size: 24px;
+            }
+            
+            .payment-header h1 {
+                font-size: 24px;
+            }
+            
+            .payment-body {
+                padding: 20px;
+            }
+            
+            .order-details-sidebar,
+            .help-section {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .desktop-header {
+                padding: 10px;
+            }
+            
+            .payment-header {
+                padding: 20px;
+            }
+            
+            .help-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        /* Desktop-specific enhancements */
+        @media (min-width: 1025px) {
+            .payment-container {
+                max-width: 700px;
+            }
+            
+            .desktop-header h1 {
+                font-size: 36px;
+            }
+            
+            .payment-header h1 {
+                font-size: 32px;
+            }
+            
+            .loading-animation {
+                padding: 40px;
+            }
+            
+            .ozow-button {
+                padding: 20px;
+                font-size: 20px;
+            }
+            
+            .client-portal-button {
+                padding: 18px;
+                font-size: 18px;
+            }
+        }
+        
+        /* Animation for smooth transitions */
+        .desktop-container,
+        .payment-container,
+        .sidebar > * {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop-wrapper">
+        <div hidden class="desktop-header">
+            <h1>Creative Design Studio Payment</h1>
+            <p>Secure payment processing for your design project</p>
+        </div>
+        
+        <div class="desktop-container">
+            <div class="payment-container">
+                <div class="payment-header">
+                    <button class="back-button" id="backButton">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h1> Secure Payment</h1>
+                    <p>Complete your purchase securely</p>
+                </div>
+                
+                <div class="payment-body">
+                    <div id="paymentMessages"></div>
+                    
+                    <!-- Payment Status -->
+                    <div class="payment-status pending" id="paymentStatus">
+                        <i class="fas fa-clock"></i>
+                        <span>Payment Status: Pending</span>
+                    </div>
+                    
+                    <!-- Ozow Payment Section -->
+                    <div class="ozow-payment-section" id="ozowPaymentSection">
+                        <!-- Loading animation (shown while waiting for payment link) -->
+                        <div class="loading-animation" id="loadingAnimation">
+                            <div class="spinner"></div>
+                            <div class="loading-text">
+                                <strong>Loading Payment Link</strong><br>
+                                This can take up to 12 hours. Please check back later or contact support if the payment link doesn't appear.
+                            </div>
+                        </div>
+                        
+                        <!-- Ozow Payment Button (hidden until admin adds link) -->
+                        <button class="ozow-button" id="ozowButton" style="display: none;">
+                            <i class="fas fa-credit-card"></i>
+                            Pay with Ozow
+                        </button>
+                    </div>
+                    
+                    <!-- Client Portal Button -->
+                    <a href="portal.html" class="client-portal-button" id="clientPortalButton">
+                        <i class="fas fa-user-circle"></i>
+                        Go to Client Portal
+                    </a>
+                    
+                    <!-- Instructions -->
+                    <div class="payment-instructions">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Important:</strong> The payment link will be provided by the admin within 12 hours. You'll receive an email notification when it's ready.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Order Details & Help -->
+            <div class="sidebar">
+                <!-- Order Summary -->
+                <div class="order-details-sidebar">
+                    <h3><i class="fas fa-receipt" style="margin-bottom: 30px;"></i> Order Summary</h3>
+                    <div class="order-details">
+                        <div class="order-row">
+                            <span class="order-label">Order ID:</span>
+                            <span class="order-value" id="orderId">Loading...</span>
+                        </div>
+                        <div class="order-row">
+                            <span class="order-label">Client ID:</span>
+                            <span class="order-value" id="clientId">Loading...</span>
+                        </div>
+                        <div class="order-row">
+                            <span class="order-label">Items:</span>
+                            <span class="order-value" id="itemsCount">0</span>
+                        </div>
+                        <div class="order-row order-total">
+                            <span class="order-label">Total Amount:</span>
+                            <span class="order-value" id="totalAmount">R0.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Help Section 
+                <div class="help-section">
+                    <h3><i class="fas fa-question-circle"></i> Need Help?</h3>
+                    
+                    <div class="help-item">
+                        <div class="help-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="help-content">
+                            <h4>Payment Processing Time</h4>
+                            <p>Payment links are generated within 12 hours. You'll receive an email notification when your payment link is ready.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="help-item">
+                        <div class="help-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="help-content">
+                            <h4>Secure Payment</h4>
+                            <p>All payments are processed through Ozow, a PCI-DSS compliant payment gateway. Your financial information is secure.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="help-item">
+                        <div class="help-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="help-content">
+                            <h4>Automatic Updates</h4>
+                            <p>This page automatically updates when your payment link is ready or when payment is confirmed.</p>
+                        </div>
+                    </div> -->
+                    
+                    <div class="contact-support">
+                        <h4>Still need assistance?</h4>
+                        <p>Our support team is here to help you</p>
+                        <button class="support-button" id="supportButton">
+                            <i class="fas fa-headset"></i>
+                            Contact Support
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK -->
+    <script type="module" src="firebase.js"></script>
+    
+    <script type="module">
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderId = urlParams.get('orderId');
+        
+        console.log('Payment page loaded. Order ID:', orderId);
+        
+        if (!orderId) {
+            showError('No order ID provided. Please go back and try again.');
+            return;
+        }
+        
+        // Back button functionality
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.history.back();
+        });
+        
+        // Support button functionality
+        document.getElementById('supportButton').addEventListener('click', function() {
+            alert('Support contact: support@96Studios.co.za\nPhone: +27 81 792 5033');
+        });
+        
+        // Check if user is logged in via Firebase
+        if (!window.auth) {
+            showError('Firebase not loaded. Please refresh the page.');
+            return;
+        }
+        
+        // Listen for auth state
+        window.auth.onAuthStateChanged(async (user) => {
+            console.log('Auth state changed. User:', user?.email);
+            
+            if (!user) {
+                showError('You must be logged in to view this page.');
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 3000);
+                return;
+            }
+            
+            await loadOrderDetails(orderId, user.uid);
+        });
+        
+        // Check immediately
+        if (window.auth.currentUser) {
+            console.log('User already logged in:', window.auth.currentUser.email);
+            loadOrderDetails(orderId, window.auth.currentUser.uid);
+        }
+    });
+    
+    async function loadOrderDetails(orderId, userId) {
+        try {
+            console.log('Loading order details for:', orderId, 'User ID:', userId);
+            
+            // Check if firestoreFunctions is available
+            if (!window.firestoreFunctions) {
+                console.error('firestoreFunctions not available');
+                showError('Database not available. Please refresh the page.');
+                return;
+            }
+            
+            const { db, doc, getDoc } = window.firestoreFunctions;
+            
+            // Get order from Firestore
+            const orderRef = doc(db, 'orders', orderId);
+            console.log('Order ref created:', orderRef.path);
+            
+            const orderDoc = await getDoc(orderRef);
+            console.log('Order document exists:', orderDoc.exists());
+            
+            if (!orderDoc.exists()) {
+                // Try local storage as fallback
+                console.log('Order not in Firestore, checking localStorage...');
+                checkLocalStorageOrder(orderId, userId);
+                return;
+            }
+            
+            const orderData = orderDoc.data();
+            console.log('Order data loaded:', orderData);
+            console.log('Payment status:', orderData.paymentStatus);
+            console.log('Ozow link exists?', !!orderData.ozowPaymentLink);
+            
+            // Verify the order belongs to the current user
+            if (orderData.userId !== userId) {
+                console.error('User ID mismatch. Order user:', orderData.userId, 'Current user:', userId);
+                showError('You do not have permission to view this order.');
+                return;
+            }
+            
+            // Update UI with order details
+            updateOrderUI(orderData, orderId);
+            
+            // Check for Ozow payment link AND payment status
+            checkPaymentOptions(orderData, orderRef);
+            
+        } catch (error) {
+            console.error('Error loading order details:', error);
+            showError('Error loading order details. Please try again.');
+        }
+    }
+    
+    function checkLocalStorageOrder(orderId, userId) {
+        console.log('Checking localStorage for order...');
+        
+        // Check localStorage orders
+        const localOrders = JSON.parse(localStorage.getItem('localOrders')) || [];
+        const order = localOrders.find(o => o.orderId === orderId);
+        
+        if (order) {
+            console.log('Order found in localStorage:', order);
+            
+            if (order.userId !== userId) {
+                showError('You do not have permission to view this order.');
+                return;
+            }
+            
+            updateOrderUI(order, orderId);
+            checkPaymentOptions(order);
+        } else {
+            // Check currentOrder
+            const currentOrder = localStorage.getItem('currentOrder');
+            if (currentOrder) {
+                const parsedOrder = JSON.parse(currentOrder);
+                if (parsedOrder.orderId === orderId && parsedOrder.userId === userId) {
+                    console.log('Order found in currentOrder:', parsedOrder);
+                    updateOrderUI(parsedOrder, orderId);
+                    checkPaymentOptions(parsedOrder);
+                } else {
+                    showError('Order not found.');
+                }
+            } else {
+                showError('Order not found.');
+            }
+        }
+    }
+    
+    function updateOrderUI(orderData, orderId) {
+        document.getElementById('orderId').textContent = orderId;
+        document.getElementById('clientId').textContent = orderData.clientId || 'N/A';
+        document.getElementById('itemsCount').textContent = orderData.cart ? orderData.cart.length : 0;
+        document.getElementById('totalAmount').textContent = `R${orderData.totals?.total?.toFixed(2) || '0.00'}`;
+        
+        // Update payment status
+        const paymentStatus = orderData.paymentStatus || 'Pending';
+        const statusElement = document.getElementById('paymentStatus');
+        statusElement.className = `payment-status ${paymentStatus.toLowerCase().replace(' ', '-')}`;
+        statusElement.innerHTML = `
+            <i class="fas ${paymentStatus === 'Paid' ? 'fa-check-circle' : 'fa-clock'}"></i>
+            <span>Payment Status: ${paymentStatus}</span>
+        `;
+        
+        console.log('UI updated. Payment status:', paymentStatus);
+    }
+    
+    function checkPaymentOptions(orderData, orderRef = null) {
+        console.log('Checking payment options...');
+        console.log('Payment status:', orderData.paymentStatus);
+        console.log('Ozow link value:', orderData.ozowPaymentLink);
+        
+        const loadingAnimation = document.getElementById('loadingAnimation');
+        const ozowButton = document.getElementById('ozowButton');
+        
+        // Hide both initially
+        loadingAnimation.style.display = 'none';
+        ozowButton.style.display = 'none';
+        
+        // Check payment status
+        if (orderData.paymentStatus === 'Paid') {
+            console.log('Payment already completed. Hiding payment button.');
+            
+            // Show payment completed message
+            const paymentSection = document.getElementById('ozowPaymentSection');
+            paymentSection.innerHTML = `
+                <div class="payment-completed">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Payment Completed</h3>
+                    <p>Thank you! Your payment has been confirmed.</p>
+                    <p class="update-time">
+                         Last updated: ${new Date(orderData.updatedAt?.toDate?.() || new Date()).toLocaleDateString()}
+                    </p>
+                </div>
+            `;
+            
+        } else if (orderData.ozowPaymentLink) {
+            // Payment NOT paid but Ozow link exists
+            console.log('Ozow payment link available. Showing payment button.');
+            
+            // Show Ozow button
+            ozowButton.style.display = 'flex';
+            
+            // Set up Ozow button click
+            ozowButton.onclick = function() {
+                console.log('Opening Ozow link:', orderData.ozowPaymentLink);
+                window.open(orderData.ozowPaymentLink, '_blank');
+            };
+            
+            // Show payment instructions
+            document.querySelector('.payment-instructions').innerHTML = `
+                <i class="fas fa-info-circle"></i>
+                <strong>Click the "Pay with Ozow" button above to complete your payment.</strong>
+                <div style="margin-top: 8px; font-size: 13px;">
+                    Your secure payment link is ready. Complete payment to start your design project.
+                </div>
+            `;
+            
+        } else {
+            // No payment link yet, still waiting
+            console.log('No Ozow link found yet. Showing loading animation.');
+            
+            // Show loading animation
+            loadingAnimation.style.display = 'flex';
+            
+            // Periodically check for payment link update (only if we have orderRef)
+            if (orderRef) {
+                console.log('Setting up periodic check for Ozow link...');
+                const checkInterval = setInterval(async () => {
+                    console.log('Checking for Ozow link update...');
+                    try {
+                        const { getDoc } = window.firestoreFunctions;
+                        const updatedDoc = await getDoc(orderRef);
+                        if (updatedDoc.exists()) {
+                            const updatedData = updatedDoc.data();
+                            console.log('Payment status update:', updatedData.paymentStatus);
+                            
+                            if (updatedData.paymentStatus === 'Paid') {
+                                console.log('Payment marked as paid! Reloading page...');
+                                clearInterval(checkInterval);
+                                window.location.reload();
+                            } else if (updatedData.ozowPaymentLink) {
+                                console.log('Ozow link detected! Reloading page...');
+                                clearInterval(checkInterval);
+                                window.location.reload();
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Error checking for updates:', error);
+                    }
+                }, 5000);
+            }
+        }
+        
+        // Enable client portal button
+        document.getElementById('clientPortalButton').style.pointerEvents = 'auto';
+        document.getElementById('clientPortalButton').style.opacity = '1';
+    }
+    
+    function showError(message) {
+        console.error('Error:', message);
+        const messagesDiv = document.getElementById('paymentMessages');
+        messagesDiv.innerHTML = `
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i> ${message}
+            </div>
+        `;
+    }
+</script>
+</body>
+</html>
