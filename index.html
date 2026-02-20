@@ -6869,7 +6869,8 @@
             <!-- Swiper Container -->
             <div class="swiper top-designs-swiper">
                 <div class="swiper-wrapper">
-                    <!-- Slide 1 - Logo Design -->
+                    
+                    <!-- Slide 1 - Logo Design 
                     <div class="swiper-slide">
                         <div class="design-card" data-service-id="logo-design" data-tier-name="premium">
                             <div class="design-image-container">
@@ -6882,7 +6883,6 @@
                                         <i class="fas fa-heart"></i>
                                     </div>
                                 </div>
-                                <!-- DISCOUNT BADGE -->
                                 <div class="discount-badge">-50% OFF</div>
                             </div>
                             <div class="design-info">
@@ -6890,16 +6890,40 @@
                                 <p>Perfect for startups needing a simple, effective logo.</p>
                                 <div class="design-price-row">
                                     <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                                        <!-- ORIGINAL CANCELLED PRICE -->
                                         <span style="text-decoration: line-through; color: #64748b; font-size: 14px; margin-bottom: 2px;">R600.00</span>
-                                        <!-- DISCOUNTED PRICE -->
                                         <span class="design-price" style="color: #ff4444; font-size: 18px; font-weight: 700;">R300.00</span>
                                     </div>
                                     <span class="design-tier">Premium</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+
+                    <!-- Slide 1 - Logo Design -->
+                        <div class="swiper-slide">
+                            <div class="design-card" data-service-id="logo-design" data-tier-name="premium">
+                                <div class="design-image-container">
+                                    <img src="assets/images/vr_logo-design.png" alt="Logo Design" class="design-image">
+                                    <div class="design-overlay">
+                                        <div class="cart-icon" data-title="Logo Design - Premium" data-price="R600.00">
+                                            <i class="fas fa-shopping-cart"></i>
+                                        </div>
+                                        <div class="wishlist-icon">
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="design-info">
+                                    <h3 class="design-title">Logo Design</h3>
+                                    <p>Perfect for startups needing a simple, effective logo.</p>
+                                    <img style="width: 120px; height: auto; padding-top: 10px; padding-bottom: 7px;" src="assets/images/cart-title-imge.png" alt="">
+                                    <div class="design-price-row">
+                                        <span class="design-price">R600.00</span>
+                                        <span class="design-tier">Premium</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                    <!-- Slide 2 - Poster Design -->
                     <div class="swiper-slide">
@@ -6928,12 +6952,11 @@
                         </div>
                     </div>
 
-                           <!-- Slide 3 - Business Card (10% OFF) -->
+                          <!-- Slide 3 - Business Card (10% OFF)
                     <div class="swiper-slide">
                         <div class="design-card" data-service-id="business-card" data-tier-name="starter">
                             <div class="design-image-container">
-                                <img src="assets/images/vr_business-card.png" alt="Business Card Design" class="design-image">
-                                <div class="design-overlay">
+                                <img src="assets/images/vr_business-card.png
                                     <div class="cart-icon" data-title="Business Card Design - Starter" data-price="R180.00">
                                         <i class="fas fa-shopping-cart"></i>
                                     </div>
@@ -6941,7 +6964,6 @@
                                         <i class="fas fa-heart"></i>
                                     </div>
                                 </div>
-                                <!-- DISCOUNT BADGE - 10% OFF -->
                                 <div class="discount-badge">-10% OFF</div>
                             </div>
                             <div class="design-info">
@@ -6949,16 +6971,40 @@
                                 <p>Professional business card design for marketing.</p>
                                 <div class="design-price-row">
                                     <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                                        <!-- ORIGINAL CANCELLED PRICE -->
                                         <span style="text-decoration: line-through; color: #64748b; font-size: 14px; margin-bottom: 2px;">R200.00</span>
-                                        <!-- DISCOUNTED PRICE (10% off R200 = R180) -->
                                         <span class="design-price" style="color: #ff4444; font-size: 18px; font-weight: 700;">R180.00</span>
                                     </div>
                                     <span class="design-tier">Starter</span>
                                 </div>
                             </div>
                         </div>
+                    </div>  -->
+
+                    <!-- Slide 3 - Business Card  -->
+                <div class="swiper-slide">
+                    <div class="design-card" data-service-id="business-card" data-tier-name="starter">
+                        <div class="design-image-container">
+                            <img src="assets/images/vr_business-card.png" alt="Business Card Design" class="design-image">
+                            <div class="design-overlay">
+                                <div class="cart-icon" data-title="Business Card Design - Starter" data-price="R200.00">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div class="wishlist-icon">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="design-info">
+                            <h3 class="design-title">Business Card Design</h3>
+                            <p>Professional business card design for marketing.</p>
+                            <img style="width: 120px; height: auto; padding-top: 10px; padding-bottom: 7px;" src="assets/images/cart-title-imge.png" alt="">
+                            <div class="design-price-row">
+                                <span class="design-price">R200.00</span>
+                                <span class="design-tier">Starter</span>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
                    <!-- Slide 4 - Board Design -->
                     <div class="swiper-slide">
@@ -9191,7 +9237,7 @@
     {
         id: "logo-design",
         title: "Logo Design",
-        discount: { percentage: 50, active: true },
+        discount: { percentage: 50, active: false },
         tiers: [
             {
                 name: "starter",
@@ -9313,7 +9359,7 @@
     {
         id: "business-card-design",
         title: "Business Card Design",
-        discount: { percentage: 10, active: true },
+        discount: { percentage: 10, active: false },
         tiers: [
             {
                 name: "starter",
@@ -13096,3 +13142,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 
 </html>
+
