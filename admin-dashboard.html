@@ -25,7 +25,6 @@
             padding: 20px;
         }
         
-        /* Header */
         .admin-header {
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             color: white;
@@ -76,7 +75,6 @@
             background: rgba(239, 68, 68, 0.3);
         }
         
-        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -137,7 +135,6 @@
             font-weight: 600;
         }
         
-        /* Orders Table */
         .orders-table-container {
             background: white;
             border-radius: 12px;
@@ -210,7 +207,6 @@
             background: #f8fafc;
         }
         
-        /* Status Badges */
         .status-badge {
             display: inline-flex;
             align-items: center;
@@ -257,7 +253,6 @@
             border: 1px solid #bbf7d0;
         }
         
-        /* Action Buttons */
         .action-buttons {
             display: flex;
             gap: 8px;
@@ -303,7 +298,6 @@
             background: #7c3aed;
         }
         
-        /* Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -415,7 +409,6 @@
             background: #cbd5e1;
         }
         
-        /* Progress Bar in Modal */
         .progress-container {
             margin: 20px 0;
         }
@@ -461,7 +454,6 @@
             text-align: center;
         }
         
-        /* Loading Spinner */
         .loading-spinner {
             display: flex;
             flex-direction: column;
@@ -485,7 +477,6 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Error Message */
         .error-message {
             background: #fee2e2;
             color: #dc2626;
@@ -495,7 +486,6 @@
             margin: 20px 0;
         }
         
-        /* Responsive Design */
         @media (max-width: 1024px) {
             .orders-table {
                 display: block;
@@ -539,7 +529,6 @@
 <body  oncontextmenu="return false;">
 
     <div class="admin-container">
-        <!-- Header -->
         <div class="admin-header">
             <h1><i class="fas fa-user-shield"></i> Admin Dashboard</h1>
             <div class="admin-actions">
@@ -555,7 +544,6 @@
             </div>
         </div>
         
-        <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card stat-pending">
                 <div class="stat-icon">
@@ -595,16 +583,13 @@
             </div>
         </div>
         
-        <!-- Messages -->
         <div id="adminMessages"></div>
         
-        <!-- Loading Spinner -->
         <div class="loading-spinner" id="loadingSpinner">
             <div class="spinner"></div>
             <div>Loading orders...</div>
         </div>
         
-        <!-- Orders Table -->
         <div class="orders-table-container" id="ordersTableContainer" style="display: none;">
             <div class="table-header">
                 <h2><i class="fas fa-list-alt"></i> All Orders</h2>
@@ -629,12 +614,11 @@
                     </tr>
                 </thead>
                 <tbody id="ordersTableBody">
-                    <!-- Orders dynamically inserted here -->
+                    <!-- Orders -->
                 </tbody>
             </table>
         </div>
         
-        <!-- No Orders State -->
         <div class="error-message" id="noOrders" style="display: none;">
             <i class="fas fa-clipboard-list"></i>
             <h3 style="margin: 10px 0;">No Orders Found</h3>
@@ -642,7 +626,6 @@
         </div>
     </div>
     
-    <!-- Payment Link Modal -->
 <div class="modal-overlay" id="paymentModal">
     <div class="modal">
         <div class="modal-header">
@@ -685,7 +668,6 @@
     </div>
 </div>
     
-    <!-- Progress Update Modal -->
     <div class="modal-overlay" id="progressModal">
         <div class="modal">
             <div class="modal-header">
@@ -736,11 +718,9 @@
         </div>
     </div>
     
-    <!-- Firebase SDK -->
     <script type="module" src="firebase.js"></script>
     
     <script type="module">
-    // Wait for Firebase to load
     import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
     
@@ -749,14 +729,11 @@
     document.addEventListener('DOMContentLoaded', function() {
         console.log('Admin dashboard loaded');
         
-        // Check if user is logged in and is admin
         checkAuth();
         
-        // Setup event listeners for static elements
         setupEventListeners();
     });
     
-    // Make functions globally available
     window.openPaymentModal = openPaymentModal;
     window.openProgressModal = openProgressModal;
     window.viewOrderDetails = viewOrderDetails;
@@ -832,17 +809,14 @@
     function setupEventListeners() {
         console.log('Setting up event listeners');
         
-        // Refresh button
         document.getElementById('refreshButton').addEventListener('click', loadAllOrders);
         
-        // Migrate button
         document.getElementById('migrateButton').addEventListener('click', async () => {
             const confirmed = confirm('This will fix Client IDs for all orders. Continue?');
             if (confirmed) {
                 try {
                     showMessage('Migrating Client IDs...', 'success');
                     
-                    // Try to import the migration function
                     try {
                         const { migrateClientIds } = await import('./cart-firebase.js');
                         const result = await migrateClientIds();
@@ -864,7 +838,6 @@
             }
         });
         
-        // Logout button
         document.getElementById('logoutButton').addEventListener('click', async () => {
             try {
                 await signOut(window.auth);
@@ -875,10 +848,8 @@
             }
         });
         
-        // Search input
         document.getElementById('searchInput').addEventListener('input', filterOrders);
         
-        // Payment modal
         document.getElementById('closePaymentModal').addEventListener('click', () => {
             document.getElementById('paymentModal').style.display = 'none';
         });
@@ -892,7 +863,6 @@
             await savePaymentLink();
         });
         
-        // Progress modal
         document.getElementById('closeProgressModal').addEventListener('click', () => {
             document.getElementById('progressModal').style.display = 'none';
         });
@@ -910,7 +880,6 @@
             await updateDesignProgress();
         });
         
-        // Close modals on overlay click
         document.querySelectorAll('.modal-overlay').forEach(modal => {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
@@ -1007,34 +976,28 @@
         orders.forEach(order => {
             const row = tbody.insertRow();
             
-            // Order ID
             const orderIdCell = row.insertCell();
             orderIdCell.textContent = order.orderId || order.id;
             orderIdCell.style.fontFamily = 'monospace';
             orderIdCell.style.fontSize = '13px';
             
-            // Client ID
             const clientIdCell = row.insertCell();
             clientIdCell.textContent = order.clientId || 'N/A';
             clientIdCell.style.fontFamily = 'monospace';
             
-            // Email
             const emailCell = row.insertCell();
             emailCell.textContent = order.userEmail || 'N/A';
             emailCell.style.fontSize = '13px';
             
-            // Items
             const itemsCell = row.insertCell();
             itemsCell.textContent = order.cart ? order.cart.length : 0;
             itemsCell.style.textAlign = 'center';
             
-            // Total
             const totalCell = row.insertCell();
             totalCell.textContent = `R${order.totals?.total?.toFixed(2) || '0.00'}`;
             totalCell.style.fontWeight = '600';
             totalCell.style.color = '#009B5B';
             
-            // Payment Status
             const paymentStatusCell = row.insertCell();
             const paymentStatus = order.paymentStatus || 'Pending';
             const paymentStatusBadge = document.createElement('span');
@@ -1045,7 +1008,6 @@
             `;
             paymentStatusCell.appendChild(paymentStatusBadge);
             
-            // Design Status
             const designStatusCell = row.insertCell();
             const designStatus = order.designStatus || 'Waiting';
             const designStatusBadge = document.createElement('span');
@@ -1057,7 +1019,6 @@
             `;
             designStatusCell.appendChild(designStatusBadge);
             
-            // Progress
             const progressCell = row.insertCell();
             if (order.progress > 0) {
                 progressCell.innerHTML = `
@@ -1073,26 +1034,22 @@
                 progressCell.style.color = '#64748b';
             }
             
-            // Actions
             const actionsCell = row.insertCell();
             const actionsDiv = document.createElement('div');
             actionsDiv.className = 'action-buttons';
             
-            // Payment button - ALWAYS SHOW for payment management
             const paymentButton = document.createElement('button');
             paymentButton.className = 'action-button payment';
             paymentButton.innerHTML = '<i class="fas fa-link"></i> Payment';
             paymentButton.onclick = () => openPaymentModal(order);
             actionsDiv.appendChild(paymentButton);
             
-            // Progress button
             const progressButton = document.createElement('button');
             progressButton.className = 'action-button progress';
             progressButton.innerHTML = '<i class="fas fa-chart-line"></i> Progress';
             progressButton.onclick = () => openProgressModal(order);
             actionsDiv.appendChild(progressButton);
             
-            // Details button
             const detailsButton = document.createElement('button');
             detailsButton.className = 'action-button details';
             detailsButton.innerHTML = '<i class="fas fa-eye"></i> Details';
@@ -1193,7 +1150,6 @@
             document.getElementById('paymentModal').style.display = 'none';
             showMessage('Payment details updated successfully!', 'success');
             
-            // Reload orders
             loadAllOrders();
             
         } catch (error) {
@@ -1237,7 +1193,6 @@
             document.getElementById('progressModal').style.display = 'none';
             showMessage('Design progress updated successfully!', 'success');
             
-            // Reload orders
             loadAllOrders();
             
         } catch (error) {
@@ -1248,9 +1203,8 @@
     
     function viewOrderDetails(order) {
     console.log('Viewing details for order:', order.id);
-    console.log('Cart items:', order.cart); // Debug: Check what's in the cart
+    console.log('Cart items:', order.cart);
     
-    // Professional modal instead of an alert
     const modalOverlay = document.createElement('div');
     modalOverlay.style.cssText = `
         position: fixed;
@@ -1267,7 +1221,6 @@
         backdrop-filter: blur(5px);
     `;
     
-    // Modal content
     const modalContent = document.createElement('div');
     modalContent.style.cssText = `
         background: white;
@@ -1280,7 +1233,6 @@
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     `;
     
-    // Header with close button
     const header = document.createElement('div');
     header.style.cssText = `
         display: flex;
@@ -1315,7 +1267,6 @@
     header.appendChild(title);
     header.appendChild(closeButton);
     
-    // Content sections
     const content = document.createElement('div');
     content.style.cssText = `
         display: flex;
@@ -1323,7 +1274,6 @@
         gap: 20px;
     `;
     
-    // Order Information Section
     const orderInfoSection = document.createElement('div');
     orderInfoSection.innerHTML = `
         <h4 style="color: #004370; margin-bottom: 15px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
@@ -1349,7 +1299,6 @@
         </div>
     `;
     
-    // Payment & Status Section
     const statusSection = document.createElement('div');
     statusSection.innerHTML = `
         <h4 style="color: #004370; margin-bottom: 15px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
@@ -1388,7 +1337,6 @@
         </div>
     `;
     
-    // Design Service Section
     const designSection = document.createElement('div');
     
     let serviceDetails = '';
@@ -1396,23 +1344,18 @@
     let preferredColors = '';
     let sketchImageUrl = '';
     
-    // Check if cart exists and has items
     if (order.cart && Array.isArray(order.cart) && order.cart.length > 0) {
-        console.log(`Found ${order.cart.length} items in cart`); // Debug
+        console.log(`Found ${order.cart.length} items in cart`);
         
-        // Create a container for all design items
         serviceDetails = `<div style="margin-bottom: 20px;">`;
         
-        // Loop through ALL cart items
         order.cart.forEach((item, index) => {
-            console.log(`Processing cart item ${index}:`, item); // Debug
+            console.log(`Processing cart item ${index}:`, item); 
             
-            // Extract service information from cart item
             let serviceTitle = '';
             let serviceName = '';
             
             if (item.serviceTitle) {
-                // Try to parse title and name from serviceTitle
                 const titleParts = item.serviceTitle.split(' - ');
                 if (titleParts.length > 1) {
                     serviceTitle = titleParts[0] || '';
@@ -1423,7 +1366,6 @@
                 }
             }
             
-            // Service details HTML for each item
             serviceDetails += `
                 <div style="background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
@@ -1448,7 +1390,6 @@
         
         serviceDetails += `</div>`;
         
-        // Also check for userInput in the first item if not found in order
         const firstItem = order.cart[0];
         if (firstItem.userInput) {
             designDescription = firstItem.userInput.designDescription || '';
@@ -1457,7 +1398,6 @@
         }
     }
     
-    // Also check for userInput at order level
     if (order.userInput) {
         designDescription = order.userInput.designDescription || designDescription;
         preferredColors = order.userInput.preferredColors || preferredColors;
@@ -1511,7 +1451,6 @@
         </div>
     `;
     
-    // Additional Information Section
     const additionalSection = document.createElement('div');
     
     let additionalInfo = '';
@@ -1558,7 +1497,6 @@
         `;
     }
     
-    // Content
     content.appendChild(orderInfoSection);
     content.appendChild(statusSection);
     content.appendChild(designSection);
@@ -1567,22 +1505,18 @@
         content.appendChild(additionalSection);
     }
     
-    // Modal
     modalContent.appendChild(header);
     modalContent.appendChild(content);
     modalOverlay.appendChild(modalContent);
     
-    // To body
     document.body.appendChild(modalOverlay);
     
-    // Close functionality on overlay click
     modalOverlay.addEventListener('click', (e) => {
         if (e.target === modalOverlay) {
             document.body.removeChild(modalOverlay);
         }
     });
     
-    // Escape key to close
     const escapeHandler = (e) => {
         if (e.key === 'Escape') {
             document.body.removeChild(modalOverlay);
@@ -1592,7 +1526,6 @@
     document.addEventListener('keydown', escapeHandler);
 }
 
-// Make the function available globally
 window.viewOrderDetails = viewOrderDetails;
     
     function showLoading(show) {

@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
 
-        /* =============================================== */
-        /* BASE STYLES */
-        /* =============================================== */
         * {
             margin: 0;
             padding: 0;
@@ -34,9 +31,6 @@
             --medium-gray: #cbd5e1;
         }
         
-        /* =============================================== */
-        /* BREADCRUMB NAVIGATION */
-        /* =============================================== */
         .breadcrumb-nav {
             width: 100%;
             max-width: 1400px;
@@ -85,10 +79,7 @@
             color: #475569;
             font-weight: 600;
         }
-        
-        /* =============================================== */
-        /* PORTFOLIO CONTAINER */
-        /* =============================================== */
+
         .portfolio-container {
             width: 100%;
             max-width: 1400px;
@@ -99,9 +90,6 @@
             padding: 40px;
         }
         
-        /* =============================================== */
-        /* PROFILE SECTION */
-        /* =============================================== */
         .profile-section {
             text-align: center;
             margin-bottom: 60px;
@@ -159,10 +147,7 @@
             background: linear-gradient(135deg, #00824c, #00693d);
             transform: translateY(-2px);
         }
-        
-        /* =============================================== */
-        /* HEADER SECTION */
-        /* =============================================== */
+
         .portfolio-header {
             text-align: center;
             margin-bottom: 50px;
@@ -181,10 +166,7 @@
             max-width: 600px;
             margin: 0 auto;
         }
-        
-        /* =============================================== */
-        /* SHOWCASE/BEFORE-AFTER SECTION */
-        /* =============================================== */
+
         .showcase-section {
             margin-bottom: 80px;
             opacity: 0;
@@ -202,7 +184,6 @@
             margin: 0 auto;
         }
         
-        /* Comparison Slider */
         .comparison-slider {
             position: relative;
             width: 100%;
@@ -231,7 +212,6 @@
             clip-path: polygon(0 0, 50% 0, 50% 100%, 0% 100%);
         }
         
-        /* Slider Handle */
         .slider-handle {
             position: absolute;
             top: 0;
@@ -268,7 +248,6 @@
             font-weight: bold;
         }
         
-        /* Caption */
         .caption {
             text-align: center;
             padding: 0 20px;
@@ -288,17 +267,10 @@
             max-width: 700px;
             margin: 0 auto;
         }
-        
-        /* =============================================== */
-        /* SPACER */
-        /* =============================================== */
         .spacer {
             height: 40px;
         }
         
-        /* =============================================== */
-        /* RESPONSIVE STYLES */
-        /* =============================================== */
         @media (max-width: 1200px) {
             .portfolio-container {
                 width: 98%;
@@ -453,9 +425,6 @@
             }
         }
         
-        /* =============================================== */
-        /* FOOTER STYLES */
-        /* =============================================== */
         .portfolio-footer {
             text-align: center;
             margin-top: 60px;
@@ -472,9 +441,6 @@
     </style>
 </head>
 <body>
-    <!-- =============================================== -->
-    <!-- BREADCRUMB NAVIGATION -->
-    <!-- =============================================== -->
     <nav class="breadcrumb-nav">
         <div class="breadcrumb">
             <ul>
@@ -483,12 +449,7 @@
             </ul>
         </div>
     </nav>
-
-    <!-- =============================================== -->
-    <!-- PORTFOLIO CONTAINER -->
-    <!-- =============================================== -->
     <div class="portfolio-container">
-        <!-- Profile Section -->
         <section class="profile-section">
             <img src="assets/images/image.png" alt="Kagiso KG" class="profile-pic">
             <h1 class="profile-name">Kagiso KG</h1>
@@ -502,13 +463,11 @@
             </a>
         </section>
 
-        <!-- Portfolio Header -->
         <div class="portfolio-header">
             <h1>Design Transformations</h1>
             <p class="portfolio-subtitle">Interactive before & after comparisons showcasing my design process and results</p>
         </div>
         
-        <!-- First Before/After Slider -->
         <section class="showcase-section">
             <div class="showcase-container">
                 <div class="comparison-slider" id="slider1">
@@ -525,7 +484,6 @@
         
         <div class="spacer"></div>
         
-        <!-- Second Before/After Slider -->
         <section class="showcase-section">
             <div class="showcase-container">
                 <div class="comparison-slider" id="slider2">
@@ -540,16 +498,13 @@
             </div>
         </section>
         
-        <!-- Footer -->
         <footer class="portfolio-footer">
             <p>© 2026 96 Studios. All designs are property of their respective owners.</p>
         </footer>
     </div>
 
     <script>
-        // =============================================== //
-        // BEFORE/AFTER SLIDER FUNCTIONALITY
-        // =============================================== //
+    
         function initSlider(sliderId) {
             const slider = document.getElementById(sliderId);
             if (!slider) return;
@@ -569,7 +524,6 @@
                 handle.style.left = `${position * 100}%`;
             }
             
-            // Mouse Events
             handle.addEventListener('mousedown', (e) => {
                 isDragging = true;
                 e.preventDefault();
@@ -592,7 +546,6 @@
                 isDragging = false;
             });
             
-            // Touch Events for Mobile
             handle.addEventListener('touchstart', (e) => {
                 isDragging = true;
                 updateSliderPosition(e.touches[0].clientX);
@@ -618,13 +571,8 @@
                 isDragging = false;
             });
             
-            // Initialize to 50%
             updateSliderPosition(slider.getBoundingClientRect().left + (slider.offsetWidth / 2));
         }
-        
-        // =============================================== //
-        // SCROLL ANIMATION
-        // =============================================== //
         function initScrollAnimations() {
             const showcaseSections = document.querySelectorAll('.showcase-section');
             
@@ -644,15 +592,10 @@
             });
         }
         
-        // =============================================== //
-        // INITIALIZE EVERYTHING
-        // =============================================== //
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialize sliders
             initSlider('slider1');
             initSlider('slider2');
             
-            // Initialize scroll animations
             initScrollAnimations();
             
             document.querySelectorAll('.portfolio-btn, .back-to-home').forEach(button => {
@@ -664,7 +607,6 @@
                 });
             });
             
-            // Force visible for any already visible sections
             setTimeout(() => {
                 const visibleSections = document.querySelectorAll('.showcase-section');
                 visibleSections.forEach(section => {
@@ -676,9 +618,7 @@
             }, 100);
         });
         
-        // Handle window resize
         window.addEventListener('resize', () => {
-            // Re-center sliders
             ['slider1', 'slider2'].forEach(sliderId => {
                 const slider = document.getElementById(sliderId);
                 if (slider) {

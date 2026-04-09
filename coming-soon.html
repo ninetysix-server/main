@@ -263,7 +263,6 @@
     </div>
     
     <script>
-        // Countdown Timer
         const countdownDate = new Date('March 1, 2025 00:00:00').getTime();
         
         function updateCountdown() {
@@ -289,7 +288,6 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
         
-        // Email notification
         document.querySelector('.notify-btn').addEventListener('click', function() {
             const emailInput = document.querySelector('.email-input');
             const email = emailInput.value.trim();
