@@ -31,7 +31,6 @@ import {
   orderBy 
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCADBg6bzpMuII1xje5OvOaIz-2jtPcftQ",
     authDomain: "mylogin-f41d5.firebaseapp.com",
@@ -41,24 +40,17 @@ const firebaseConfig = {
     appId: "1:806828163950:web:2d6966fed3158fcc38b77f"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
-// Initialize Firestore
 const db = getFirestore(app);
 
-// ================================================
-// Client ID from user UID
-// ================================================
 function generatePermanentClientId(userUid) {
     return 'CL' + userUid.substring(0, 4).toUpperCase();
 }
 
-// Get or create PERMANENT Client ID
 function getOrCreatePermanentClientId(userUid) {
-    // Use the shared function
     if (typeof getSharedClientId === 'function') {
         return getSharedClientId(userUid);
     }
@@ -76,14 +68,11 @@ function getOrCreatePermanentClientId(userUid) {
 
 async function ensureClientIdInFirestore(userUid, email) {
     try {
-        // Get PERMANENT Client ID
         const clientId = getOrCreatePermanentClientId(userUid);
         
-        // Check if user document exists
         const userDoc = await getDoc(doc(db, 'users', userUid));
         
         if (!userDoc.exists()) {
-            // Create new user document with PERMANENT Client ID
             await setDoc(doc(db, 'users', userUid), {
                 email: email,
                 clientId: clientId,
@@ -123,7 +112,6 @@ async function ensureClientIdInFirestore(userUid, email) {
     }
 }
 
-// Helper function to extract friendly error messages
 function getFriendlyErrorMessage(error) {
   const errorCode = error.code || error.message;
   
@@ -153,7 +141,6 @@ function getFriendlyErrorMessage(error) {
   }
 }
 
-// Strong password validation function
 function validateStrongPassword(password) {
   const errors = [];
   
@@ -176,9 +163,6 @@ function validateStrongPassword(password) {
   return errors;
 }
 
-// ================================================
-// REGISTER - Create user with PERMANENT Client ID
-// ================================================
 export async function registerWithEmail(email, password) {
     try {
         const passwordErrors = validateStrongPassword(password);
@@ -192,10 +176,8 @@ export async function registerWithEmail(email, password) {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         
-        // Generate PERMANENT Client ID based on user UID
         const clientId = getOrCreatePermanentClientId(user.uid);
         
-        // Save user to Firestore with PERMANENT Client ID
         try {
             await setDoc(doc(db, 'users', user.uid), {
                 email: user.email,
@@ -230,21 +212,15 @@ export async function registerWithEmail(email, password) {
     }
 }
 
-// ================================================
-// LOGIN 
-// ================================================
 export async function loginWithEmail(email, password) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         
-        // Get PERMANENT Client ID 
         const clientId = getOrCreatePermanentClientId(user.uid);
         
-        // Check user document without overwriting role
         const userDoc = await getDoc(doc(db, 'users', user.uid));
         if (!userDoc.exists()) {
-            // Only create if doesn't exist
             await setDoc(doc(db, 'users', user.uid), {
                 email: user.email,
                 clientId: clientId,
@@ -272,22 +248,16 @@ export async function loginWithEmail(email, password) {
     }
 }
 
-// ================================================
-// GOOGLE LOGIN
-// ================================================
 export async function loginWithGoogle() {
   try {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
     
-    // Get PERMANENT Client ID
     const clientId = getOrCreatePermanentClientId(user.uid);
     
-    // Check if document exists first
     const userDoc = await getDoc(doc(db, 'users', user.uid));
     
     if (!userDoc.exists()) {
-        // Only create if doesn't exist
         await setDoc(doc(db, 'users', user.uid), {
             email: user.email,
             clientId: clientId,
@@ -318,7 +288,6 @@ export async function loginWithGoogle() {
   }
 }
 
-// Protect admin roles
 export async function protectAdminRoles() {
     try {
         const user = auth.currentUser;
@@ -329,13 +298,11 @@ export async function protectAdminRoles() {
         
         const { db, collection, getDocs, doc, updateDoc, Timestamp } = window.firestoreFunctions;
         
-        // Get all users
         const usersRef = collection(db, 'users');
         const snapshot = await getDocs(usersRef);
         
         let protectedCount = 0;
         
-        // For each user with admin role
         for (const docSnapshot of snapshot.docs) {
             const userData = docSnapshot.data();
             
@@ -359,9 +326,6 @@ export async function protectAdminRoles() {
     }
 }
 
-// ================================================
-// GET CURRENT USER
-// ================================================
 export function getCurrentUser() {
     const firebaseUser = auth.currentUser;
     
@@ -369,7 +333,6 @@ export function getCurrentUser() {
         return null;
     }
     
-    // Get PERMANENT Client ID
     const clientId = getOrCreatePermanentClientId(firebaseUser.uid);
     
     return {
@@ -382,9 +345,6 @@ export function getCurrentUser() {
     };
 }
 
-// ================================================
-// EXISTING USERS
-// ================================================
 export async function migrateToPermanentClientIds() {
     try {
         const user = auth.currentUser;
@@ -393,17 +353,14 @@ export async function migrateToPermanentClientIds() {
             return false;
         }
         
-        // Get PERMANENT Client ID
         const permanentClientId = getOrCreatePermanentClientId(user.uid);
         
-        // 1. Update user document in Firestore
         await updateDoc(doc(db, 'users', user.uid), {
             clientId: permanentClientId,
             clientIdMigratedAt: Timestamp.now(),
             isPermanent: true
         });
         
-        // 2. Update all orders for this user
         const ordersRef = collection(db, 'orders');
         const ordersQuery = query(ordersRef, where("userId", "==", user.uid));
         const ordersSnapshot = await getDocs(ordersQuery);
@@ -436,9 +393,6 @@ export async function migrateToPermanentClientIds() {
     }
 }
 
-// ================================================
-// DEBUG: Show current Client ID info
-// ================================================
 export function debugClientIdInfo() {
     const user = getCurrentUser();
     if (user) {
@@ -459,9 +413,6 @@ export function debugClientIdInfo() {
     return null;
 }
 
-// ================================================
-// Other functions
-// ================================================
 export async function resetPassword(email) {
   try {
     await sendPasswordResetEmail(auth, email);
@@ -539,10 +490,8 @@ export async function deleteAccount(password) {
     const credential = EmailAuthProvider.credential(user.email, password);
     await reauthenticateWithCredential(user, credential);
     
-    // Remove Client ID from localStorage
     localStorage.removeItem(`permanentClientId_${user.uid}`);
     
-    // Delete user from Firestore
     try {
       await deleteDoc(doc(db, 'users', user.uid));
     } catch (firestoreError) {
@@ -579,13 +528,10 @@ export function isEmailVerified() {
 export function checkAuthState(callback) {
     onAuthStateChanged(auth, async (user) => {
         if (user) {
-            // Get PERMANENT Client ID
             const clientId = getOrCreatePermanentClientId(user.uid);
             
-            // Safe check - only create if doesn't exist
             const userDoc = await getDoc(doc(db, 'users', user.uid));
             if (!userDoc.exists()) {
-                // Only create new document if it doesn't exist
                 await setDoc(doc(db, 'users', user.uid), {
                     email: user.email,
                     clientId: clientId,
@@ -618,7 +564,6 @@ export function checkAuthState(callback) {
     });
 }
 
-// Safe function to update ONLY clientId without affecting role
 async function safeUpdateClientId(userUid, clientId) {
     try {
         const userDoc = await getDoc(doc(db, 'users', userUid));
@@ -629,7 +574,6 @@ async function safeUpdateClientId(userUid, clientId) {
         
         const userData = userDoc.data();
         
-        // Only update if clientId is different or not permanent
         if (!userData.isPermanent || userData.clientId !== clientId) {
             const updateData = {
                 clientId: clientId,
@@ -637,7 +581,6 @@ async function safeUpdateClientId(userUid, clientId) {
                 clientIdUpdatedAt: Timestamp.now()
             };
             
-            // Preserve previous clientId for reference
             if (userData.clientId && userData.clientId !== clientId) {
                 updateData.previousClientId = userData.clientId;
             }
@@ -653,7 +596,6 @@ async function safeUpdateClientId(userUid, clientId) {
     }
 }
 
-// Make functions available globally
 window.auth = auth;
 window.firestoreFunctions = {
     db: db,
@@ -670,7 +612,6 @@ window.firestoreFunctions = {
     orderBy: orderBy
 };
 
-// Export utility functions
 window.getCurrentUser = getCurrentUser;
 window.migrateToPermanentClientIds = migrateToPermanentClientIds;
 window.debugClientIdInfo = debugClientIdInfo;

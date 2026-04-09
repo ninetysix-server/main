@@ -9,7 +9,6 @@ export async function saveOrderToFirebase(orderId, orderData) {
         
         const { db, doc, setDoc, Timestamp } = window.firestoreFunctions;
         
-        // Get user with PERMANENT Client ID
         const user = getCurrentUser();
         
         if (!user) {
@@ -17,7 +16,6 @@ export async function saveOrderToFirebase(orderId, orderData) {
             return false;
         }
         
-        // Validate we have a Client ID
         if (!user.clientId) {
             console.error('No Client ID found for user');
             return false;
@@ -49,7 +47,6 @@ export async function saveOrderToFirebase(orderId, orderData) {
     }
 }
 
-// Simple get order function
 export async function getOrderFromFirebase(orderId) {
     try {
         if (!window.firestoreFunctions) {

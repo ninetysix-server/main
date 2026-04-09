@@ -1,7 +1,3 @@
-// =============================================== 
-// CART MANAGEMENT SYSTEM
-// =============================================== 
-
 class CartManager {
     constructor() {
         this.cartKey = 'designStudioCart';
@@ -10,44 +6,36 @@ class CartManager {
         this.initializeCart();
     }
 
-    // Load cart from localStorage
     loadCart() {
         const user = this.getCurrentUser();
         let cartJson;
         
         if (user) {
-            // Load user-specific cart
             const userCartKey = `${this.cartKey}_${user.uid}`;
             cartJson = localStorage.getItem(userCartKey);
             
-            // If user has no cart yet, check for guest cart and migrate it
             if (!cartJson) {
                 const guestCartJson = localStorage.getItem(this.guestCartKey);
                 if (guestCartJson) {
-                    // Migrate guest cart to user cart
                     localStorage.setItem(userCartKey, guestCartJson);
                     localStorage.removeItem(this.guestCartKey);
                     cartJson = guestCartJson;
                 }
             }
         } else {
-            // Load guest cart
             cartJson = localStorage.getItem(this.guestCartKey);
         }
         
         return cartJson ? JSON.parse(cartJson) : [];
     }
 
-    // Save cart to localStorage
     saveCart() {
         const user = this.getCurrentUser();
         let cartKey;
         
         if (user) {
-            // Save to user-specific cart
             cartKey = `${this.cartKey}_${user.uid}`;
         } else {
-            // Save to guest cart
             cartKey = this.guestCartKey;
         }
         
@@ -56,18 +44,14 @@ class CartManager {
         this.updateCartUI();
     }
 
-    // Get current user from Firebase
-getCurrentUser() {
-    // Check if Firebase auth is available and user is logged in
+    getCurrentUser() {
     if (window.auth && window.auth.currentUser) {
         const firebaseUser = window.auth.currentUser;
         
-        // Use the getOrCreateClientId function from firebase.js
         let clientId;
         if (window.getOrCreateClientId) {
             clientId = window.getOrCreateClientId(firebaseUser.uid);
         } else {
-            // Fallback to localStorage
             const storageKey = `clientId_${firebaseUser.uid}`;
             clientId = localStorage.getItem(storageKey);
             if (!clientId) {
@@ -86,7 +70,6 @@ getCurrentUser() {
     return null;
 }
 
-    // Generate client ID
     generateClientId() {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         let clientId = '';
@@ -97,7 +80,6 @@ getCurrentUser() {
         return clientId;
     }
 
-    // Migrate guest cart to user cart after login
     migrateGuestCartToUser(userUid) {
         const guestCartJson = localStorage.getItem(this.guestCartKey);
         if (guestCartJson) {
@@ -112,17 +94,14 @@ getCurrentUser() {
         return false;
     }
 
-    // Clear cart for a specific user
     clearUserCart(userUid) {
         const userCartKey = `${this.cartKey}_${userUid}`;
         localStorage.removeItem(userCartKey);
     }
 
-    // Update cart badge
     updateCartBadge() {
         const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
         
-        // Update ONLY cart badges
         const cartBadges = document.querySelectorAll('.badge:not(.wishlist-badge)');
         cartBadges.forEach(badge => {
             if (badge.closest('.cart-icon') || badge.closest('.nav-icon') || 
@@ -168,7 +147,6 @@ getCurrentUser() {
         return true;
     }
 
-    // Parse price string to number
     parsePrice(priceStr) {
         if (typeof priceStr === 'number') return priceStr;
         
@@ -176,14 +154,12 @@ getCurrentUser() {
         return match ? parseFloat(match[1]) : 0;
     }
 
-    // Remove item from cart
     removeItem(itemId) {
         this.cart = this.cart.filter(item => item.id !== itemId);
         this.saveCart();
         this.updateCartBadge();
     }
 
-    // Update item quantity
     updateQuantity(itemId, quantity) {
         const item = this.cart.find(item => item.id === itemId);
         if (item) {
@@ -193,29 +169,24 @@ getCurrentUser() {
         }
     }
 
-    // Get cart subtotal
     getSubtotal() {
         return this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     }
 
-    // Get cart total
     getTotal() {
         return this.getSubtotal();
     }
 
-    // Clear entire cart
     clearCart() {
         this.cart = [];
         this.saveCart();
         this.updateCartBadge();
     }
 
-    // Check if cart is empty
     isEmpty() {
         return this.cart.length === 0;
     }
 
-    // Create cart item HTML
     createCartItemHTML(item) {
         const li = document.createElement('li');
         li.className = 'cart-item';
@@ -281,7 +252,6 @@ getCurrentUser() {
         return li;
     }
 
-    // Update cart UI
     updateCartUI() {
         const cartItemsList = document.getElementById('cartItemsList');
         const cartEmptyState = document.getElementById('cartEmptyState');
@@ -314,7 +284,6 @@ getCurrentUser() {
         }
     }
 
-    // Create confirmation item HTML
     createConfirmationItemHTML(item) {
         const li = document.createElement('li');
         li.className = 'confirmation-item';
@@ -376,7 +345,6 @@ getCurrentUser() {
         return li;
     }
 
-    // Update confirmation UI
     updateConfirmationUI() {
         const confirmationItemsList = document.getElementById('confirmationItemsList');
         const subtotal = this.getSubtotal();
@@ -396,14 +364,12 @@ getCurrentUser() {
         if (totalElement) totalElement.textContent = `R${total.toFixed(2)}`;
     }
 
-    // Initialize cart
     initializeCart() {
         this.updateCartBadge();
         this.updateCartUI();
         this.setupEventListeners();
     }
 
-    // Setup event listeners
     setupEventListeners() {
         document.addEventListener('click', (e) => {
             if (e.target.closest('.cart-item-remove')) {
@@ -430,10 +396,6 @@ getCurrentUser() {
     }
 }
 
-// =============================================== 
-// CART POPUP MANAGEMENT
-// =============================================== 
-
 class CartPopupManager {
     constructor(cartManager) {
         this.cartManager = cartManager;
@@ -442,20 +404,17 @@ class CartPopupManager {
         this.setupPopupEventListeners();
     }
 
-    // Open cart popup
     openCartPopup() {
         this.cartPopup.classList.add('active');
         document.body.style.overflow = 'hidden';
         this.cartManager.updateCartUI();
     }
 
-    // Close cart popup
     closeCartPopup() {
         this.cartPopup.classList.remove('active');
         document.body.style.overflow = 'auto';
     }
 
-    // Open confirmation popup
     openConfirmationPopup() {
         if (this.cartManager.isEmpty()) {
             this.showToast('Your cart is empty!', 'error');
@@ -470,13 +429,11 @@ class CartPopupManager {
         this.resetFormFields();
     }
 
-    // Close confirmation popup
     closeConfirmationPopup() {
         this.confirmationPopup.classList.remove('active');
         document.body.style.overflow = 'auto';
     }
 
-    // Reset form fields
     resetFormFields() {
         const designDescription = document.getElementById('designDescription');
         const preferredColors = document.getElementById('preferredColors');
@@ -492,9 +449,7 @@ class CartPopupManager {
         }
     }
 
-    // Show toast notification
     showToast(message, type = 'success') {
-        // Remove existing toasts
         const existingToasts = document.querySelectorAll('.custom-toast');
         existingToasts.forEach(toast => toast.remove());
         
@@ -530,9 +485,7 @@ class CartPopupManager {
         }, 3000);
     }
 
-    // Setup popup event listeners
     setupPopupEventListeners() {
-        // Close buttons
         const closeCartBtn = document.getElementById('closeCart');
         const closeConfirmationBtn = document.getElementById('closeConfirmation');
         
@@ -544,27 +497,23 @@ class CartPopupManager {
             closeConfirmationBtn.addEventListener('click', () => this.closeConfirmationPopup());
         }
 
-        // Cart popup overlay click
         if (this.cartPopup) {
             this.cartPopup.addEventListener('click', (e) => {
                 if (e.target === this.cartPopup) this.closeCartPopup();
             });
         }
 
-        // Confirmation popup overlay click
         if (this.confirmationPopup) {
             this.confirmationPopup.addEventListener('click', (e) => {
                 if (e.target === this.confirmationPopup) this.closeConfirmationPopup();
             });
         }
 
-        // Continue shopping button
         const continueShoppingBtn = document.getElementById('continueShopping');
         if (continueShoppingBtn) {
             continueShoppingBtn.addEventListener('click', () => this.closeCartPopup());
         }
 
-        // Browse services button
         const browseServicesBtn = document.getElementById('cartBrowseServices');
         if (browseServicesBtn) {
             browseServicesBtn.addEventListener('click', () => {
@@ -576,7 +525,6 @@ class CartPopupManager {
             });
         }
 
-        // Back to cart button
         const backToCartBtn = document.getElementById('backToCart');
         if (backToCartBtn) {
             backToCartBtn.addEventListener('click', () => {
@@ -585,7 +533,6 @@ class CartPopupManager {
             });
         }
 
-        // Cart icons click
         const cartIcons = document.querySelectorAll('.cart-icon, .nav-icon[href="#"]');
         cartIcons.forEach(icon => {
             icon.addEventListener('click', (e) => {
@@ -594,7 +541,6 @@ class CartPopupManager {
             });
         });
 
-        // Proceed to confirmation button
         const proceedToConfirmationBtn = document.getElementById('proceedToConfirmation');
         if (proceedToConfirmationBtn) {
             proceedToConfirmationBtn.addEventListener('click', () => {
@@ -604,10 +550,6 @@ class CartPopupManager {
     }
 }
 
-// =============================================== 
-// CHECKOUT & CONFIRMATION
-// =============================================== 
-
 class CheckoutManager {
     constructor(cartManager, cartPopupManager) {
         this.cartManager = cartManager;
@@ -615,16 +557,13 @@ class CheckoutManager {
         this.setupCheckoutEventListeners();
     }
 
-    // Setup checkout event listeners
     setupCheckoutEventListeners() {
-        // Proceed to checkout button
         const proceedToCheckoutBtn = document.getElementById('proceedToCheckout');
         if (proceedToCheckoutBtn) {
             proceedToCheckoutBtn.addEventListener('click', () => this.handleProceedToCheckout());
         }
     }
 
-    // Handle proceed to checkout
     async handleProceedToCheckout() {
         const designDescription = document.getElementById('designDescription').value.trim();
         
@@ -633,7 +572,6 @@ class CheckoutManager {
             return;
         }
         
-        // Get user data
         const userData = this.getUserData();
         
         if (!userData.currentUser) {
@@ -646,7 +584,6 @@ class CheckoutManager {
             return;
         }
         
-        // Create order data
         const sketchImageUrl = document.getElementById('sketchImageUrl')?.value.trim() || '';
         const preferredColors = document.getElementById('preferredColors')?.value.trim() || '';
         
@@ -667,16 +604,13 @@ class CheckoutManager {
             paymentStatus: 'Pending'
         };
         
-        // Save order and redirect to payment
         await this.processOrder(orderData);
     }
 
-    // Get user data
     getUserData() {
         let currentUser = null;
         let clientId = null;
         
-        // Check window.auth for Firebase user
         if (window.auth && window.auth.currentUser) {
             currentUser = window.auth.currentUser;
             const storageKey = `clientId_${currentUser.uid}`;
@@ -691,7 +625,6 @@ class CheckoutManager {
         return { currentUser, clientId };
     }
 
-    // Generate client ID
     generateClientId() {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         let clientId = '';
@@ -701,7 +634,6 @@ class CheckoutManager {
         return clientId;
     }
 
-    // Open auth modal for checkout
     openAuthModalForCheckout() {
         const desktopAuthOverlay = document.getElementById('desktopAuthOverlay');
         const mobileAuthContainer = document.getElementById('mobileAuthContainer');
@@ -715,13 +647,10 @@ class CheckoutManager {
         }
     }
 
-    // Process order 
     async processOrder(orderData) {
         try {
-            // Generate order ID
             const orderId = 'ORD-' + Date.now().toString().slice(-8);
             
-            // Prepare complete order data
             const completeOrderData = {
                 ...orderData,
                 orderId: orderId,
@@ -734,35 +663,28 @@ class CheckoutManager {
                 estimatedCompletion: null
             };
             
-            // Save to Firebase
             let savedToFirebase = false;
             try {
-                // Import the helper
                 const { saveOrderToFirebase } = await import('./cart-firebase.js');
                 savedToFirebase = await saveOrderToFirebase(orderId, completeOrderData);
             } catch (importError) {
                 console.warn('Could not import cart-firebase helper:', importError);
             }
             
-            // Always save to localStorage
             this.saveOrderToLocalStorage(orderId, completeOrderData);
             
-            // Save to localStorage for payment page
             localStorage.setItem('lastOrderId', orderId);
             localStorage.setItem('currentOrder', JSON.stringify(completeOrderData));
             
-            // Clear cart
             this.cartManager.clearCart();
             this.cartPopupManager.closeConfirmationPopup();
             this.cartPopupManager.resetFormFields();
             
-            // Show success message
             const message = savedToFirebase 
                 ? 'Order created successfully! Redirecting to payment...' 
                 : 'Order created! Redirecting to payment...';
             this.cartPopupManager.showToast(message, 'success');
             
-            // Redirect to payment page
             setTimeout(() => {
                 window.location.href = `payment.html?orderId=${orderId}`;
             }, 1500);
@@ -773,7 +695,6 @@ class CheckoutManager {
         }
     }
 
-    // Save order to localStorage
     saveOrderToLocalStorage(orderId, orderData) {
         try {
             const orders = JSON.parse(localStorage.getItem('localOrders')) || [];
@@ -792,10 +713,6 @@ class CheckoutManager {
     }
 }
 
-// =============================================== 
-// SERVICE INTEGRATION
-// =============================================== 
-
 class ServiceIntegration {
     constructor(cartManager, cartPopupManager) {
         this.cartManager = cartManager;
@@ -803,7 +720,6 @@ class ServiceIntegration {
         this.setupServiceEventListeners();
     }
 
-    // Integrate service buttons with cart
     integrateServiceButtons() {
         document.addEventListener('click', (e) => {
             if (e.target.closest('.design-btn')) {
@@ -813,7 +729,6 @@ class ServiceIntegration {
         });
     }
 
-    // Handle service button click
 handleServiceButtonClick(button) {
     const serviceId = button.dataset.service;
     const tierName = button.dataset.tier;
@@ -821,44 +736,35 @@ handleServiceButtonClick(button) {
     const serviceCard = button.closest('.design-service-card');
     const serviceTitle = serviceCard.querySelector('.design-service-title').textContent;
     
-    // Get price from active tier
     let basePrice = this.getServicePrice(serviceCard, tierName, serviceId);
     
-    // Get service details
     const details = this.getServiceDetails(serviceCard, serviceId);
     
-    // If it's an addon service, calculate total price
     let totalPrice = basePrice;
     if (details.addons && details.addons.length > 0) {
         totalPrice += details.addons.reduce((sum, addon) => sum + addon.price, 0);
     }
     
-    // Add to cart
     this.cartManager.addItem(serviceId, tierName, serviceTitle, `R${totalPrice}`, 1, details);
     
     //this.cartPopupManager.showToast(`${serviceTitle} (${tierName}) added to cart!`);
     this.cartPopupManager.openCartPopup();
 }
 
-    // Get service price
 getServicePrice(serviceCard, tierName, serviceId) {
     let price = 0;
     
-    // Find the active tier details
     const activeTierDetails = serviceCard.querySelector(`.design-tier-details[data-tier="${tierName}"]`);
     
     if (activeTierDetails) {
         const priceElement = activeTierDetails.querySelector('.design-service-price');
         
         if (priceElement) {
-            // Check if there's a discounted price
             const discountedPriceSpan = priceElement.querySelector('.discounted-price');
             if (discountedPriceSpan) {
-                // Extract number from discounted price
                 const priceMatch = discountedPriceSpan.textContent.match(/R\s*(\d+(\.\d+)?)/);
                 price = priceMatch ? parseFloat(priceMatch[1]) : 0;
             } else {
-                // Use regular price
                 const priceMatch = priceElement.textContent.match(/R\s*(\d+(\.\d+)?)/);
                 price = priceMatch ? parseFloat(priceMatch[1]) : 0;
             }
@@ -868,22 +774,18 @@ getServicePrice(serviceCard, tierName, serviceId) {
     return price;
 }
 
-    // Get service details
 getServiceDetails(serviceCard, serviceId) {
     const details = {};
     
-    // Handle page-based services
     const pageSelect = serviceCard.querySelector('.design-page-quantity');
     if (pageSelect) {
         details.pages = pageSelect.value;
     }
     
-    // Handle addons
     const addonCheckboxes = serviceCard.querySelectorAll('.addon-checkbox:checked');
     if (addonCheckboxes.length > 0) {
         details.addons = Array.from(addonCheckboxes).map(cb => {
             const priceText = cb.dataset.price;
-            // Ensure price is a number
             const price = parseFloat(priceText) || 0;
             return {
                 name: cb.dataset.addon,
@@ -891,33 +793,24 @@ getServiceDetails(serviceCard, serviceId) {
             };
         });
         
-        // Calculate total addons price
         details.addonsTotal = details.addons.reduce((sum, addon) => sum + addon.price, 0);
     }
     
     return details;
 }
 
-    // Setup service event listeners
     setupServiceEventListeners() {
         this.integrateServiceButtons();
     }
 }
 
-// =============================================== 
-// INITIALIZATION
-// =============================================== 
-
-// Main initialization function
 export function initializeCartSystem() {
     try {
-        // Create instances
         const cartManager = new CartManager();
         const cartPopupManager = new CartPopupManager(cartManager);
         const serviceIntegration = new ServiceIntegration(cartManager, cartPopupManager);
         const checkoutManager = new CheckoutManager(cartManager, cartPopupManager);
         
-        // Return instances for external access
         return {
             cartManager,
             cartPopupManager,
@@ -930,7 +823,6 @@ export function initializeCartSystem() {
     }
 }
 
-// Make cart system available globally
 window.CartSystem = {
     initializeCartSystem
 };
