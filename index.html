@@ -6,7 +6,6 @@
     <link rel="icon" type="image/x-icon" href="assets/images/icon.svg">
     <title>96 Studios</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
@@ -166,14 +165,8 @@
 }
 </script>
 
-
-    
-    <!-- Firebase SDK -->
     <script type="module" src="firebase.js"></script>
     
-    <!-- =============================================== -->
-    <!-- BASE STYLES -->
-    <!-- =============================================== -->
     <style>
         .header-container {
             opacity: 0;
@@ -205,10 +198,7 @@
             --white: #ffffff;
         }
     </style>
-    
-    <!-- =============================================== -->
-    <!-- HEADER SECTION STYLES -->
-    <!-- =============================================== -->
+
     <style>
         .header-container {
             width: 100%;
@@ -220,7 +210,6 @@
             overflow: hidden;
         }
         
-        /* Offer Bar */
         .offer-bar {
             background: linear-gradient(135deg, #004370, #00609c);
             color: white;
@@ -305,7 +294,6 @@
             opacity: 1;
         }
         
-        /* Mobile contact info in offer bar */
         .mobile-contact-offer {
             display: none;
             align-items: center;
@@ -325,7 +313,6 @@
             font-size: 11px;
         }
         
-        /* Main Header */
         .main-header {
             padding: 15px 20px;
             display: grid;
@@ -499,7 +486,6 @@
             font-weight: 600;
         }
         
-        /* GET QUOTE BUTTON */
         .get-quote-btn {
             background: #007a48;
             color: white;
@@ -524,7 +510,6 @@
             font-size: 12px;
         }
         
-        /* Mobile Header */
         .mobile-header {
             display: none;
             background: white;
@@ -576,7 +561,6 @@
             white-space: nowrap;
         }
         
-        /* Mobile Bottom Navigation */
         .mobile-bottom-nav {
             display: none;
             position: fixed;
@@ -626,7 +610,6 @@
             background: rgba(0, 67, 112, 0.1);
         }
         
-        /* Mobile Menu */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -685,7 +668,6 @@
             gap: 12px;
         }
         
-        /* Sale active styling */
         .sale-active .offer-tag {
             background: #ff4444 !important;
         }
@@ -729,9 +711,6 @@
         }
     </style>
     
-    <!-- =============================================== -->
-    <!-- HERO SECTION STYLES -->
-    <!-- =============================================== -->
     <style>
         .hero-section {
             width: 100%;
@@ -820,7 +799,6 @@
             background: #004370;
         }
         
-        /* Swiper Navigation Buttons */
         .swiper-button-next, .swiper-button-prev {
             position: absolute;
             top: auto !important;
@@ -853,7 +831,6 @@
             background: rgba(255, 255, 255, 0.25);
         }
         
-        /* Swiper Pagination */
         .swiper-pagination {
             bottom: 25px !important;
             left: 90px !important;
@@ -880,12 +857,8 @@
             }
         }
     </style>
-    
-    <!-- =============================================== -->
-    <!-- AUTHENTICATION STYLES -->
-    <!-- =============================================== -->
+
     <style>
-        /* Auth Overlay */
         .auth-overlay {
             position: fixed;
             top: 0;
@@ -905,7 +878,6 @@
             display: flex;
         }
         
-        /* Desktop Auth Container */
         .auth-container-desktop {
             width: 100%;
             max-width: 900px;
@@ -917,7 +889,6 @@
             display: flex;
         }
         
-        /* Account Section */
         .account-section {
             position: fixed;
             top: 0;
@@ -956,7 +927,6 @@
             max-width: 450px;
         }
         
-        /* Mobile Auth Container */
         .auth-container-mobile {
             position: fixed;
             top: 0;
@@ -1261,7 +1231,6 @@
             color: #f59e0b;
         }
         
-        /* Account Section Styles */
         .account-section.active {
             display: block;
         }
@@ -1455,7 +1424,6 @@
             border-top: 1px solid #e2e8f0;
         }
         
-        /* Delete Account Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -1499,10 +1467,7 @@
             margin-top: 25px;
         }
     </style>
-    
-    <!-- =============================================== -->
-    <!-- RESPONSIVE STYLES -->
-    <!-- =============================================== -->
+
     <style>
         @media (max-width: 768px) {
             .auth-container-desktop {
@@ -1876,9 +1841,6 @@
         }
     </style>
 
-<!-- =============================================== -->
-<!-- SERVICES SECTION STYLES -->
-<!-- =============================================== -->
 <style>
     .services-section {
         width: 100%;
@@ -1907,7 +1869,6 @@
         margin: 0 auto;
     }
 
-    /* GRID LAYOUT */
     .design-grid {
         display: grid;
         gap: 25px;
@@ -1915,7 +1876,6 @@
         width: 100%;
     }
 
-    /* Desktop: 4 services per row */
     @media (min-width: 1201px) {
         .design-grid {
             grid-template-columns: repeat(4, 1fr);
@@ -1923,7 +1883,6 @@
         }
     }
 
-    /* Large Tablets: 3 services per row */
     @media (min-width: 768px) and (max-width: 1200px) {
         .design-grid {
             grid-template-columns: repeat(3, 1fr);
@@ -1931,7 +1890,6 @@
         }
     }
 
-    /* Mobile: 1 service per row */
     @media (max-width: 767px) {
         .design-grid {
             grid-template-columns: 1fr;
@@ -1976,7 +1934,6 @@
         justify-content: center;
     }
 
-    /* TIER SELECTOR - HORIZONTAL LAYOUT */
     .design-tier-selector {
         display: flex;
         background: #f8fafc;
@@ -2211,7 +2168,6 @@
         to { transform: rotate(360deg); }
     }
 
-    /* Specific styles for website design service */
     .design-section-features > div {
         margin-bottom: 15px;
     }
@@ -2488,7 +2444,6 @@
         }
     }
 
-    /* Addon Styles */
     .design-addons-grid {
         display: grid;
         gap: 10px;
@@ -2559,11 +2514,7 @@
     }
 </style>
 
-<!-- =============================================== -->
-<!-- CART SECTION STYLES -->
-<!-- =============================================== -->
 <style>
-    /* Cart Popup Overlay */
     .cart-popup-overlay {
         position: fixed;
         top: 0;
@@ -2582,7 +2533,6 @@
         display: flex;
     }
 
-    /* Cart Popup Container */
     .cart-popup-container {
         width: 100%;
         max-width: 450px;
@@ -2606,7 +2556,6 @@
         }
     }
 
-    /* Cart Header */
     .cart-header {
         padding: 25px;
         background: linear-gradient(135deg, #004370, #00609c);
@@ -2649,7 +2598,6 @@
         background: rgba(255, 255, 255, 0.3);
     }
 
-    /* Cart Body */
     .cart-body {
         flex: 1;
         padding: 20px;
@@ -2657,7 +2605,6 @@
         background: #f8fafc;
     }
 
-    /* Empty Cart */
     .cart-empty {
         text-align: center;
         padding: 60px 20px;
@@ -2686,7 +2633,6 @@
         margin: 0 auto;
     }
 
-    /* Cart Items */
     .cart-items-container {
         display: none;
     }
@@ -2822,7 +2768,6 @@
         color: #009B5B;
     }
 
-    /* Cart Total */
     .cart-total-section {
         background: white;
         border-radius: 12px;
@@ -2866,7 +2811,6 @@
         color: #009B5B;
     }
 
-    /* Cart Footer */
     .cart-footer {
         padding: 20px;
         background: white;
@@ -2922,7 +2866,6 @@
         transform: none;
     }
 
-    /* Cart Badge Update */
     .cart-badge {
     position: absolute;
     top: -5px;
@@ -2950,7 +2893,6 @@
     display: none;
 }
 
-    /* Responsive Cart */
     @media (max-width: 768px) {
         .cart-popup-container {
             max-width: 100%;
@@ -3005,11 +2947,7 @@
     }
 </style>
 
-<!-- =============================================== -->
-<!-- DESIGN CONFIRMATION SECTION STYLES -->
-<!-- =============================================== -->
 <style>
-    /* Confirmation Overlay */
     .confirmation-overlay {
         position: fixed;
         top: 0;
@@ -3030,7 +2968,6 @@
         display: flex;
     }
 
-    /* Confirmation Container */
     .confirmation-container {
         width: 100%;
         max-width: 1000px;
@@ -3043,7 +2980,6 @@
         flex-direction: column;
     }
 
-    /* Confirmation Header with Advert */
     .confirmation-header {
         background: linear-gradient(135deg, #004370, #00609c);
         color: white;
@@ -3101,7 +3037,6 @@
         background: rgba(255, 255, 255, 0.3);
     }
 
-    /* Confirmation Body */
     .confirmation-body {
         flex: 1;
         padding: 30px;
@@ -3111,7 +3046,6 @@
         gap: 30px;
     }
 
-    /* Cart Items Section */
     .confirmation-items-section h3 {
         font-size: 20px;
         color: #004370;
@@ -3217,7 +3151,6 @@
         color: #009B5B;
     }
 
-    /* User Input Section */
     .confirmation-input-section h3 {
         font-size: 20px;
         color: #004370;
@@ -3284,7 +3217,6 @@
         margin-right: 5px;
     }
 
-    /* Image Upload */
     .confirmation-image-upload {
         border: 2px dashed #cbd5e1;
         border-radius: 10px;
@@ -3385,7 +3317,6 @@
         background: rgba(220, 38, 38, 1);
     }
 
-    /* Order Summary */
     .confirmation-summary {
         background: #f8fafc;
         border-radius: 12px;
@@ -3443,7 +3374,6 @@
         color: #009B5B;
     }
 
-    /* Confirmation Footer */
     .confirmation-footer {
         padding: 25px 30px;
         background: white;
@@ -3499,7 +3429,6 @@
         transform: none;
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
         .confirmation-container {
             max-height: 95vh;
@@ -3589,10 +3518,6 @@
             height: 100px;
         }
     }
-
-    /* =============================================== */
-    /* DESIGN CONFIRMATION SECTION STYLES */
-    /* =============================================== */
 
     .confirmation-header-desktop {
         display: flex;
@@ -3741,10 +3666,6 @@
     }
 }
 
-/* =============================================== */
-/* DISCOUNT STYLES FOR SERVICES                   */
-/* =============================================== */
-
     .design-service-card.discounted {
         border: 2px solid #ff4444 !important;
         position: relative;
@@ -3791,10 +3712,6 @@
         font-weight: 600;
         margin-left: 8px;
     }
-
-/* =============================================== */
-/* SEARCH DROPDOWN */
-/* =============================================== */
 
     .search-results-dropdown {
         position: fixed !important;
@@ -3907,7 +3824,6 @@
         margin: 8px 0;
     }
 
-    /* Loading */
     .search-loading {
         padding: 40px 20px;
         text-align: center;
@@ -4008,10 +3924,6 @@
         }
     }
 </style>
-
-        <!-- =============================================== -->
-        <!-- UX/UI GALLERY SECTION STYLES -->
-        <!-- =============================================== -->
 
     <style>
         .gallery-section {
@@ -4234,17 +4146,13 @@
             border-radius: 6px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
         }
-        
-        /* ========== RESPONSIVE DESIGN ========== */
-        
-        /* Desktop: 4 images in a row */
+                
         @media (min-width: 1201px) {
             .gallery-grid {
              grid-template-columns: repeat(4, 1fr);
             }
         }
         
-        /* Tablet: 2×2 grid (768px - 1200px) */
         @media (min-width: 768px) and (max-width: 1200px) {
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -4256,7 +4164,6 @@
             }
         }
         
-        /* Mobile: 1 column */
         @media (max-width: 767px) {
             .gallery-section {
                 margin: 30px auto;
@@ -4300,7 +4207,6 @@
             }
         }
         
-        /* Small Mobile */
         @media (max-width: 480px) {
             .gallery-container {
                 padding: 20px;
@@ -4331,8 +4237,6 @@
             }
         }
 
- /* ========== MOBILE STYLES - IMAGE TOP, TEXT/BUTTON BELOW ========== */
-
  @media (max-width: 480px) {
     .content-block-section {
         margin: 30px auto;
@@ -4345,7 +4249,6 @@
         min-height: auto;
     }
     
-    /* Image container - TOP */
     .content-image {
         padding: 0px 30px 0 30px;
         display: flex;
@@ -4361,7 +4264,6 @@
         margin-bottom: 20px;
     }
     
-    /* Text container - BOTTOM */
     .content-text {
         padding: 50px 30px 30px 30px;
         text-align: center;
@@ -4386,10 +4288,6 @@
     }
 }
     </style>
-
-    <!-- =============================================== -->
-    <!-- TOP DESIGNS SWIPER STYLES -->
-    <!-- =============================================== -->
 
 <style>
     .top-designs-section {
@@ -4434,7 +4332,6 @@
         color: #007a48;
     }
     
-    /* Swiper Container */
     .top-designs-swiper {
         padding: 0 0 40px 0; 
         margin: 0;
@@ -4442,7 +4339,6 @@
         margin-top: 50px;
     }
     
-    /* Design Card Styles */
     .design-card {
         background: white;
         border-radius: 10px;
@@ -4455,7 +4351,6 @@
         flex-direction: column;
     }
     
-    /* IMAGE CONTAINER HEIGHT */
     .design-image-container {
         position: relative;
         width: 100%;
@@ -4515,7 +4410,6 @@
         color: #adadad !important;
     }
     
-    /* COMPACT INFO SECTION */
     .design-info {
         padding: 15px;
         flex: 1;
@@ -4565,7 +4459,6 @@
         font-weight: 500;
     }
     
-    /* Swiper Navigation Buttons */
     .top-designs-swiper .swiper-button-next,
     .top-designs-swiper .swiper-button-prev {
         width: 36px;
@@ -4591,7 +4484,6 @@
         color: white;
     }
     
-    /* Swiper Pagination */
     .top-designs-swiper .swiper-pagination {
         bottom: 15px;
     }
@@ -4608,7 +4500,6 @@
         transform: scale(1.2);
     }
     
-    /* Responsive Design - MOBILE */
     @media (max-width: 768px) {
 
         .design-info p {
@@ -4637,19 +4528,16 @@
             font-size: 22px;
         }
         
-        /* Swiper Container - MOBILE */
         .top-designs-swiper {
             padding: 0 0 30px 0;
             height: 350px;
         }
         
-        /* Design Card Styles - MOBILE */
         .design-card {
             height: 100%;
             margin: 0;
         }
         
-        /* MOBILE IMAGE CONTAINER */
         .design-image-container {
             height: 180px;
         }
@@ -4689,7 +4577,6 @@
         }
     }
 
-    /* Extra Small Mobile */
     @media (max-width: 480px) {
         .top-designs-swiper {
             height: 340px;
@@ -4720,7 +4607,6 @@
         }
     }
 
-    /* Large Desktop */
     @media (min-width: 1600px) {
         .top-designs-swiper {
             height: 340px;
@@ -4737,9 +4623,6 @@
 
 </style>
 
-    <!-- =============================================== -->
-    <!-- PRINTING ADVERT SECTION STYLES -->
-    <!-- =============================================== -->
     <style>
         .printing-advert-section {
             width: 100%;
@@ -4839,9 +4722,6 @@
         }
     </style>
 
-    <!-- =============================================== -->
-    <!-- FEATURES SECTION STYLES -->
-    <!-- =============================================== -->
     <style>
         .features-section {
             width: 100%;
@@ -4914,10 +4794,6 @@
             line-height: 1.5;
         }
     </style>
-
-    <!-- =============================================== -->
-    <!-- FOOTER SECTION STYLES WITH OZOW LOGO -->
-    <!-- =============================================== -->
 
 <style>
     .footer-section {
@@ -5137,9 +5013,6 @@
         }
     }
 
-/*--------------------------------------------------------------
-# Scroll Top Button
---------------------------------------------------------------*/
     .scroll-top {
     position: fixed;
     visibility: hidden;
@@ -5173,7 +5046,6 @@
     opacity: 1;
     }
 
-    /* Mobile (up to 767px) */
     @media (max-width: 767px) {
     .scroll-top {
         right: 20px;       
@@ -5187,7 +5059,6 @@
     }
     }
 
-    /* Tablets (768px – 991px) */
     @media (min-width: 768px) and (max-width: 991px) {
     .scroll-top {
         right: 42px;   
@@ -5201,9 +5072,6 @@
     }
     }
 
-/*--------------------------------------------------------------
-# WhatsApp Floating Button
---------------------------------------------------------------*/
     .whatsapp-btn {
     position: fixed;
     right: 44px;
@@ -5268,10 +5136,6 @@
     }
     }
 
-/* =============================================== */
-/* WISHLIST MODAL STYLES */
-/* =============================================== */
-
     .wishlist-overlay {
         position: fixed;
         top: 0;
@@ -5290,7 +5154,6 @@
         display: flex;
     }
 
-    /* Wishlist Container */
     .wishlist-container {
         width: 100%;
         max-width: 450px;
@@ -5303,7 +5166,6 @@
         animation: slideInRight 0.3s ease;
     }
 
-    /* Wishlist Header */
     .wishlist-header {
         padding: 25px;
         background: linear-gradient(135deg, #ef4444, #dc2626);
@@ -5346,7 +5208,6 @@
         background: rgba(255, 255, 255, 0.3);
     }
 
-    /* Wishlist Body */
     .wishlist-body {
         flex: 1;
         padding: 20px;
@@ -5354,7 +5215,6 @@
         background: #f8fafc;
     }
 
-    /* Empty Wishlist */
     .wishlist-empty {
         text-align: center;
         padding: 60px 20px;
@@ -5388,7 +5248,6 @@
         background: linear-gradient(135deg, #dc2626, #b91c1c);
     }
 
-    /* Wishlist Items */
     .wishlist-items-container {
         display: none;
     }
@@ -5504,7 +5363,6 @@
         color: #94a3b8;
     }
 
-    /* Wishlist Footer */
     .wishlist-footer {
         padding: 20px;
         background: white;
@@ -5612,9 +5470,6 @@
         }
     }
 
-/* =============================================== */
-/* TYPING ANIMATION STYLES */
-/* =============================================== */
     .typing-text {
         display: inline-block;
         white-space: nowrap;
@@ -5652,10 +5507,6 @@
             transform: translateY(0);
         }
     }
-
-/* =============================================== */
-/* ADVERTISER MODAL STYLES */
-/* =============================================== */
 
 
 .advertiser-embed-container {
@@ -5732,9 +5583,6 @@
   }
 }
 
-    /* =============================================== */
-    /* COOKIES POPUP STYLES */
-    /* =============================================== */
     .cookies-popup {
         position: fixed;
         bottom: -100%;
@@ -6016,9 +5864,6 @@
         }
     }
 
-/* =============================================== */
-/* BOTTOM OZOW ADVERT */
-/* =============================================== */
 
 .bottom-ozow-advert {
     position: fixed;
@@ -6457,10 +6302,7 @@
 
 </head>
 <body oncontextmenu="return false;">
-    
-    <!-- =============================================== -->
-    <!-- HEADER SECTION -->
-    <!-- =============================================== -->
+
     <div class="header-container">
         <div class="offer-bar" id="offerBar">
             <div class="offer-content">
@@ -6474,7 +6316,6 @@
                 </div>
             </div>
             
-            <!-- Mobile contact info -->
             <div class="mobile-contact-offer">
                 <div class="mobile-contact-info">
                     <div class="phone-icon">
@@ -6502,7 +6343,6 @@
                 </div>
             </div>
             
-            <!-- Desktop social icons -->
             <div class="social-icons desktop-social">
                 <a href="#" class="social-icon">
                     <i class="fab fa-instagram"></i>
@@ -6519,7 +6359,6 @@
             </div>
         </div>
         
-        <!-- Main Header (Desktop) -->
         <div class="main-header">
             <div class="logo">
                 <img src="assets/images/logo.svg" alt="96 Studios Logo" class="logo-img">
@@ -6571,7 +6410,6 @@
             </div>
         </nav>
         
-        <!-- Mobile Header -->
         <div class="mobile-header">
             <div class="mobile-top">
                 <div class="mobile-logo">
@@ -6594,15 +6432,10 @@
             </div>
         </div>
     </div>
-    
-    <!-- =============================================== -->
-    <!-- HERO SECTION -->
-    <!-- =============================================== -->
 
 <section class="hero-section">
     <div class="swiper heroSwiper">
         <div class="swiper-wrapper">
-            <!-- Slide 1 -->
             <div class="swiper-slide">
                 <div class="slide-image-container">
                     <img src="assets/images/slide-01.png" alt="Business Person 1" class="slide-image">
@@ -6617,7 +6450,6 @@
                 </div>
             </div>
             
-            <!-- Slide 2 -->
             <div class="swiper-slide">
                 <div class="slide-image-container">
                     <img src="assets/images/slide-02.png" alt="Business Person 2" class="slide-image">
@@ -6632,7 +6464,6 @@
                 </div>
             </div>
             
-            <!-- Slide 3 -->
             <div class="swiper-slide">
                 <div class="slide-image-container">
                     <img src="assets/images/slide-03.png" alt="Business Person 3" class="slide-image">
@@ -6648,16 +6479,13 @@
             </div>
         </div>
         
-        <!-- Pagination -->
         <div class="swiper-pagination"></div>
         
-        <!-- Navigation buttons -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
     </div>
 </section>
 
-<!-- WhatsApp Button -->
 <a id="whatsappBtn"
    class="whatsapp-btn d-flex align-items-center justify-content-center"
    href="https://wa.me/27817925033"
@@ -6667,7 +6495,6 @@
     <span id="wishlistCounter" class="wishlist-counter">0</span>
 </a>
 
-    <!-- Mobile Bottom Navigation -->
     <nav class="mobile-bottom-nav">
         <ul class="nav-items">
             <li>
@@ -6713,7 +6540,6 @@
         </ul>
     </nav>
     
-    <!-- Mobile Menu -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
@@ -6736,17 +6562,13 @@
         </ul>
     </div> 
 
-    <!-- =============================================== -->
-    <!-- SERVICES SECTION -->
-    <!-- =============================================== -->
-
 <section class="services-section" id="services">
     <h2>Our Design Services</h2>
     <p class="subtitle">Professional design solutions tailored to your needs</p>
     
     <div id="design-container" class="design-container">
         <div class="design-grid" id="servicesGrid">
-            <!-- Services dynamically inserted here -->
+            <!-- Services -->
         </div>
         
         <div class="services-load-more">
@@ -6758,9 +6580,6 @@
     </div>
 </section>
 
-        <!-- =============================================== -->
-        <!-- UX/UI GALLERY SECTION -->
-        <!-- =============================================== -->
     <section class="gallery-section">
         <div class="gallery-container">
             <div class="gallery-header">
@@ -6769,7 +6588,6 @@
             </div>
             
             <div class="gallery-grid">
-                <!-- Image 1 -->
                 <div class="gallery-item">
                     <div class="image-card" tabindex="0">
                         <div class="image-wrapper">
@@ -6783,7 +6601,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 2 -->
                 <div class="gallery-item">
                     <div class="image-card" tabindex="0">
                         <div class="image-wrapper">
@@ -6797,7 +6614,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 3 -->
                 <div class="gallery-item">
                     <div class="image-card" tabindex="0">
                         <div class="image-wrapper">
@@ -6811,7 +6627,6 @@
                     </div>
                 </div>
                 
-                <!-- Image 4 -->
                 <div class="gallery-item">
                     <div class="image-card" tabindex="0">
                         <div class="image-wrapper">
@@ -6832,9 +6647,6 @@
         </div>
     </section>
 
-    <!-- =============================================== -->
-    <!-- CONTENT BLOCK SECTION -->
-    <!-- =============================================== -->
     <section class="content-block-section">
     <div class="content-block-container">
         <div class="content-text">
@@ -6851,13 +6663,8 @@
     </div>
 </section>
 
-    <!-- =============================================== -->
-    <!-- TOP DESIGNS CAROUSEL SECTION -->
-    <!-- =============================================== -->
-
     <section class="top-designs-section">
         <div class="designs-container">
-            <!-- Section Header -->
             <div class="designs-header">
                 <h2 class="designs-title">Top Designs</h2>
                 <a href="#" class="view-all-link">
@@ -6866,7 +6673,6 @@
                 </a>
             </div>
 
-            <!-- Swiper Container -->
             <div class="swiper top-designs-swiper">
                 <div class="swiper-wrapper">
                     
@@ -6899,7 +6705,6 @@
                         </div>
                     </div> -->
 
-                    <!-- Slide 1 - Logo Design -->
                         <div class="swiper-slide">
                             <div class="design-card" data-service-id="logo-design" data-tier-name="premium">
                                 <div class="design-image-container">
@@ -6925,7 +6730,6 @@
                             </div>
                         </div>
 
-                   <!-- Slide 2 - Poster Design -->
                     <div class="swiper-slide">
                         <div class="design-card" data-service-id="poster-design" data-tier-name="premium">
                             <div class="design-image-container">
@@ -6944,7 +6748,6 @@
                                 <p>Eye-catching and impactful poster designs for events.</p>
                                 <img style="width: 120px; height: auto; padding-top: 10px; padding-bottom: 7px;" src="assets/images/cart-title-imge.png" alt="">
                                 <div class="design-price-row">
-                                    <!-- REGULAR PRICE ONLY (no discount) -->
                                     <span class="design-price">R400.00</span>
                                     <span class="design-tier">Premium</span>
                                 </div>
@@ -6980,7 +6783,6 @@
                         </div>
                     </div>  -->
 
-                    <!-- Slide 3 - Business Card  -->
                 <div class="swiper-slide">
                     <div class="design-card" data-service-id="business-card" data-tier-name="starter">
                         <div class="design-image-container">
@@ -7006,7 +6808,6 @@
                     </div>
                 </div>
 
-                   <!-- Slide 4 - Board Design -->
                     <div class="swiper-slide">
                         <div class="design-card" data-service-id="board-design" data-tier-name="premium">
                             <div class="design-image-container">
@@ -7025,7 +6826,6 @@
                                 <p>Strategic designs for presentation boards.</p>
                                 <img style="width: 120px; height: auto; padding-top: 10px; padding-bottom: 7px;" src="assets/images/cart-title-imge.png" alt="">
                                 <div class="design-price-row">
-                                    <!-- REGULAR PRICE ONLY (no discount) -->
                                     <span class="design-price">R600.00</span>
                                     <span class="design-tier">Premium</span>
                                 </div>
@@ -7033,7 +6833,6 @@
                         </div>
                     </div>
                 
-                <!-- Navigation -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 
@@ -7042,9 +6841,6 @@
         </div>
     </section>
 
-    <!-- =============================================== -->
-    <!-- PRINTING ADVERT SECTION -->
-    <!-- =============================================== -->
     <section class="printing-advert-section">
         <div class="printing-container">
             <div class="printing-content">
@@ -7060,13 +6856,9 @@
         </div>
     </section>
 
-    <!-- =============================================== -->
-    <!-- FEATURES SECTION -->
-    <!-- =============================================== -->
     <section class="features-section">
         <div class="features-container">
             <div class="features-grid">
-                <!-- Feature 1 -->
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-wallet"></i>
@@ -7075,7 +6867,6 @@
                     <p class="feature-text">Save big with our exclusive offers and discounts.</p>
                 </div>
 
-                <!-- Feature 2 -->
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
@@ -7084,7 +6875,6 @@
                     <p class="feature-text">Monitor your design progress in real-time.</p>
                 </div>
 
-                <!-- Feature 3 -->
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
@@ -7093,7 +6883,6 @@
                     <p class="feature-text">Pay safe, anywhere with our secure payment system.</p>
                 </div>
 
-                <!-- Feature 4 -->
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-paint-brush"></i>
@@ -7105,9 +6894,6 @@
         </div>
     </section>
 
-    <!-- =============================================== -->
-        <!-- FOOTER SECTION -->
-    <!-- =============================================== -->
 <footer class="footer-section" id="footer">
     <div class="footer-container">
         <div class="footer-content">
@@ -7149,14 +6935,12 @@
         </div>
         
         <div class="footer-bottom">
-            <!-- Ozow Payment Logo -->
             <div class="ozow-logo-container">
                 <div class="ozow-logo-wrapper">
                     <img src="assets/images/ozow-image.png" alt="Ozow Payment" class="ozow-logo">
                 </div>
             </div>
             
-            <!-- Social Icons -->
             <div class="social-icons">
                 <a href="https://www.instagram.com/96studioss/" class="social-icon"><i class="fab fa-instagram"></i></a>
                 <a href="https://www.facebook.com/ninetysixgraphics" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -7167,19 +6951,9 @@
         </div>
     </div>
 </footer>
-
-<!-- ============================================================================================== -->
-<!-- ============================================================================================== -->
-<!-- ============================================================================================== -->
     
-    <!-- =============================================== -->
-    <!-- AUTHENTICATION SECTIONS -->
-    <!-- =============================================== -->
-    
-    <!-- Desktop Auth Overlay -->
-    <div class="auth-overlay" id="desktopAuthOverlay">
+        <div class="auth-overlay" id="desktopAuthOverlay">
         <div class="auth-container-desktop">
-            <!-- LEFT SIDE -->
             <div class="auth-left-side">
                 <button class="close-auth" id="closeDesktopAuth">
                     <i class="fas fa-times"></i>
@@ -7190,7 +6964,6 @@
                 </div>
             </div>
             
-            <!-- RIGHT SIDE -->
             <div class="auth-right-side">
                 <div class="auth-body">
                     <div class="auth-tabs">
@@ -7200,7 +6973,6 @@
                     
                     <div id="desktopAuthMessages"></div>
                     
-                    <!-- Login Form -->
                     <form id="desktopLoginForm" class="auth-form active">
                         <div class="form-group">
                             <label class="form-label" for="desktopLoginEmail">Email Address</label>
@@ -7237,7 +7009,6 @@
                         </div>
                     </form>
                     
-                    <!-- Register Form -->
                     <form id="desktopRegisterForm" class="auth-form">
                         <div class="form-group">
                             <label class="form-label" for="desktopRegisterEmail">Email Address</label>
@@ -7285,7 +7056,6 @@
                         </div>
                     </form>
                     
-                    <!-- Forgot Password Form -->
                     <form id="desktopForgotPasswordForm" class="auth-form">
                         <div class="form-group">
                             <label class="form-label" for="desktopResetEmail">Email Address</label>
@@ -7309,7 +7079,6 @@
         </div>
     </div>
     
-    <!-- Mobile Auth Container -->
     <div class="auth-container-mobile" id="mobileAuthContainer">
         <div class="auth-header">
             <button class="close-auth" id="closeMobileAuth">
@@ -7327,7 +7096,6 @@
             
             <div id="mobileAuthMessages"></div>
             
-            <!-- Login Form -->
             <form id="mobileLoginForm" class="auth-form active">
                 <div class="form-group">
                     <label class="form-label" for="mobileLoginEmail">Email Address</label>
@@ -7364,7 +7132,6 @@
                 </div>
             </form>
             
-            <!-- Register Form -->
             <form id="mobileRegisterForm" class="auth-form">
                 <div class="form-group">
                     <label class="form-label" for="mobileRegisterEmail">Email Address</label>
@@ -7412,7 +7179,6 @@
                 </div>
             </form>
             
-            <!-- Forgot Password Form -->
             <form id="mobileForgotPasswordForm" class="auth-form">
                 <div class="form-group">
                     <label class="form-label" for="mobileResetEmail">Email Address</label>
@@ -7432,14 +7198,12 @@
                 </div>
             </form>
             
-            <!-- Link to Account Settings -->
             <div class="auth-footer" id="mobileAccountLink" style="display: none;">
                 <a href="#" class="auth-link" id="mobileGoToAccount">Go to Account Settings</a>
             </div>
         </div>
     </div>
     
-    <!-- Account Section -->
     <div class="account-section" id="accountSection">
         <div class="account-header">
             <button class="close-auth" id="closeAccountSection">
@@ -7452,7 +7216,6 @@
         <div class="account-body">
             <div id="accountMessages"></div>
             
-            <!-- User Information Card -->
             <div class="user-info-card">
                 <div class="user-info-row">
                     <div class="info-label">Email Address:</div>
@@ -7481,7 +7244,6 @@
                 </div>
             </div>
             
-            <!-- Email Verification Section -->
             <h2 class="section-title">Email Verification</h2>
             <div class="settings-card" id="verificationSection">
                 <h3>Verify Your Email Address</h3>
@@ -7496,7 +7258,6 @@
                 </div>
             </div>
             
-            <!-- Change Password Section -->
             <h2 class="section-title">Security</h2>
             <div class="settings-card">
                 <h3>Change Password</h3>
@@ -7543,7 +7304,6 @@
                 </form>
             </div>
             
-            <!-- Delete Account Section -->
             <div class="settings-card">
                 <h3>Delete Account</h3>
                 <p style="color: #dc2626; font-weight: 600;">Warning: This action is permanent and cannot be undone.</p>
@@ -7556,7 +7316,6 @@
                 </div>
             </div>
             
-            <!-- Sign Out Section -->
             <div class="signout-section">
                 <button class="action-button secondary" id="signOutBtn">
                     <i class="fas fa-sign-out-alt"></i> Sign Out
@@ -7565,7 +7324,6 @@
         </div>
     </div>
     
-    <!-- Delete Account Confirmation Modal -->
     <div class="modal-overlay" id="deleteModal">
         <div class="modal">
             <h3>Confirm Account Deletion</h3>
@@ -7593,13 +7351,8 @@
         </div>
     </div>
 
-    <!-- =============================================== -->
-        <!-- CART SECTION HTML -->
-    <!-- =============================================== -->
-
 <div class="cart-popup-overlay" id="cartPopup">
     <div class="cart-popup-container">
-        <!-- Cart Header -->
         <div class="cart-header">
             <button class="close-cart" id="closeCart">
                 <i class="fas fa-times"></i>
@@ -7611,9 +7364,7 @@
             <p>Review and manage your selected designs</p>
         </div>
 
-        <!-- Cart Body -->
         <div class="cart-body">
-            <!-- Empty Cart State -->
             <div class="cart-empty" id="cartEmptyState">
                 <i class="fas fa-shopping-cart"></i>
                 <h3>Your cart is empty</h3>
@@ -7623,13 +7374,11 @@
                 </button>
             </div>
 
-            <!-- Cart Items -->
             <div class="cart-items-container" id="cartItemsContainer">
                 <ul class="cart-items-list" id="cartItemsList">
-                    <!-- Cart dynamically inserted here -->
+                    <!-- Cart -->
                 </ul>
 
-                <!-- Cart Total -->
                 <div class="cart-total-section" id="cartTotalSection">
                     <div class="cart-total-row">
                         <span class="cart-total-label">Subtotal</span>
@@ -7644,7 +7393,6 @@
             </div>
         </div>
 
-        <!-- Cart Footer -->
         <div class="cart-footer" id="cartFooter">
             <div class="cart-actions">
                 <button class="cart-btn secondary" id="continueShopping">
@@ -7660,19 +7408,13 @@
     </div>
 </div>
 
-<!-- =============================================== -->
-<!-- DESIGN CONFIRMATION SECTION HTML -->
-<!-- =============================================== -->
-
 <div class="confirmation-overlay" id="confirmationPopup">
     <div class="confirmation-container">
-        <!-- Confirmation Header with Advert -->
         <div class="confirmation-header">
             <button class="close-confirmation" id="closeConfirmation">
                 <i class="fas fa-times"></i>
             </button>
             <div class="confirmation-header-content">
-                <!-- Desktop layout: image left, text right -->
                 <div class="confirmation-header-desktop">
                     <img src="assets/images/cart-title-image.png" 
                          alt="Special Offer" 
@@ -7689,21 +7431,17 @@
             </div>
         </div>
 
-        <!-- Confirmation Body -->
         <div class="confirmation-body">
-            <!-- Cart Items Section -->
             <div class="confirmation-items-section">
                 <h3><i class="fas fa-shopping-cart"></i> Your Selected Designs</h3>
                 <ul class="confirmation-items-list" id="confirmationItemsList">
-                    <!-- Confirmation dynamically inserted here -->
+                    <!-- Confirmation -->
                 </ul>
             </div>
 
-            <!-- User Input Section -->
             <div class="confirmation-input-section">
                 <h3><i class="fas fa-info-circle"></i> Project Details</h3>
                 <div class="confirmation-input-grid">
-                    <!-- Sketch Image URL -->
                     <div class="confirmation-form-group">
                         <label>Sketch Image URL (optional)</label>
                         <input 
@@ -7715,13 +7453,11 @@
                             <i class="fas fa-link"></i>
                             Paste a link to your sketch or reference image (Google Drive, Dropbox, Imgur, etc.)
                         </div>
-                        <!-- URL Preview Area -->
                         <div class="confirmation-url-preview" id="urlPreview">
-                            <!-- URL preview appear here -->
+                            <!-- URL preview -->
                         </div>
                     </div>
 
-                    <!-- Design Description -->
                     <div class="confirmation-form-group">
                         <label>Design Description <span class="required">*</span></label>
                         <textarea 
@@ -7734,7 +7470,6 @@
                         </div>
                     </div>
 
-                    <!-- Preferred Colors -->
                     <div class="confirmation-form-group">
                         <label>Preferred Colors</label>
                         <input 
@@ -7750,7 +7485,6 @@
                 </div>
             </div>
 
-            <!-- Order Summary -->
             <div class="confirmation-summary">
                 <h4><i class="fas fa-receipt"></i> Order Summary</h4>
                 <div class="confirmation-summary-row">
@@ -7764,7 +7498,6 @@
             </div>
         </div>
 
-        <!-- Confirmation Footer -->
         <div class="confirmation-footer">
             <div class="confirmation-actions">
                 <button class="confirmation-btn secondary" id="backToCart">
@@ -7780,13 +7513,8 @@
     </div>
 </div>
 
-<!-- =============================================== -->
-<!-- WISHLIST MODAL SECTION -->
-<!-- =============================================== -->
-
 <div class="wishlist-overlay" id="wishlistModal">
     <div class="wishlist-container">
-        <!-- Wishlist Header -->
         <div class="wishlist-header">
             <button class="close-wishlist" id="closeWishlist">
                 <i class="fas fa-times"></i>
@@ -7798,9 +7526,7 @@
             <p>Save designs you love and submit them later</p>
         </div>
 
-        <!-- Wishlist Body -->
         <div class="wishlist-body">
-            <!-- Empty Wishlist State -->
             <div class="wishlist-empty" id="wishlistEmptyState">
                 <i class="fas fa-heart"></i>
                 <h3>Your wishlist is empty</h3>
@@ -7810,15 +7536,13 @@
                 </button>
             </div>
 
-            <!-- Wishlist Items -->
             <div class="wishlist-items-container" id="wishlistItemsContainer">
                 <ul class="wishlist-items-list" id="wishlistItemsList">
-                    <!-- Wishlist items dynamically inserted here -->
+                    <!-- Wishlist items -->
                 </ul>
             </div>
         </div>
 
-        <!-- Wishlist Footer -->
         <div class="wishlist-footer" id="wishlistFooter">
             <div class="wishlist-actions">
                 <button class="wishlist-btn secondary" id="continueBrowsing">
@@ -7834,15 +7558,10 @@
     </div>
 </div>
 
-    <!-- Advertiser Embed -->
 <div class="advertiser-embed-container" id="advertiserEmbed">
     <button class="close-btn" id="advertiserCloseBtn">×</button>
     <iframe class="advertiser-iframe" src="https://myad-portal.netlify.app/"></iframe>
 </div>
-
-<!-- =============================================== -->
-<!-- COOKIES POPUP -->
-<!-- =============================================== -->
 
 <div class="cookies-popup" id="cookiesPopup">
     <div class="cookies-content">
@@ -7859,7 +7578,6 @@
     </div>
 </div>
 
-<!-- Cookies Settings Modal -->
 <div class="cookies-modal-overlay" id="cookiesModal">
     <div class="cookies-modal">
         <button class="close-cookies-modal" id="closeCookiesModal">
@@ -7917,10 +7635,6 @@
     </div>
 </div>
 
-<!-- =============================================== -->
-<!-- BOTTOM OZOW ADVERT - SIMPLE & WORKING -->
-<!-- =============================================== -->
-
 <div class="bottom-ozow-advert" id="bottomOzowAdvert">
     <div class="bottom-ozow-content">
         <div class="ozow-left">
@@ -7956,21 +7670,23 @@
             </button>
         </div>
         <div class="mobile-search-results" id="mobileSearchResults">
-            <!-- Search results appear here -->
+            <!-- Search results -->
         </div>
     </div>
 </div>
 
-<!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+<script src="azure-storage.js" alpha></script>
+<script src="google-bigquery.js" defer></script>
+<script src="oracle-db.jsx" catch></script>
+<script src="aws-server-bundle.js" defer></script>
+<script src="cloudflare-cdn.js" react></script>
+<script src="digitalocean-api.js" defer></script>
+<script src="server-terms.js" defer></script>
+<script src="app-cloud.js" defer></script>
 
-    <!-- Swiper JS Library -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <!-- =============================================== -->
-    <!-- HEADER SECTION SCRIPT -->
-    <!-- =============================================== -->
 
     <script type="module">
     document.addEventListener('DOMContentLoaded', function() {
@@ -8212,13 +7928,8 @@
         });
     </script>
 
-    <!-- =============================================== -->
-    <!-- HERO SECTION SCRIPT -->
-    <!-- =============================================== -->
-
     <script type="module">
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Swiper
             const heroSwiper = new Swiper('.heroSwiper', {
                 direction: 'horizontal',
                 loop: true,
@@ -8296,7 +8007,6 @@
                 }
             });
             
-            // Pause autoplay on hover
             const heroContainer = document.querySelector('.hero-section');
             
             heroContainer.addEventListener('mouseenter', function() {
@@ -8307,7 +8017,6 @@
                 heroSwiper.autoplay.start();
             });
             
-            // Handle CTA button clicks
                 const ctaButtons = document.querySelectorAll('.slide-cta, #pricing-nav, #branding-nav, .view-all-link, #mobileShopBtn#branding-nav-mobile, #graphic-design-nav-mobile, #pricing-nav-mobile');
                 ctaButtons.forEach(button => {
                     button.addEventListener('click', function(e) {
@@ -8323,7 +8032,6 @@
                 });
 
 
-            // Handle touch gestures for mobile
             let touchStartX = 0;
             let touchEndX = 0;
             
@@ -8349,7 +8057,6 @@
                 }
             }
             
-            // Add keyboard navigation
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowLeft') {
                     heroSwiper.slidePrev();
@@ -8396,12 +8103,7 @@
         });
     </script>
 
-    <!-- =============================================== -->
-    <!-- AUTHENTICATION SECTION SCRIPT -->
-    <!-- =============================================== -->
-
     <script type="module">
-        // Import Firebase functions
         import { 
             getCurrentUser, 
             loginWithEmail, 
@@ -8523,7 +8225,6 @@
                 loadUserData();
             }
             
-            // Close buttons
             document.getElementById('closeDesktopAuth').addEventListener('click', closeAllAuthModals);
             document.getElementById('closeMobileAuth').addEventListener('click', closeAllAuthModals);
             document.getElementById('closeAccountSection').addEventListener('click', closeAllAuthModals);
@@ -8543,7 +8244,6 @@
                 }
             });
             
-            // Profile button click handlers
             document.getElementById('desktopProfileBtn').addEventListener('click', function() {
                 if (currentUser) {
                     openAccountSection();
@@ -8565,7 +8265,6 @@
                 openAccountSection();
             });
             
-            // Auth tab switching
             function switchAuthTab(tabName, platform) {
                 const tabPrefix = platform === 'mobile' ? 'mobile' : 'desktop';
                 const tabs = document.querySelectorAll(`#${platform === 'mobile' ? 'mobileAuthContainer' : 'desktopAuthOverlay'} .auth-tab`);
@@ -8625,7 +8324,6 @@
                 switchAuthTab('login', 'mobile');
             });
             
-            // Forgot password links
             document.getElementById('desktopForgotPassword').addEventListener('click', function(e) {
                 e.preventDefault();
                 const desktopAuthMessages = document.getElementById('desktopAuthMessages');
@@ -8658,7 +8356,6 @@
                 });
             });
             
-            // Back to login from forgot password
             document.getElementById('desktopBackToLogin').addEventListener('click', function(e) {
                 e.preventDefault();
                 switchAuthTab('login', 'desktop');
@@ -8669,7 +8366,6 @@
                 switchAuthTab('login', 'mobile');
             });
             
-            // Password toggle functionality
             document.querySelectorAll('.password-toggle').forEach(button => {
                 button.addEventListener('click', function() {
                     const targetId = this.dataset.target;
@@ -8688,7 +8384,6 @@
                 });
             });
             
-            // Utility functions
             function showMessage(container, type, text) {
                 clearMessages(container);
                 const messageDiv = document.createElement('div');
@@ -8736,7 +8431,6 @@
                 button.disabled = false;
             }
             
-            // Login functionality
             document.getElementById('desktopLoginForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
@@ -8825,7 +8519,6 @@
                 }
             });
             
-            // Registration functionality
             document.getElementById('desktopRegisterForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
@@ -8918,7 +8611,6 @@
                 hideLoading(registerButton);
             });
             
-            // Password reset functionality
             document.getElementById('desktopForgotPasswordForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
@@ -8981,7 +8673,6 @@
                 hideLoading(resetButton);
             });
             
-            // Google authentication
             document.getElementById('desktopGoogleLoginButton').addEventListener('click', () => handleGoogleAuth('desktop'));
             document.getElementById('desktopGoogleRegisterButton').addEventListener('click', () => handleGoogleAuth('desktop'));
             
@@ -9007,7 +8698,6 @@
                 }
             }
             
-            // Account section functionality
             function loadUserData() {
                 const user = getCurrentUser();
                 
@@ -9098,7 +8788,6 @@
                 }
             }
             
-            // Resend verification email
             document.getElementById('resendVerificationBtn').addEventListener('click', async function() {
                 showLoading(this);
                 const messagesDiv = document.getElementById('accountMessages');
@@ -9115,7 +8804,6 @@
                 hideLoading(this);
             });
             
-            // Refresh status
             document.getElementById('refreshStatusBtn').addEventListener('click', function() {
                 loadUserData();
                 const messagesDiv = document.getElementById('accountMessages');
@@ -9126,7 +8814,6 @@
                 }, 2000);
             });
             
-            // Change password form
             document.getElementById('changePasswordForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
@@ -9171,13 +8858,11 @@
                 hideLoading(changePasswordBtn);
             });
             
-            // Delete account modal
             document.getElementById('deleteAccountBtn').addEventListener('click', function() {
                 deleteModal.style.display = 'flex';
                 document.getElementById('deletePassword').focus();
             });
             
-            // Delete account form submission
             document.getElementById('deleteAccountForm').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
@@ -9207,7 +8892,6 @@
                 }
             });
             
-            // Sign out
             document.getElementById('signOutBtn').addEventListener('click', async function() {
                 const messagesDiv = document.getElementById('accountMessages');
                 const result = await signOutUser();
@@ -9226,14 +8910,9 @@
         });
     </script>
 
-    <!-- =============================================== -->
-    <!-- SERVICES FUNCTIONALITY SCRIPT -->
-    <!-- =============================================== -->
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const servicesData = [
-    // ========== REGULAR SERVICES ==========
     {
         id: "logo-design",
         title: "Logo Design",
@@ -9766,7 +9445,6 @@
         ]
     },
 
-    // ========== PAGE-BASED SERVICES ==========
     {
         id: "menu-design",
         title: "Menu Design",
@@ -9914,7 +9592,6 @@
         ]
     },
 
-    // ========== WEBSITE SERVICES ==========
     {
         id: "website-design",
         title: "Website Design",
@@ -9978,7 +9655,6 @@
     }
 ];
 
-        // ========== CORE FUNCTIONS ==========
         const servicesGrid = document.getElementById('servicesGrid');
         const showMoreBtn = document.getElementById('showMoreBtn');
         const INITIAL_DISPLAY_COUNT = 4;
@@ -9986,7 +9662,6 @@
         let currentDisplayCount = 0;
         let isLoading = false;
 
-        // Function to generate page dropdown
         function generatePageDropdown(service) {
             let options = '';
             for (let i = 1; i <= service.maxPages; i++) {
@@ -10005,7 +9680,6 @@
             `;
         }
 
-        // Function to generate features HTML
         function generateFeaturesHTML(features) {
             const maxVisibleFeatures = 3;
             const hasMoreFeatures = features.length > maxVisibleFeatures;
@@ -10031,7 +9705,6 @@
         }
 
 
-        // Function to generate addons HTML
         function generateAddonsHTML(addons, serviceId, tierName) {
             return `
                 <div class="design-addons-grid" id="addons-${serviceId}-${tierName}">
@@ -10059,7 +9732,6 @@
             `;
         }
 
-// Function to generate service HTML with discounts
 function generateServiceHTML(service) {
     const tierOptions = service.tiers.map((tier, index) => 
         `<div class="design-tier-option ${index === 0 ? 'active' : ''}" 
@@ -10074,7 +9746,6 @@ function generateServiceHTML(service) {
         let extraControls = '';
         let featuresHTML = '';
         
-        // Calculate discounted price if discount exists
         if (service.discount && service.discount.active && service.discount.percentage > 0) {
             const originalPriceMatch = tier.price.match(/R\s*(\d+(\.\d+)?)/);
             if (originalPriceMatch) {
@@ -10100,7 +9771,6 @@ function generateServiceHTML(service) {
             priceHTML = `<div class="design-service-price">${tier.price}</div>`;
             featuresHTML = tier.addons ? generateAddonsHTML(tier.addons, service.id, tier.name) : '';
         } else {
-            // Handle regular service (including discounted services)
             priceHTML = `<div class="design-service-price">${tier.price}</div>`;
             featuresHTML = tier.features ? generateFeaturesHTML(tier.features) : '';
         }
@@ -10142,7 +9812,6 @@ function generateServiceHTML(service) {
     `;
 }
         
-        // Function to load services
         function loadServices(count, append = false) {
             if (isLoading) return;
             
@@ -10174,7 +9843,6 @@ function generateServiceHTML(service) {
             }, 300);
         }
         
-        // Function to update addon total price
         function updateAddonTotal(serviceId, tierName) {
             const checkboxes = document.querySelectorAll(`#addons-${serviceId}-${tierName} .addon-checkbox:checked`);
             let total = 0;
@@ -10192,7 +9860,6 @@ function generateServiceHTML(service) {
             if (totalElement) {
                 totalElement.querySelector('.design-total-price').textContent = `R${total.toLocaleString()}`;
                 
-                // Update button text to show selected count
                 const button = document.querySelector(`.design-btn[data-service="${serviceId}"][data-tier="${tierName}"]`);
                 if (button) {
                     if (selectedAddons.length > 0) {
@@ -10204,9 +9871,7 @@ function generateServiceHTML(service) {
             }
         }
         
-        // Function to initialize all features
         function initializeAllFeatures() {
-            // Tier switching
             document.querySelectorAll('.design-tier-option').forEach(option => {
                 option.addEventListener('click', function() {
                     const serviceId = this.dataset.service;
@@ -10226,7 +9891,6 @@ function generateServiceHTML(service) {
                 });
             });
             
-            // Page quantity selectors
             document.querySelectorAll('.design-page-quantity').forEach(select => {
                 const serviceId = select.dataset.service;
                 const service = servicesData.find(s => s.id === serviceId);
@@ -10243,9 +9907,7 @@ function generateServiceHTML(service) {
                 select.dispatchEvent(new Event('change'));
             });
             
-            // Addon checkboxes
             document.querySelectorAll('.addon-checkbox').forEach(checkbox => {
-                // Initialize with unchecked state
                 checkbox.checked = false;
                 
                 checkbox.addEventListener('change', function() {
@@ -10253,7 +9915,6 @@ function generateServiceHTML(service) {
                     const tierName = this.dataset.tier;
                     const addonItem = this.closest('.design-addon-item');
                     
-                    // Toggle selected class
                     if (addonItem) {
                         if (this.checked) {
                             addonItem.classList.add('selected');
@@ -10266,7 +9927,6 @@ function generateServiceHTML(service) {
                 });
             });
             
-            // Read more buttons
             document.querySelectorAll('.design-show-more').forEach(button => {
                 button.addEventListener('click', function() {
                     const container = this.closest('.design-features-container');
@@ -10285,7 +9945,6 @@ function generateServiceHTML(service) {
                 });
             });
             
-            // Service buttons
             document.querySelectorAll('.design-btn').forEach(button => {
                 button.addEventListener('click', function() {
                     const serviceId = this.dataset.service;
@@ -10298,7 +9957,6 @@ function generateServiceHTML(service) {
                     let selectedAddons = [];
                     
                     if (service.isAddonService) {
-                        // Handle addon service
                         const checkboxes = document.querySelectorAll(`#addons-${serviceId}-${tierName} .addon-checkbox:checked`);
                         checkboxes.forEach(checkbox => {
                             selectedAddons.push({
@@ -10317,14 +9975,12 @@ function generateServiceHTML(service) {
                         }
                         
                     } else if (service.hasPageQuantity) {
-                        // Handle page-based service
                         const select = document.querySelector(`[data-service="${serviceId}"] .design-page-quantity`);
                         const pages = select ? parseInt(select.value) : 1;
                         const totalPrice = service.basePrice + ((pages - 1) * service.pricePerPage);
                         price = `R${totalPrice}`;
                         details = `${service.title} - ${tier.name} (${pages} page${pages > 1 ? 's' : ''})`;
                     } else {
-                        // Handle regular service
                         price = tier.price;
                     }
                     
@@ -10332,7 +9988,6 @@ function generateServiceHTML(service) {
                 });
             });
             
-            // Initialize addon totals
             document.querySelectorAll('.design-addons-grid').forEach(grid => {
                 const id = grid.id;
                 const parts = id.split('-');
@@ -10344,7 +9999,6 @@ function generateServiceHTML(service) {
             });
         }
         
-        // Event listeners
         if (showMoreBtn) {
             showMoreBtn.addEventListener('click', () => loadServices(LOAD_MORE_COUNT, true));
         }
@@ -10354,15 +10008,10 @@ function generateServiceHTML(service) {
     
 </script>
 
-<!-- =============================================== -->
-<!-- CART SECTION SCRIPT -->
-<!-- =============================================== -->
-
 <script type="module">
     import { initializeCartSystem } from './cart.js';
     
     document.addEventListener('DOMContentLoaded', function() {
-        // Initialize cart system
         const cartSystem = initializeCartSystem();
         
         if (!cartSystem) {
@@ -10374,11 +10023,10 @@ function generateServiceHTML(service) {
 </script>
 
 <script>
-   // APPENDS DROPDOWN TO BODY
 (function() {
     'use strict';
     
-    // Wait for DOM to be ready
+
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initSearch);
     } else {
@@ -10388,7 +10036,7 @@ function generateServiceHTML(service) {
     function initSearch() {
         console.log('Initializing search...');
         
-        // Get search elements
+
         const searchInput = document.querySelector('.search-input');
         const searchIcon = document.querySelector('.search-icon');
         
@@ -10397,7 +10045,6 @@ function generateServiceHTML(service) {
             return;
         }
         
-        // Create and append dropdown to body
         const dropdown = document.createElement('div');
         dropdown.id = 'searchResultsDropdown';
         dropdown.className = 'search-results-dropdown';
@@ -10405,7 +10052,6 @@ function generateServiceHTML(service) {
         
         console.log('Dropdown created and appended to body');
         
-        // Services data 
         const services = [
              {
         id: "logo-design",
@@ -10657,44 +10303,35 @@ function generateServiceHTML(service) {
     }
         ];
         
-        // Popular searches
         const popularSearches = ["logo", "website", "flyer", "poster", "menu", "branding", "cards", "social"];
         
-        // Variables
         let searchTimeout;
         
-        // Show dropdown
         function showDropdown() {
             dropdown.classList.add('active');
             positionDropdown();
         }
         
-        // Hide dropdown
         function hideDropdown() {
             dropdown.classList.remove('active');
         }
         
-        // Position dropdown below search input
         function positionDropdown() {
             const inputRect = searchInput.getBoundingClientRect();
             const scrollY = window.scrollY || window.pageYOffset;
             
-            // Position dropdown below search input
             dropdown.style.top = (inputRect.bottom + scrollY + 10) + 'px';
             
-            // Center horizontally
             const inputCenter = inputRect.left + (inputRect.width / 2);
             dropdown.style.left = inputCenter + 'px';
             dropdown.style.transform = 'translateX(-50%)';
             
-            // Adjust for mobile
             if (window.innerWidth <= 768) {
                 dropdown.style.left = '50%';
                 dropdown.style.width = '95%';
             }
         }
         
-        // Perform search
         function performSearch(searchTerm) {
             if (!searchTerm.trim()) {
                 hideDropdown();
@@ -10703,7 +10340,6 @@ function generateServiceHTML(service) {
             
             console.log('Searching for:', searchTerm);
             
-            // Show loading
             dropdown.innerHTML = `
                 <div class="search-loading">
                     <span class="loading-spinner"></span>
@@ -10712,28 +10348,22 @@ function generateServiceHTML(service) {
             `;
             showDropdown();
             
-            // Search with slight delay
             setTimeout(() => {
                 const results = searchServices(searchTerm);
                 displayResults(results, searchTerm);
             }, 200);
         }
         
-        // Search function
         function searchServices(searchTerm) {
             const term = searchTerm.toLowerCase().trim();
             
             return services.filter(service => {
-                // Search in title
                 if (service.title.toLowerCase().includes(term)) return true;
                 
-                // Search in description
                 if (service.description.toLowerCase().includes(term)) return true;
                 
-                // Search in category
                 if (service.category.toLowerCase().includes(term)) return true;
                 
-                // Search in features
                 if (service.features.some(feature => 
                     feature.toLowerCase().includes(term)
                 )) return true;
@@ -10742,7 +10372,6 @@ function generateServiceHTML(service) {
             });
         }
         
-        // Display results
         function displayResults(results, searchTerm) {
             console.log('Found', results.length, 'results for:', searchTerm);
             
@@ -10820,13 +10449,11 @@ function generateServiceHTML(service) {
             });
         }
         
-        // Navigate to service
         function navigateToService(serviceId) {
             console.log('Navigating to:', serviceId);
             hideDropdown();
             searchInput.value = '';
             
-            // Scroll to services section
             const servicesSection = document.getElementById('services');
             if (servicesSection) {
                 servicesSection.scrollIntoView({ 
@@ -10834,18 +10461,15 @@ function generateServiceHTML(service) {
                     block: 'start'
                 });
                 
-                // Highlight the service after scrolling
                 setTimeout(() => {
                     const serviceCard = document.querySelector(`[data-service="${serviceId}"]`);
                     if (serviceCard) {
-                        // Add highlight effect
                         const originalBoxShadow = serviceCard.style.boxShadow;
                         const originalTransform = serviceCard.style.transform;
                         
                         serviceCard.style.boxShadow = '0 0 0 3px rgba(0, 155, 91, 0.3)';
                         serviceCard.style.transform = 'translateY(-5px)';
                         
-                        // Remove highlight after 3 seconds
                         setTimeout(() => {
                             serviceCard.style.boxShadow = originalBoxShadow;
                             serviceCard.style.transform = originalTransform;
@@ -10855,7 +10479,6 @@ function generateServiceHTML(service) {
             }
         }
                 
-        // Search as you type (debounced)
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.trim();
             
@@ -10871,14 +10494,12 @@ function generateServiceHTML(service) {
             }, 300);
         });
         
-        // Focus event
         searchInput.addEventListener('focus', function() {
             if (this.value.trim()) {
                 performSearch(this.value.trim());
             }
         });
         
-        // Search icon click
         if (searchIcon) {
             searchIcon.addEventListener('click', function() {
                 if (searchInput.value.trim()) {
@@ -10889,7 +10510,6 @@ function generateServiceHTML(service) {
             });
         }
         
-        // Close dropdown when clicking outside
         document.addEventListener('click', function(event) {
             const isClickInside = searchInput.contains(event.target) || 
                                  dropdown.contains(event.target) || 
@@ -10900,14 +10520,12 @@ function generateServiceHTML(service) {
             }
         });
         
-        // Handle Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape' && dropdown.classList.contains('active')) {
                 hideDropdown();
                 searchInput.blur();
             }
             
-            // Ctrl/Cmd + K to focus search
             if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
                 event.preventDefault();
                 searchInput.focus();
@@ -10917,7 +10535,6 @@ function generateServiceHTML(service) {
             }
         });
         
-        // Handle window resize and scroll
         function updateDropdownPosition() {
             if (dropdown.classList.contains('active')) {
                 positionDropdown();
@@ -10937,7 +10554,6 @@ function generateServiceHTML(service) {
 
 <script>
 
-    // Mobile search functionality
     document.addEventListener('DOMContentLoaded', function() {
         const mobileSearchBtn = document.getElementById('mobileSearchBtn');
         const mobileSearchModal = document.getElementById('mobileSearchModal');
@@ -10946,25 +10562,21 @@ function generateServiceHTML(service) {
         const closeMobileSearch = document.getElementById('closeMobileSearch');
         const searchIcon = document.querySelector('.mobile-search-icon');
         
-        // Check if mobile search button exists
         if (!mobileSearchBtn) {
             console.warn('Mobile search button not found');
             return;
         }
         
-        // Open mobile search modal
         function openMobileSearch() {
             console.log('Opening mobile search');
             mobileSearchModal.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Focus on input after a short delay
             setTimeout(() => {
                 mobileSearchInput.focus();
             }, 300);
         }
         
-        // Close mobile search modal
         function closeMobileSearchModal() {
             mobileSearchModal.classList.remove('active');
             document.body.style.overflow = 'auto';
@@ -10972,7 +10584,6 @@ function generateServiceHTML(service) {
             mobileSearchResults.innerHTML = '';
         }
         
-        // Event listeners
         mobileSearchBtn.addEventListener('click', function(e) {
             e.preventDefault();
             openMobileSearch();
@@ -10980,21 +10591,18 @@ function generateServiceHTML(service) {
         
         closeMobileSearch.addEventListener('click', closeMobileSearchModal);
         
-        // Close when clicking outside the container
         mobileSearchModal.addEventListener('click', function(e) {
             if (e.target === mobileSearchModal) {
                 closeMobileSearchModal();
             }
         });
         
-        // Escape key to close
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && mobileSearchModal.classList.contains('active')) {
                 closeMobileSearchModal();
             }
         });
         
-        // Search functionality
 
         const services = [
             {
@@ -11251,7 +10859,6 @@ function generateServiceHTML(service) {
         
         let searchTimeout;
         
-        // Perform search
         function performMobileSearch(searchTerm) {
             if (!searchTerm.trim()) {
                 mobileSearchResults.innerHTML = '';
@@ -11260,7 +10867,6 @@ function generateServiceHTML(service) {
             
             console.log('Searching mobile for:', searchTerm);
             
-            // Show loading
             mobileSearchResults.innerHTML = `
                 <div class="search-loading" style="text-align: center; padding: 40px 20px;">
                     <span class="loading-spinner"></span>
@@ -11268,28 +10874,22 @@ function generateServiceHTML(service) {
                 </div>
             `;
             
-            // Search with slight delay
             setTimeout(() => {
                 const results = searchMobileServices(searchTerm);
                 displayMobileResults(results, searchTerm);
             }, 200);
         }
         
-        // Search function
         function searchMobileServices(searchTerm) {
             const term = searchTerm.toLowerCase().trim();
             
             return services.filter(service => {
-                // Search in title
                 if (service.title.toLowerCase().includes(term)) return true;
                 
-                // Search in description
                 if (service.description.toLowerCase().includes(term)) return true;
                 
-                // Search in category
                 if (service.category.toLowerCase().includes(term)) return true;
                 
-                // Search in features
                 if (service.features.some(feature => 
                     feature.toLowerCase().includes(term)
                 )) return true;
@@ -11298,7 +10898,6 @@ function generateServiceHTML(service) {
             });
         }
         
-        // Display results
         function displayMobileResults(results, searchTerm) {
             console.log('Found', results.length, 'results for:', searchTerm);
             
@@ -11369,11 +10968,9 @@ function generateServiceHTML(service) {
             });
         }
         
-        // Navigate to service
         function navigateToService(serviceId) {
             console.log('Navigating to:', serviceId);
             
-            // Scroll to services section
             const servicesSection = document.getElementById('services');
             if (servicesSection) {
                 servicesSection.scrollIntoView({ 
@@ -11381,7 +10978,6 @@ function generateServiceHTML(service) {
                     block: 'start'
                 });
                 
-                // Highlight the service after scrolling
                 setTimeout(() => {
                     const serviceCard = document.querySelector(`[data-service="${serviceId}"]`);
                     if (serviceCard) {
@@ -11391,7 +10987,6 @@ function generateServiceHTML(service) {
                         serviceCard.style.boxShadow = '0 0 0 3px rgba(0, 155, 91, 0.3)';
                         serviceCard.style.transform = 'translateY(-5px)';
                         
-                        // Remove highlight after 3 seconds
                         setTimeout(() => {
                             serviceCard.style.boxShadow = originalBoxShadow;
                             serviceCard.style.transform = originalTransform;
@@ -11401,7 +10996,6 @@ function generateServiceHTML(service) {
             }
         }
         
-        // Event listeners for search input
         mobileSearchInput.addEventListener('input', function() {
             const searchTerm = this.value.trim();
             
@@ -11417,14 +11011,12 @@ function generateServiceHTML(service) {
             }, 300);
         });
         
-        // Search icon click
         searchIcon.addEventListener('click', function() {
             if (mobileSearchInput.value.trim()) {
                 performMobileSearch(mobileSearchInput.value.trim());
             }
         });
         
-        // Enter key to search
         mobileSearchInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 performMobileSearch(this.value.trim());
@@ -11437,7 +11029,6 @@ function generateServiceHTML(service) {
 
 <script>
 
-// MINIMAL NAVIGATION DROPDOWN
 document.addEventListener('DOMContentLoaded', function() {
     const graphicDesignLink = Array.from(document.querySelectorAll('.nav-link'))
         .find(link => link.textContent.trim().includes('More Solutions'));
@@ -11446,7 +11037,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const navItem = graphicDesignLink.closest('.nav-item');
     
-    // dropdown
     navItem.insertAdjacentHTML('beforeend', `
         <div class="simple-nav-dropdown" style="
             position: absolute;
@@ -11510,7 +11100,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const dropdown = navItem.querySelector('.simple-nav-dropdown');
     
-    // Hover effects to dropdown items
     dropdown.querySelectorAll('a').forEach(link => {
         link.addEventListener('mouseenter', function() {
             this.style.background = '#f8fafc';
@@ -11525,7 +11114,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Hover functionality
     navItem.addEventListener('mouseenter', () => {
         dropdown.style.opacity = '1';
         dropdown.style.visibility = 'visible';
@@ -11548,17 +11136,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-    <!-- =============================================== -->
-    <!-- GALLERY SECTION SCRIPT -->
-    <!-- =============================================== -->
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gallery card interactions
             const imageCards = document.querySelectorAll('.image-card');
             
             imageCards.forEach(card => {
-                // Keyboard navigation
                 card.addEventListener('keydown', function(e) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
@@ -11566,7 +11148,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
                 
-                // Click handler for gallery items
                 card.addEventListener('click', function() {
                     const title = this.querySelector('.info-title').textContent;
                     const description = this.querySelector('.info-description').textContent;
@@ -11588,7 +11169,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
             
-            // Explore button functionality
             const exploreBtn = document.querySelector('.dark-btn');
             if (exploreBtn) {
                 exploreBtn.addEventListener('click', function(e) {
@@ -11601,14 +11181,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     </script>
 
-        <!-- =============================================== -->
-         <!-- TOP DESIGNS CORRECTED SCRIPT -->
-        <!-- =============================================== -->
-
 <script>
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Swiper
     const swiper = new Swiper('.top-designs-swiper', {
         slidesPerView: 1,
         spaceBetween: 20,
@@ -11645,7 +11220,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Top Designs Swiper initialized');
     
-    // Add to cart functionality
     document.addEventListener('click', function(e) {
         const cartIcon = e.target.closest('.cart-icon');
         if (!cartIcon) return;
@@ -11661,7 +11235,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log('Adding to cart:', { title, priceText, tier, serviceId });
         
-        // Parse price
         const priceMatch = priceText.match(/R\s*(\d+(\.\d+)?)/);
         const price = priceMatch ? parseFloat(priceMatch[1]) : 0;
         
@@ -11693,24 +11266,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     cartItem.details
                 );
                 
-                // Open cart popup
                 if (cartSystem.cartPopupManager) {
                     cartSystem.cartPopupManager.openCartPopup();
                 }
             } else {
-                // Fallback to localStorage
                 addToLocalStorageCart(cartItem);
             }
         } else {
-            // Fallback to localStorage
             addToLocalStorageCart(cartItem);
         }
         
-        // Show toast
         //showToast(`Added to cart: ${title} (${tier})`, 'success');
     });
     
-    // localStorage cart function for fallback
     function addToLocalStorageCart(item) {
         try {
             let cart = JSON.parse(localStorage.getItem('designStudioGuestCart')) || [];
@@ -11818,7 +11386,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Toast function
     function showToast(message, type = 'success') {
 
         const existingToasts = document.querySelectorAll('.toast-notification');
@@ -11893,7 +11460,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.head.appendChild(style);
         }
         
-        // Remove toast after 3 seconds
         setTimeout(() => {
             toast.style.animation = 'slideOutRight 0.3s ease';
             setTimeout(() => {
@@ -11904,7 +11470,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
     
-    // Initialize cart badge on load
     updateCartBadge();
     
     window.addEventListener('cartUpdated', updateCartBadge);
@@ -11914,8 +11479,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-
-    //SCROLL TOP SCRIPT
 
      let scrollTop = document.querySelector('.scroll-top');
      
@@ -11940,16 +11503,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 
-    // =============================================== //
-    // WISHLIST FUNCTIONALITY SCRIPT                  //
-    // =============================================== //
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize wishlist
     const wishlist = {
         items: [],
         
-        // Load wishlist from localStorage
         load: function() {
             try {
                 const saved = localStorage.getItem('designStudioWishlist');
@@ -11962,7 +11520,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         
-        // Save wishlist to localStorage
         save: function() {
             try {
                 localStorage.setItem('designStudioWishlist', JSON.stringify(this.items));
@@ -11972,9 +11529,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         
-        // Add item to wishlist
         add: function(item) {
-            // Check if item already exists
             const existingIndex = this.items.findIndex(wishlistItem => 
                 wishlistItem.id === item.id
             );
@@ -11991,7 +11546,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         
-        // Remove item from wishlist
         remove: function(itemId) {
             const itemIndex = this.items.findIndex(item => item.id === itemId);
             if (itemIndex !== -1) {
@@ -12005,7 +11559,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         },
         
-        // Clear wishlist
         clear: function() {
             this.items = [];
             this.save();
@@ -12013,12 +11566,10 @@ document.addEventListener('DOMContentLoaded', function() {
             this.showToast('Wishlist cleared', 'info');
         },
         
-        // Get wishlist count
         getCount: function() {
             return this.items.length;
         },
         
-        // Generate WhatsApp message
         generateWhatsAppMessage: function() {
             if (this.items.length === 0) return '';
             
@@ -12040,7 +11591,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return encodeURIComponent(message);
         },
         
-        // Update UI elements
         updateUI: function() {
             this.updateCounter();
             this.updateModal();
@@ -12048,7 +11598,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.updateSubmitButton();
         },
         
-        // Update wishlist counter
         updateCounter: function() {
             const count = this.getCount();
             const counter = document.getElementById('wishlistCounter');
@@ -12059,7 +11608,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     counter.textContent = count;
                     counter.style.display = 'flex';
                     
-                    // Enable WhatsApp button
                     if (whatsappBtn) {
                         whatsappBtn.href = `https://wa.me/27817925033?text=${this.generateWhatsAppMessage()}`;
                         whatsappBtn.title = `Submit ${count} design${count > 1 ? 's' : ''} via WhatsApp`;
@@ -12068,7 +11616,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     counter.textContent = '0';
                     counter.style.display = 'none';
                     
-                    // Reset WhatsApp button
                     if (whatsappBtn) {
                         whatsappBtn.href = 'https://wa.me/27817925033';
                         whatsappBtn.title = 'Chat on WhatsApp';
@@ -12077,7 +11624,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         
-        // Update wishlist modal
         updateModal: function() {
             const emptyState = document.getElementById('wishlistEmptyState');
             const itemsContainer = document.getElementById('wishlistItemsContainer');
@@ -12123,7 +11669,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         
-        // Update wishlist icons in design cards
         updateWishlistIcons: function() {
             const wishlistIcons = document.querySelectorAll('.wishlist-icon');
             wishlistIcons.forEach(icon => {
@@ -12150,7 +11695,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         },
         
-        // Update submit button state
         updateSubmitButton: function() {
             const submitBtn = document.getElementById('submitWishlist');
             if (submitBtn) {
@@ -12170,7 +11714,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         
-        // Format date for display
         formatDate: function(dateString, full = false) {
             const date = new Date(dateString);
             if (full) {
@@ -12200,7 +11743,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         },
         
-        // Show toast notification
         showToast: function(message, type = 'info') {
             const toast = document.createElement('div');
             toast.className = `toast-notification toast-${type}`;
@@ -12240,7 +11782,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 animation: 'slideInRight 0.3s ease'
             });
             
-            // Remove existing toasts
             document.querySelectorAll('.toast-notification').forEach(t => t.remove());
             
             document.body.appendChild(toast);
@@ -12280,7 +11821,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    // Modal management
     const wishlistModal = {
         modal: document.getElementById('wishlistModal'),
         
@@ -12308,9 +11848,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    // Event Listeners Setup
     function setupEventListeners() {
-        // Wishlist icon clicks in design cards
         document.addEventListener('click', function(e) {
             const wishlistIcon = e.target.closest('.wishlist-icon');
             if (!wishlistIcon) return;
@@ -12330,14 +11868,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const itemId = `wish-${serviceId}-${tier.toLowerCase()}`;
             
-            // Check if already in wishlist
             const existingItem = wishlist.items.find(item => item.id === itemId);
             
             if (existingItem) {
-                // Remove from wishlist
                 wishlist.remove(itemId);
             } else {
-                // Add to wishlist
                 const wishlistItem = {
                     id: itemId,
                     serviceId: serviceId,
@@ -12353,7 +11888,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Open wishlist modal from various buttons
         const wishlistButtons = [
             document.getElementById('mobileWishlistBtn'),
             document.getElementById('desktopWishlistBtn')
@@ -12368,7 +11902,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Close wishlist modal
         const closeWishlistBtn = document.getElementById('closeWishlist');
         if (closeWishlistBtn) {
             closeWishlistBtn.addEventListener('click', function() {
@@ -12376,7 +11909,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Close modal when clicking outside
         const wishlistOverlay = document.querySelector('.wishlist-overlay');
         if (wishlistOverlay) {
             wishlistOverlay.addEventListener('click', function(e) {
@@ -12386,7 +11918,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Remove item from wishlist
         document.addEventListener('click', function(e) {
             const removeBtn = e.target.closest('.wishlist-item-remove');
             if (!removeBtn) return;
@@ -12400,7 +11931,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Submit wishlist via WhatsApp
         const submitBtn = document.getElementById('submitWishlist');
         if (submitBtn) {
             submitBtn.addEventListener('click', function(e) {
@@ -12413,21 +11943,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 const phoneNumber = '27817925033';
                 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
                 
-                // Open WhatsApp in new tab
                 window.open(whatsappUrl, '_blank');
                 
-                // Show success message
                 wishlist.showToast(`Opening WhatsApp with ${wishlist.getCount()} design${wishlist.getCount() > 1 ? 's' : ''}`, 'success');
             });
         }
         
-        // Continue browsing button
         const continueBtn = document.getElementById('continueBrowsing');
         if (continueBtn) {
             continueBtn.addEventListener('click', function() {
                 wishlistModal.close();
                 
-                // Scroll to top designs section
                 const topDesignsSection = document.querySelector('.top-designs-section');
                 if (topDesignsSection) {
                     topDesignsSection.scrollIntoView({
@@ -12438,13 +11964,11 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Browse designs button (in empty state)
         const browseBtn = document.getElementById('wishlistBrowseDesigns');
         if (browseBtn) {
             browseBtn.addEventListener('click', function() {
                 wishlistModal.close();
                 
-                // Scroll to top designs section
                 const topDesignsSection = document.querySelector('.top-designs-section');
                 if (topDesignsSection) {
                     topDesignsSection.scrollIntoView({
@@ -12455,7 +11979,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // WhatsApp button click (floating button)
         const whatsappBtn = document.getElementById('whatsappBtn');
         if (whatsappBtn) {
             whatsappBtn.addEventListener('click', function(e) {
@@ -12463,10 +11986,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     e.preventDefault();
                     wishlist.showToast('Add designs to wishlist first!', 'error');
                     
-                    // Open wishlist modal
                     wishlistModal.open();
                     
-                    // Scroll to top designs section
                     setTimeout(() => {
                         const topDesignsSection = document.querySelector('.top-designs-section');
                         if (topDesignsSection) {
@@ -12480,7 +12001,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Escape key to close modal
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && wishlistModal.modal.classList.contains('active')) {
                 wishlistModal.close();
@@ -12488,20 +12008,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Initialize the wishlist system
     function initializeWishlistSystem() {
         console.log('Initializing wishlist system...');
         
-        // Load wishlist data
         wishlist.load();
         
-        // Setup event listeners
         setupEventListeners();
         
-        // Update UI on page load
         wishlist.updateUI();
         
-        // Listen for cart updates to sync UI
         window.addEventListener('cartUpdated', function() {
             wishlist.updateWishlistIcons();
         });
@@ -12510,10 +12025,8 @@ document.addEventListener('DOMContentLoaded', function() {
         return wishlist;
     }
     
-    // Initialize when DOM is loaded
     initializeWishlistSystem();
     
-    // Make wishlist system available globally
     window.WishlistSystem = {
         wishlist: wishlist,
         wishlistModal: wishlistModal,
@@ -12524,13 +12037,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 
-    // =============================================== //
-    // TYPING ANIMATION                       //
-    // =============================================== //
-
 document.addEventListener('DOMContentLoaded', function() {
     const typingAnimation = {
-        // Configuration
         config: {
             text: "Hey! I'm KaygDesigner.",
             typingSpeed: 80, 
@@ -12541,7 +12049,6 @@ document.addEventListener('DOMContentLoaded', function() {
             showCursor: true
         },
         
-        // State variables
         state: {
             isTyping: false,
             currentIndex: 0,
@@ -12549,7 +12056,6 @@ document.addEventListener('DOMContentLoaded', function() {
             animationId: null
         },
         
-        // Initialize
         init: function() {
             const heading = document.getElementById('typing-heading');
             if (!heading) {
@@ -12572,13 +12078,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 heading.appendChild(cursorSpan);
             }
             
-            // Start the animation after a brief delay
             setTimeout(() => {
                 this.startTyping();
             }, 1000);
         },
         
-        // Start typing animation
         startTyping: function() {
             if (this.state.isTyping) return;
             
@@ -12589,7 +12093,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.type();
         },
         
-        // Type character by character
         type: function() {
             const textSpan = document.querySelector('.typing-text');
             const fullText = this.config.text;
@@ -12597,12 +12100,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!textSpan) return;
             
             if (!this.state.isDeleting) {
-                // Typing forward
                 textSpan.textContent = fullText.substring(0, this.state.currentIndex + 1);
                 this.state.currentIndex++;
                 
                 if (this.state.currentIndex === fullText.length) {
-                    // Pause for 10 seconds
                     setTimeout(() => {
                         this.state.isDeleting = true;
                         this.type();
@@ -12610,35 +12111,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                // Continue typing
                 setTimeout(() => {
                     this.type();
                 }, this.config.typingSpeed);
                 
             } else {
-                // Deleting text
                 textSpan.textContent = fullText.substring(0, this.state.currentIndex - 1);
                 this.state.currentIndex--;
                 
-                // Check if we've deleted everything
                 if (this.state.currentIndex === 0) {
                     this.state.isDeleting = false;
                     
-                    // Pause before restarting
                     setTimeout(() => {
                         this.type();
                     }, this.config.pauseBeforeRestart);
                     return;
                 }
                 
-                // Continue deleting
                 setTimeout(() => {
                     this.type();
                 }, this.config.typingSpeed / 2);
             }
         },
         
-        // Reset animation
         reset: function() {
             const textSpan = document.querySelector('.typing-text');
             if (textSpan) {
@@ -12654,12 +12149,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         
-        // Pause animation
         pause: function() {
             this.state.isTyping = false;
         },
         
-        // Resume animation
         resume: function() {
             if (!this.state.isTyping) {
                 this.state.isTyping = true;
@@ -12667,23 +12160,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         
-        // Update configuration
         updateConfig: function(newConfig) {
             Object.assign(this.config, newConfig);
         }
     };
     
-    // Initialize the typing animation
     typingAnimation.init();
     
-    // Make it globally accessible
     window.typingAnimation = typingAnimation;
 });
 </script>
 
 <script>
 
-// Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -12707,11 +12196,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 <script>
 
-// BECOME AN ADVERTISER
-
-// Advertiser Embed Functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Get advertiser elements
     const advertiserEmbed = document.getElementById('advertiserEmbed');
     const advertiserCloseBtn = document.getElementById('advertiserCloseBtn');
     
@@ -12725,7 +12210,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close functionality
     advertiserCloseBtn.addEventListener('click', function() {
         advertiserEmbed.classList.remove('active');
         document.getElementById('overlay').classList.remove('active');
@@ -12736,12 +12220,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 
-// =============================================== //
-// COOKIE POPUP WITH SETTINGS           //
-// =============================================== //
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Elements
     const cookiesPopup = document.getElementById('cookiesPopup');
     const cookiesModal = document.getElementById('cookiesModal');
     const acceptCookiesBtn = document.getElementById('acceptCookies');
@@ -12750,19 +12229,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeCookiesModalBtn = document.getElementById('closeCookiesModal');
     const saveCookieSettingsBtn = document.getElementById('saveCookieSettings');
     
-    // Check if user has already seen the popup
     const hasSeenPopup = localStorage.getItem('96studios_cookie_seen');
     
-    // If user has NOT seen the popup before, show it after 10 seconds
     if (!hasSeenPopup) {
         setTimeout(() => {
             cookiesPopup.classList.add('active');
             
-            // Auto-hide after 10 seconds
             setTimeout(() => {
                 if (cookiesPopup.classList.contains('active')) {
                     cookiesPopup.classList.remove('active');
-                    // Mark as seen even if user ignores it
                     localStorage.setItem('96studios_cookie_seen', 'true');
                     localStorage.setItem('96studios_cookie_choice', 'ignored');
                 }
@@ -12770,10 +12245,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10000);
     }
     
-    // 1. ACCEPT ALL button
     if (acceptCookiesBtn) {
         acceptCookiesBtn.addEventListener('click', function() {
-            // Save all cookies as accepted
             const preferences = {
                 essential: true,
                 analytics: true,
@@ -12791,10 +12264,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 2. DECLINE button
     if (declineCookiesBtn) {
         declineCookiesBtn.addEventListener('click', function() {
-            // Save all non-essential as declined
             const preferences = {
                 essential: true,
                 analytics: false,
@@ -12812,19 +12283,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 3. SETTINGS button (opens modal)
     if (cookieSettingsBtn) {
         cookieSettingsBtn.addEventListener('click', function() {
-            // Load saved preferences into modal checkboxes
             loadPreferencesIntoModal();
             
-            // Show modal
             cookiesModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
     }
     
-    // 4. CLOSE MODAL button
     if (closeCookiesModalBtn) {
         closeCookiesModalBtn.addEventListener('click', function() {
             cookiesModal.classList.remove('active');
@@ -12832,10 +12299,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 5. SAVE SETTINGS button
     if (saveCookieSettingsBtn) {
         saveCookieSettingsBtn.addEventListener('click', function() {
-            // Get selected preferences
             const preferences = {
                 essential: true,
                 analytics: document.getElementById('analyticsCookies').checked,
@@ -12844,12 +12309,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 timestamp: new Date().toISOString()
             };
             
-            // Save to localStorage
             localStorage.setItem('96studios_cookie_seen', 'true');
             localStorage.setItem('96studios_cookie_choice', 'custom');
             localStorage.setItem('96studios_cookie_preferences', JSON.stringify(preferences));
             
-            // Close everything
             cookiesPopup.classList.remove('active');
             cookiesModal.classList.remove('active');
             document.body.style.overflow = '';
@@ -12858,7 +12321,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Load saved preferences into modal checkboxes
     function loadPreferencesIntoModal() {
         const saved = localStorage.getItem('96studios_cookie_preferences');
         
@@ -12879,7 +12341,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error loading preferences:', e);
             }
         } else {
-            // Default to checked for new users
             if (document.getElementById('analyticsCookies')) {
                 document.getElementById('analyticsCookies').checked = true;
             }
@@ -12892,7 +12353,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Close modal when clicking outside
     if (cookiesModal) {
         cookiesModal.addEventListener('click', function(e) {
             if (e.target === this) {
@@ -12902,7 +12362,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Escape key to close modal
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && cookiesModal.classList.contains('active')) {
             cookiesModal.classList.remove('active');
@@ -12910,7 +12369,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Show confirmation message
     function showMessage(text) {
         const message = document.createElement('div');
         message.textContent = text;
@@ -12939,28 +12397,20 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-// =============================================== //
-// BOTTOM OZOW ADVERT - SHOWS ONLY ONCE PER VISIT
-// =============================================== //
 
 document.addEventListener('DOMContentLoaded', function() {
     const bottomAdvert = document.getElementById('bottomOzowAdvert');
     const closeBottomBtn = document.getElementById('closeBottomOzow');
     
-    // Check if advert has already been shown in this session
     const hasBeenShown = sessionStorage.getItem('ozow_advert_shown');
     
-    // Only show if it hasn't been shown yet
     if (!hasBeenShown) {
-        // Show after 35 seconds
         setTimeout(() => {
             bottomAdvert.classList.add('active');
             console.log('✅ Bottom Ozow advert shown (ONCE per session)');
             
-            // Mark as shown in session storage
             sessionStorage.setItem('ozow_advert_shown', 'true');
             
-            // Auto-hide after 10 seconds
             setTimeout(() => {
                 if (bottomAdvert.classList.contains('active')) {
                     bottomAdvert.classList.remove('active');
@@ -12971,7 +12421,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 35000);
     }
     
-    // Close button functionality
     closeBottomBtn.addEventListener('click', () => {
         bottomAdvert.classList.remove('active');
         console.log('✅ Bottom Ozow advert closed by user');
@@ -12981,15 +12430,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script type="module">
 
-    // Header functionality - Mobile Menu Section
     document.addEventListener('DOMContentLoaded', function() {
-        // Mobile menu functionality
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const mobileMenu = document.getElementById('mobileMenu');
         const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
         
-        // Get all mobile menu links
         const mobileMenuItems = document.querySelectorAll('.mobile-menu-item a');
         
         function openMobileMenu() {
@@ -13004,25 +12450,19 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = 'auto';
         }
         
-        // Open menu
         mobileMenuButton.addEventListener('click', openMobileMenu);
         
-        // Close menu with close button
         closeMobileMenuBtn.addEventListener('click', closeMobileMenu);
         
-        // Close menu when clicking overlay
         mobileMenuOverlay.addEventListener('click', closeMobileMenu);
         
-        // Close menu when any link is clicked
         mobileMenuItems.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Get the link text/id to determine action
                 const linkId = this.id || this.textContent.trim();
                 console.log('Mobile menu link clicked:', linkId);
                 
-                // Close the menu first
                 closeMobileMenu();
                 
                 setTimeout(() => {
@@ -13031,12 +12471,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Function to handle navigation after menu closes
         function handleMobileNavAction(linkId) {
             switch(linkId) {
                 case 'graphic-design-nav-mobile':
                 case 'Graphic Design':
-                    // Scroll to services section
                     const servicesSection = document.getElementById('services');
                     if (servicesSection) {
                         servicesSection.scrollIntoView({
@@ -13071,22 +12509,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                     
                 case 'Computer & Software':
-                    // Open computer & software page
                     window.open('https://onclick.96studios.co.za/', '_blank');
                     break;
                     
                 case 'Photography':
-                    // Open photography page
                     window.open('coming-soon.html', '_blank');
                     break;
                     
                 case 'Wall Art & Deco':
-                    // Open wall art page
                     window.open('coming-soon.html', '_blank');
                     break;
                     
                 case 'Support':
-                    // Scroll to footer/support section
                     const footer = document.getElementById('footer');
                     if (footer) {
                         footer.scrollIntoView({
@@ -13097,7 +12531,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                     
                 default:
-                    // Default action - scroll to top
                     window.scrollTo({
                         top: 0,
                         behavior: 'smooth'
@@ -13116,7 +12549,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Wishlist modal opener
     const openWishlistLink = document.getElementById('openWishlistModal');
     if (openWishlistLink) {
         openWishlistLink.addEventListener('click', function(e) {
@@ -13125,7 +12557,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.WishlistSystem && window.WishlistSystem.wishlistModal) {
                 window.WishlistSystem.wishlistModal.open();
             } else {
-                // Fallback if wishlist system not loaded
                 const wishlistModal = document.getElementById('wishlistModal');
                 if (wishlistModal) {
                     wishlistModal.classList.add('active');
