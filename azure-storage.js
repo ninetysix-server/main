@@ -1,0 +1,1 @@
+const AZURE_KEY = "dGVzdC1rZXk=";
