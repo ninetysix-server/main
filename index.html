@@ -6301,20 +6301,12 @@
 </style>
 
     <style>
-       img, video {
-    display: block;
-}
-
-/* skeleton effect */
-.media-loading {
+      img {
     position: relative;
 }
 
-/* overlay only */
-.media-loading::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+/* skeleton effect */
+img.skeleton {
     background: linear-gradient(
         90deg,
         #e0e0e0 25%,
@@ -6323,18 +6315,12 @@
     );
     background-size: 200% 100%;
     animation: shimmer 1.2s infinite;
-    z-index: 1;
-}
-
-/* hide overlay when loaded */
-.media-loading.loaded::before {
-    display: none;
 }
 
 @keyframes shimmer {
     0% { background-position: -200% 0; }
     100% { background-position: 200% 0; }
-} 
+}
 </style>
 
     
@@ -12669,29 +12655,28 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
-    const media = document.querySelectorAll("img, video");
+    const images = document.querySelectorAll("img, video");
 
-    media.forEach(el => {
-        // wrap safely without breaking layout (in-place only)
-        const parent = el.parentElement;
+    images.forEach(el => {
+        el.classList.add("skeleton");
 
-        if (!parent.classList.contains("media-loading")) {
-            parent.classList.add("media-loading");
-        }
-
-        const done = () => parent.classList.add("loaded");
+        const remove = () => {
+            el.classList.remove("skeleton");
+        };
 
         if (el.tagName === "IMG") {
-            if (el.complete) done();
-            else el.addEventListener("load", done);
+            if (el.complete) remove();
+            else el.addEventListener("load", remove);
         }
 
         if (el.tagName === "VIDEO") {
-            el.addEventListener("loadeddata", done);
+            el.addEventListener("loadeddata", remove);
         }
     });
 });
+</script>
 </script>
 </body>
 
