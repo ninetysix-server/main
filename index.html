@@ -6298,7 +6298,52 @@
     will-change: transform, opacity;
     contain: layout style paint;
 }
+
+
+    /* Skeleton base */
+img, video {
+    background: #eee;
+}
+
+/* Skeleton shimmer */
+img.loading,
+video.loading {
+    background: linear-gradient(
+        90deg,
+        #e0e0e0 25%,
+        #f5f5f5 50%,
+        #e0e0e0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+}
+
+/* When loaded */
+img.loaded,
+video.loaded {
+    animation: none;
+    background: none;
+}
+
+/* Smooth reveal */
+img,
+video {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+img.loaded,
+video.loaded {
+    opacity: 1;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
 </style>
+
+    
 
 </head>
 <body oncontextmenu="return false;">
@@ -12629,7 +12674,33 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const media = document.querySelectorAll("img, video");
 
+    media.forEach(el => {
+        el.classList.add("loading");
+
+        const loaded = () => {
+            el.classList.remove("loading");
+            el.classList.add("loaded");
+        };
+
+        if (el.tagName === "IMG") {
+            if (el.complete) {
+                loaded();
+            } else {
+                el.addEventListener("load", loaded);
+                el.addEventListener("error", loaded);
+            }
+        }
+
+        if (el.tagName === "VIDEO") {
+            el.addEventListener("loadeddata", loaded);
+        }
+    });
+});
+</script>
 </body>
 
 </html>
